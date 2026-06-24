@@ -1,9 +1,12 @@
 ---
-import Button from './Button.astro';
 import Container from './Container.astro';
 import Logo from './Logo.astro';
 
-const links = [{ label: 'Blog', href: '/blog/' }];
+const links = [
+  { label: 'Capacidades', href: '/#capacidades' },
+  { label: 'El loop', href: '/#loop' },
+  { label: 'Verificación', href: '/#verificacion' },
+];
 const current = Astro.url.pathname;
 ---
 
@@ -34,7 +37,7 @@ const current = Astro.url.pathname;
 
       <div class="flex items-center gap-3">
         <a
-          href="https://github.com/cbetz/pulsar-lite"
+          href="https://github.com/"
           class="hidden text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:block"
           aria-label="GitHub"
         >
@@ -44,9 +47,6 @@ const current = Astro.url.pathname;
             ></path>
           </svg>
         </a>
-        <Button href="/blog/aurora-2-0-edge-caching-ga/" variant="primary" size="sm">
-          Get started
-        </Button>
         <button
           type="button"
           data-menu-button
@@ -112,7 +112,7 @@ const current = Astro.url.pathname;
       </ul>
       <div class="mt-2 border-t border-line pt-2">
         <a
-          href="https://github.com/cbetz/pulsar-lite"
+          href="https://github.com/"
           class="flex min-h-11 items-center rounded-lg px-2 text-sm text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand"
         >
           GitHub

@@ -3,49 +3,70 @@ import { Code } from 'astro:components';
 import codeTheme from '@shikijs/themes/catppuccin-mocha';
 import Container from '../Container.astro';
 
-const cacheCode = `import { aurora } from '@auroralabs/sdk';
+const manifestCode = `module: payroll
+namespace: Aurora\\Payroll
+target: package
 
-export const api = aurora.app();
+models:
+  Payslip:
+    fields:
+      employee: { type: party_reference }
+      gross:    { type: money }
+      net:      { type: money }
 
-api.get('/products', async ({ cache }) => {
-  const products = await cache.swr('products', fetchProducts, {
-    ttl: 60,
-    stale: 300,
-  });
-  return Response.json(products);
-});`;
+posting:
+  source: auto_payslip
+  determinations: [wages_expense, withholdings_payable]`;
 
-const middlewareCode = `import { aurora } from '@auroralabs/sdk';
+const contractCode = `<?php
 
-export const api = aurora.app();
+namespace Aurora\\Platform\\Contracts\\Posting;
 
-api.use(async (ctx, next) => {
-  const auth = ctx.request.headers.get('authorization');
-  if (!auth?.startsWith('Bearer ')) {
-    return new Response('unauthorized', { status: 401 });
-  }
-  ctx.trace.set('auth.scheme', 'bearer');
-  return next();
-});`;
+/**
+ * El host ejecuta el asiento; el módulo solo provee los datos.
+ * El satélite jamás importa el kernel contable.
+ */
+interface CreatesJournalEntries
+{
+    public function toJournalEntry(): JournalEntryData;
+}`;
+
+const runtimeCode = `<?php
+
+namespace Aurora\\Payroll;
+
+use Aurora\\Platform\\Support\\ModuleRegistry;
+use Illuminate\\Support\\ServiceProvider;
+
+final class PayrollServiceProvider extends ServiceProvider
+{
+    public function boot(ModuleRegistry $registry): void
+    {
+        // Auto-descubierto: el runtime registra el módulo
+        // y lo cablea a multiempresa + onboarding.
+        $registry->register(new PayrollModuleManifest());
+    }
+}`;
 
 const bullets = [
-  'Stale-while-revalidate in one call — no invalidation service to operate',
-  'Middleware short-circuits at the edge, before your handler is invoked',
-  'Full TypeScript inference from route params to response body',
+  'El manifiesto declara identidad, modelos, posting y permisos en un solo contrato.',
+  'aurora:make-module genera el módulo ya cableado contra los contratos del SDK.',
+  'El runtime lo descubre y registra — multiempresa y onboarding incluidos.',
 ];
 ---
 
-<section class="overflow-hidden">
+<section id="loop" class="scroll-mt-20 overflow-hidden">
   <Container class="py-20 sm:py-28">
     <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
       <div>
-        <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">Developer experience</p>
+        <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">El loop</p>
         <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Infrastructure that reads like application code
+          Del manifiesto al módulo verificado
         </h2>
         <p class="mt-4 max-w-xl text-fg-2">
-          Caching and auth are function calls, not config files. Declare them next
-          to the route they protect, and Aurora Labs runs them at the edge in all 28 regions.
+          El ciclo de Aurora es el mismo para un módulo de facturación, de inventario o de nómina:
+          se declara el contrato, se genera el módulo, depende del SDK y el runtime lo registra. Sin
+          andamiaje escrito a mano.
         </p>
 
         <ul class="mt-8 space-y-4">
@@ -76,37 +97,51 @@ const bullets = [
 
       <div class="glass overflow-hidden rounded-xl" data-tabs>
         <div class="flex items-center justify-between border-b border-line pl-2 pr-4">
-          <div role="tablist" aria-label="Code examples" class="flex">
+          <div role="tablist" aria-label="El loop de Aurora" class="flex">
             <button
               type="button"
-              id="tab-cache"
+              id="tab-manifest"
               role="tab"
               aria-selected="true"
-              aria-controls="panel-cache"
+              aria-controls="panel-manifest"
               class="-mb-px border-b-2 border-transparent px-3.5 py-3 font-mono text-xs text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand aria-selected:border-brand aria-selected:text-fg"
             >
-              cache.ts
+              module.yaml
             </button>
             <button
               type="button"
-              id="tab-middleware"
+              id="tab-contract"
               role="tab"
               aria-selected="false"
-              aria-controls="panel-middleware"
+              aria-controls="panel-contract"
               tabindex="-1"
               class="-mb-px border-b-2 border-transparent px-3.5 py-3 font-mono text-xs text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand aria-selected:border-brand aria-selected:text-fg"
             >
-              middleware.ts
+              CreatesJournalEntries.php
+            </button>
+            <button
+              type="button"
+              id="tab-runtime"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-runtime"
+              tabindex="-1"
+              class="-mb-px border-b-2 border-transparent px-3.5 py-3 font-mono text-xs text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand aria-selected:border-brand aria-selected:text-fg"
+            >
+              PayrollServiceProvider.php
             </button>
           </div>
-          <span class="font-mono text-xs text-fg-3">TypeScript</span>
+          <span class="font-mono text-xs text-fg-3">Aurora</span>
         </div>
 
-        <div id="panel-cache" role="tabpanel" aria-labelledby="tab-cache" class="p-4">
-          <Code code={cacheCode} lang="ts" theme={codeTheme} />
+        <div id="panel-manifest" role="tabpanel" aria-labelledby="tab-manifest" class="p-4">
+          <Code code={manifestCode} lang="yaml" theme={codeTheme} />
         </div>
-        <div id="panel-middleware" role="tabpanel" aria-labelledby="tab-middleware" class="p-4" hidden>
-          <Code code={middlewareCode} lang="ts" theme={codeTheme} />
+        <div id="panel-contract" role="tabpanel" aria-labelledby="tab-contract" class="p-4" hidden>
+          <Code code={contractCode} lang="php" theme={codeTheme} />
+        </div>
+        <div id="panel-runtime" role="tabpanel" aria-labelledby="tab-runtime" class="p-4" hidden>
+          <Code code={runtimeCode} lang="php" theme={codeTheme} />
         </div>
       </div>
     </div>

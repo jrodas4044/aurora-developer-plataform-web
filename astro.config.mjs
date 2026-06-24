@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.auroralabs.example/',
+  site: 'https://aurora.example/',
 
   // Bilingual routing: Spanish at the root (/), English under /en/.
   // Mirrors the convention used across the other Aurora/Turingh sites.

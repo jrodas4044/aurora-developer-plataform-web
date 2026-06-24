@@ -6,16 +6,25 @@ import WindowDots from '../WindowDots.astro';
 import Container from '../Container.astro';
 import Glow from '../Glow.astro';
 
-const heroCode = `import { aurora } from '@auroralabs/sdk';
+const heroCode = `module: invoicing
+namespace: Aurora\\Invoicing
+target: package
 
-export const api = aurora.app({ region: 'global' });
+models:
+  Invoice:
+    fields:
+      number: { type: string }
+      total: { type: money }       # numeric(15,2)
+      issued_at: { type: date }
+      customer: { type: party_reference }
 
-api.get('/users/:id', async ({ params, cache }) => {
-  const user = await cache.swr(\`user:\${params.id}\`, () =>
-    db.users.find(params.id),
-  );
-  return Response.json(user);
-});`;
+posting:
+  source: auto_invoice
+  determinations: [revenue, receivable, tax_payable]
+
+permissions:
+  invoices.create: [Autorizador, Capturador]
+  invoices.view:   [Autorizador, Capturador, Revisor]`;
 ---
 
 <section class="relative overflow-hidden">
@@ -31,31 +40,28 @@ api.get('/users/:id', async ({ params, cache }) => {
   <Container class="relative pb-24 pt-20 sm:pt-28">
     <div class="mx-auto max-w-3xl text-center">
       <a
-        href="/blog/aurora-2-0-edge-caching-ga/"
+        href="/#loop"
         class="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[13px] text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
       >
         <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_rgb(34_211_238/0.8)]"></span>
-        Aurora Labs 2.0 — edge caching is now GA
+        Del manifiesto al módulo verificado
         <span aria-hidden="true" class="text-fg-3">→</span>
       </a>
 
       <h1 class="mt-6 text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-        Ship your API in minutes, <span class="text-gradient">not sprints</span>
+        Aurora no es un ERP. Es la plataforma sobre la que se construyen.
       </h1>
 
       <p class="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-fg-2">
-        Aurora Labs gives your team a production-grade API platform — global deploys, built-in caching,
-        and observability that explains itself. No YAML. No ops rotation.
+        Una base común para crear sistemas empresariales modulares, verificables y
+        financieramente consistentes. Los módulos se describen con un manifiesto, se generan
+        automáticamente y dependen de contratos estables — nunca de implementaciones.
       </p>
 
       <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-        <Button href="/blog/aurora-2-0-edge-caching-ga/" size="lg">See what's new in 2.0</Button>
-        <Button href="/blog/" variant="secondary" size="lg">Read the blog</Button>
+        <Button href="/#capacidades" size="lg">Ver las cuatro capacidades</Button>
+        <Button href="/#loop" variant="secondary" size="lg">Cómo funciona el loop</Button>
       </div>
-
-      <p class="mt-5 font-mono text-[13px] text-fg-2">
-        <span class="select-none text-fg-3">$</span> npm install @auroralabs/sdk
-      </p>
     </div>
 
     <!-- Code panel -->
@@ -65,10 +71,10 @@ api.get('/users/:id', async ({ params, cache }) => {
         <div class="min-w-0 border-b border-line md:border-b-0 md:border-r">
           <div class="flex items-center gap-2 border-b border-line px-4 py-3">
             <WindowDots />
-            <span class="ml-3 font-mono text-xs text-fg-3">api/index.ts</span>
+            <span class="ml-3 font-mono text-xs text-fg-3">module.yaml</span>
           </div>
           <div class="overflow-x-auto p-4 text-left">
-            <Code code={heroCode} lang="ts" theme={codeTheme} />
+            <Code code={heroCode} lang="yaml" theme={codeTheme} />
           </div>
         </div>
 
@@ -78,17 +84,17 @@ api.get('/users/:id', async ({ params, cache }) => {
             <span class="font-mono text-xs text-fg-3">terminal</span>
           </div>
           <div class="space-y-2 p-4 text-left font-mono text-[13px] leading-relaxed">
-            <p class="text-fg-2"><span class="select-none text-fg-3">$</span> aurora deploy --watch</p>
-            <p class="text-fg-3">Compiling api/index.ts…</p>
-            <p><span class="text-accent">✓</span> <span class="text-fg-2">Built in 1.2s</span></p>
-            <p><span class="text-accent">✓</span> <span class="text-fg-2">Deployed to 28 regions</span></p>
+            <p class="text-fg-2"><span class="select-none text-fg-3">$</span> aurora:make-module invoicing</p>
+            <p class="text-fg-3">Leyendo manifiesto module.yaml…</p>
+            <p><span class="text-accent">✓</span> <span class="text-fg-2">Contratos SDK resueltos (Posting, Tenancy, Onboarding)</span></p>
+            <p><span class="text-accent">✓</span> <span class="text-fg-2">Módulo generado en packages/aurora/invoicing</span></p>
+            <p><span class="text-accent">✓</span> <span class="text-fg-2">Registrado en el runtime · multiempresa listo</span></p>
             <p class="pt-1 text-fg-2">
-              <span class="text-brand-bright">→</span> https://api.auroralabs.dev
-              <span class="text-fg-3">(42ms p99)</span>
+              <span class="text-brand-bright">→</span> El kernel postea el asiento. El módulo nunca toca el GL.
             </p>
             <p class="flex items-center gap-2 pt-2 text-fg-3">
               <span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-accent motion-reduce:animate-none"></span>
-              watching for changes
+              esqueleto verde — listo para su lógica de dominio
             </p>
           </div>
         </div>
