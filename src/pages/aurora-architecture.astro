@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CapabilityPage from '../components/CapabilityPage.astro';
+import { architecture } from '../data/pages';
+---
+
+<BaseLayout title={architecture.metaTitle} description={architecture.metaDescription}>
+  <CapabilityPage data={architecture} />
+</BaseLayout>

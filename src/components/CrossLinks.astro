@@ -1,0 +1,40 @@
+---
+import Container from './Container.astro';
+
+interface Link {
+  label: string;
+  href: string;
+  blurb: string;
+}
+
+interface Props {
+  links: Link[];
+  heading?: string;
+}
+
+const { links, heading = 'Siga explorando' } = Astro.props;
+---
+
+<section class="border-t border-line">
+  <Container class="py-16 sm:py-20">
+    <h2 class="text-xl font-semibold tracking-tight text-fg">{heading}</h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        links.map((l) => (
+          <a
+            href={l.href}
+            class="group rounded-xl border border-line bg-panel p-5 transition-colors hover:border-line-2 hover:bg-panel-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          >
+            <p class="flex items-center gap-1.5 text-[15px] font-semibold text-fg">
+              {l.label}
+              <span aria-hidden="true" class="text-fg-3 transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </p>
+            <p class="mt-2 text-sm leading-relaxed text-fg-2">{l.blurb}</p>
+          </a>
+        ))
+      }
+    </div>
+  </Container>
+</section>

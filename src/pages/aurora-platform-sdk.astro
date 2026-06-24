@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CapabilityPage from '../components/CapabilityPage.astro';
+import { platformSdk } from '../data/pages';
+---
+
+<BaseLayout title={platformSdk.metaTitle} description={platformSdk.metaDescription}>
+  <CapabilityPage data={platformSdk} />
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import Button from './Button.astro';
+import Container from './Container.astro';
+import Glow from './Glow.astro';
+
+interface Props {
+  heading: string;
+  body: string;
+  primary: { label: string; href: string };
+  secondary?: { label: string; href: string };
+}
+
+const { heading, body, primary, secondary } = Astro.props;
+---
+
+<section class="relative overflow-hidden border-t border-line">
+  <Glow class="left-1/2 top-1/2 h-[420px] w-[760px] -translate-x-1/2 -translate-y-1/2" />
+  <Container class="relative py-20 text-center sm:py-28">
+    <h2 class="mx-auto max-w-2xl text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+      {heading}
+    </h2>
+    <p class="mx-auto mt-5 max-w-xl text-pretty text-lg leading-relaxed text-fg-2">{body}</p>
+    <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+      <Button href={primary.href} size="lg">{primary.label}</Button>
+      {secondary && <Button href={secondary.href} variant="secondary" size="lg">{secondary.label}</Button>}
+    </div>
+  </Container>
+</section>

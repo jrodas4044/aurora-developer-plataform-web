@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CapabilityPage from '../components/CapabilityPage.astro';
+import { make } from '../data/pages';
+---
+
+<BaseLayout title={make.metaTitle} description={make.metaDescription}>
+  <CapabilityPage data={make} />
+</BaseLayout>

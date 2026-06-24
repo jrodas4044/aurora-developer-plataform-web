@@ -1,30 +1,81 @@
 ---
+import Button from './Button.astro';
 import Container from './Container.astro';
 import Logo from './Logo.astro';
 
-const links = [
-  { label: 'Capacidades', href: '/#capacidades' },
-  { label: 'El loop', href: '/#loop' },
-  { label: 'Verificación', href: '/#verificacion' },
+const platformLinks = [
+  { label: 'Aurora Make', href: '/aurora-make', desc: 'Fábrica de módulos por manifiesto' },
+  { label: 'Aurora Platform SDK', href: '/aurora-platform-sdk', desc: 'Contratos estables del núcleo' },
+  { label: 'Aurora Runtime', href: '/aurora-runtime', desc: 'Descubrimiento, registro y multiempresa' },
+  { label: 'Aurora Architecture', href: '/aurora-architecture', desc: 'Reglas verificadas por fitness functions' },
 ];
+
+const navLinks = [
+  { label: 'Cómo funciona', href: '/como-funciona' },
+  { label: 'Casos de uso', href: '/casos-de-uso' },
+  { label: 'Blog', href: '/blog/' },
+];
+
 const current = Astro.url.pathname;
+const onPlatform = platformLinks.some(({ href }) => current.startsWith(href));
+const isActive = (href: string) => current === href || (href !== '/' && current.startsWith(href));
 ---
 
 <header class="sticky top-0 z-50 border-b border-line bg-ink/70 backdrop-blur-xl" data-nav>
   <Container>
-    <nav class="flex h-16 items-center justify-between" aria-label="Main">
-      <div class="flex items-center gap-10">
+    <nav class="flex h-16 items-center justify-between" aria-label="Principal">
+      <div class="flex items-center gap-8">
         <Logo />
         <ul class="hidden items-center gap-7 md:flex">
+          <!-- Plataforma dropdown -->
+          <li class="relative" data-dropdown>
+            <button
+              type="button"
+              data-dropdown-button
+              aria-expanded="false"
+              aria-haspopup="true"
+              class:list={[
+                'flex items-center gap-1 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand',
+                onPlatform ? 'text-fg' : 'text-fg-2 hover:text-fg',
+              ]}
+            >
+              Plataforma
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="mt-px transition-transform group-aria-expanded:rotate-180 data-[open]:rotate-180">
+                <path d="m3.5 5.25 3.5 3.5 3.5-3.5"></path>
+              </svg>
+            </button>
+            <div
+              data-dropdown-panel
+              class="invisible absolute left-0 top-full z-50 mt-3 w-72 -translate-y-1 rounded-xl border border-line bg-ink/95 p-2 opacity-0 shadow-2xl shadow-black/50 backdrop-blur-xl transition-[opacity,transform,visibility] duration-150 ease-out data-open:visible data-open:translate-y-0 data-open:opacity-100 motion-reduce:transition-none"
+            >
+              <ul>
+                {
+                  platformLinks.map(({ label, href, desc }) => (
+                    <li>
+                      <a
+                        href={href}
+                        aria-current={isActive(href) ? 'page' : undefined}
+                        class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-panel focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand"
+                      >
+                        <span class="block text-sm font-medium text-fg">{label}</span>
+                        <span class="mt-0.5 block text-[13px] leading-snug text-fg-3">{desc}</span>
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </li>
+
           {
-            links.map(({ label, href }) => (
+            navLinks.map(({ label, href }) => (
               <li>
                 <a
                   href={href}
-                  aria-current={current.startsWith(href) ? 'page' : undefined}
+                  aria-current={isActive(href) ? 'page' : undefined}
                   class:list={[
                     'text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand',
-                    current.startsWith(href) ? 'text-fg' : 'text-fg-2 hover:text-fg',
+                    isActive(href) ? 'text-fg' : 'text-fg-2 hover:text-fg',
                   ]}
                 >
                   {label}
@@ -47,38 +98,21 @@ const current = Astro.url.pathname;
             ></path>
           </svg>
         </a>
+        <Button href="/contacto" variant="primary" size="sm" class="hidden sm:inline-flex">
+          Contacto
+        </Button>
         <button
           type="button"
           data-menu-button
           aria-expanded="false"
           aria-controls="mobile-menu"
-          aria-label="Menu"
+          aria-label="Menú"
           class="group -mr-2 inline-flex h-10 w-10 items-center justify-center rounded-lg text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:outline-brand md:hidden"
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            class="group-aria-expanded:hidden"
-            aria-hidden="true"
-          >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="group-aria-expanded:hidden" aria-hidden="true">
             <path d="M3 5.5h14M3 10h14M3 14.5h14"></path>
           </svg>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            class="hidden group-aria-expanded:block"
-            aria-hidden="true"
-          >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="hidden group-aria-expanded:block" aria-hidden="true">
             <path d="m5 5 10 10M15 5 5 15"></path>
           </svg>
         </button>
@@ -92,16 +126,17 @@ const current = Astro.url.pathname;
     class="invisible absolute inset-x-0 top-full -translate-y-1 border-b border-line bg-ink/95 opacity-0 backdrop-blur-xl transition-[opacity,transform,visibility] duration-200 ease-out data-open:visible data-open:translate-y-0 data-open:opacity-100 motion-reduce:transition-none md:hidden"
   >
     <Container class="py-3">
+      <p class="px-2 pb-1 pt-2 font-mono text-[11px] uppercase tracking-widest text-fg-3">Plataforma</p>
       <ul>
         {
-          links.map(({ label, href }) => (
+          platformLinks.map(({ label, href }) => (
             <li>
               <a
                 href={href}
-                aria-current={current.startsWith(href) ? 'page' : undefined}
+                aria-current={isActive(href) ? 'page' : undefined}
                 class:list={[
                   'flex min-h-11 items-center rounded-lg px-2 text-sm transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand',
-                  current.startsWith(href) ? 'text-fg' : 'text-fg-2 hover:text-fg',
+                  isActive(href) ? 'text-fg' : 'text-fg-2 hover:text-fg',
                 ]}
               >
                 {label}
@@ -110,45 +145,97 @@ const current = Astro.url.pathname;
           ))
         }
       </ul>
-      <div class="mt-2 border-t border-line pt-2">
-        <a
-          href="https://github.com/"
-          class="flex min-h-11 items-center rounded-lg px-2 text-sm text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand"
-        >
-          GitHub
-        </a>
-      </div>
+      <ul class="mt-2 border-t border-line pt-2">
+        {
+          navLinks.map(({ label, href }) => (
+            <li>
+              <a
+                href={href}
+                aria-current={isActive(href) ? 'page' : undefined}
+                class:list={[
+                  'flex min-h-11 items-center rounded-lg px-2 text-sm transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand',
+                  isActive(href) ? 'text-fg' : 'text-fg-2 hover:text-fg',
+                ]}
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a
+            href="/contacto"
+            aria-current={isActive('/contacto') ? 'page' : undefined}
+            class="flex min-h-11 items-center rounded-lg px-2 text-sm text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand"
+          >
+            Contacto
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/"
+            class="flex min-h-11 items-center rounded-lg px-2 text-sm text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand"
+          >
+            GitHub
+          </a>
+        </li>
+      </ul>
     </Container>
   </div>
 </header>
 
 <script>
   for (const nav of document.querySelectorAll<HTMLElement>('[data-nav]')) {
+    // Mobile menu
     const button = nav.querySelector<HTMLButtonElement>('[data-menu-button]');
     const panel = nav.querySelector<HTMLElement>('[data-menu-panel]');
-    if (!button || !panel) continue;
+    if (button && panel) {
+      const isOpen = () => button.getAttribute('aria-expanded') === 'true';
+      const setOpen = (open: boolean) => {
+        button.setAttribute('aria-expanded', String(open));
+        panel.toggleAttribute('data-open', open);
+      };
+      const close = () => {
+        if (!isOpen()) return;
+        setOpen(false);
+        button.focus();
+      };
+      button.addEventListener('click', () => setOpen(!isOpen()));
+      panel.addEventListener('click', (event) => {
+        if (event.target instanceof Element && event.target.closest('a')) close();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') close();
+      });
+    }
 
-    const isOpen = () => button.getAttribute('aria-expanded') === 'true';
-
-    const setOpen = (open: boolean) => {
-      button.setAttribute('aria-expanded', String(open));
-      panel.toggleAttribute('data-open', open);
-    };
-
-    const close = () => {
-      if (!isOpen()) return;
-      setOpen(false);
-      button.focus();
-    };
-
-    button.addEventListener('click', () => setOpen(!isOpen()));
-
-    panel.addEventListener('click', (event) => {
-      if (event.target instanceof Element && event.target.closest('a')) close();
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') close();
-    });
+    // Platform dropdown (desktop)
+    const dd = nav.querySelector<HTMLElement>('[data-dropdown]');
+    const ddButton = dd?.querySelector<HTMLButtonElement>('[data-dropdown-button]');
+    const ddPanel = dd?.querySelector<HTMLElement>('[data-dropdown-panel]');
+    if (dd && ddButton && ddPanel) {
+      const isOpen = () => ddButton.getAttribute('aria-expanded') === 'true';
+      const setOpen = (open: boolean) => {
+        ddButton.setAttribute('aria-expanded', String(open));
+        ddPanel.toggleAttribute('data-open', open);
+      };
+      ddButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        setOpen(!isOpen());
+      });
+      document.addEventListener('click', (event) => {
+        if (!isOpen()) return;
+        if (event.target instanceof Node && !dd.contains(event.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && isOpen()) {
+          setOpen(false);
+          ddButton.focus();
+        }
+      });
+      ddPanel.addEventListener('click', (event) => {
+        if (event.target instanceof Element && event.target.closest('a')) setOpen(false);
+      });
+    }
   }
 </script>

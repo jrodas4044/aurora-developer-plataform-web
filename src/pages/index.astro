@@ -1,16 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CTA from '../components/home/CTA.astro';
-import CodeShowcase from '../components/home/CodeShowcase.astro';
 import Features from '../components/home/Features.astro';
 import Hero from '../components/home/Hero.astro';
-import Observability from '../components/home/Observability.astro';
+import CrossLinks from '../components/CrossLinks.astro';
+
+const explore = [
+  {
+    label: 'Cómo funciona',
+    href: '/como-funciona',
+    blurb: 'El loop completo en código real: del manifiesto al módulo registrado y verificado en CI.',
+  },
+  {
+    label: 'Casos de uso',
+    href: '/casos-de-uso',
+    blurb: 'Qué se construye sobre Aurora: ERP y contabilidad, ventas, inventario, CRM, nómina, analítica.',
+  },
+  {
+    label: 'Blog',
+    href: '/blog/',
+    blurb: 'Notas de la plataforma: ADRs, contratos del SDK y módulos nuevos.',
+  },
+];
 ---
 
 <BaseLayout title="Aurora Engine — Enterprise Development Platform">
   <Hero />
   <Features />
-  <CodeShowcase />
-  <Observability />
+  <CrossLinks links={explore} heading="Explore la plataforma" />
   <CTA />
 </BaseLayout>

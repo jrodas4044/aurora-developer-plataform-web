@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import Button from '../components/Button.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+// ponytail: formulario sin backend — `action` apunta a un placeholder.
+// Conéctelo a Formspree / Netlify Forms / su endpoint, o use el correo directo.
+const email = 'hola@aurora.example';
+const formAction = '#';
+---
+
+<BaseLayout
+  title="Contacto — Aurora Engine"
+  description="Hable con el equipo de Aurora sobre el software empresarial que necesita construir sobre la plataforma."
+>
+  <PageHeader
+    eyebrow="Contacto"
+    title="Hablemos de lo que necesita construir"
+    lede="Cuéntenos qué sistema empresarial tiene en mente. Le respondemos con cómo se modela sobre Aurora: lo que ya corre hoy y lo que es construible."
+  />
+
+  <Container class="py-16 sm:py-20">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <h2 class="text-xl font-semibold tracking-tight text-fg">Canales directos</h2>
+        <p class="mt-3 max-w-md text-pretty leading-relaxed text-fg-2">
+          Para una conversación técnica sobre arquitectura, integración o un módulo a la medida,
+          el correo es la vía más rápida.
+        </p>
+
+        <dl class="mt-8 space-y-6">
+          <div>
+            <dt class="font-mono text-[12px] uppercase tracking-widest text-fg-3">Correo</dt>
+            <dd class="mt-1.5">
+              <a
+                href={`mailto:${email}`}
+                class="text-[15px] text-fg underline decoration-line-2 underline-offset-[3px] transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              >
+                {email}
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt class="font-mono text-[12px] uppercase tracking-widest text-fg-3">Código</dt>
+            <dd class="mt-1.5">
+              <a
+                href="https://github.com/"
+                class="text-[15px] text-fg underline decoration-line-2 underline-offset-[3px] transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              >
+                GitHub
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="mt-10">
+          <Button href={`mailto:${email}`} size="lg">Escribir un correo</Button>
+        </div>
+      </div>
+
+      <div class="glass rounded-xl p-6 sm:p-8">
+        <form action={formAction} method="post" class="space-y-5">
+          <div>
+            <label for="nombre" class="block text-sm font-medium text-fg">Nombre</label>
+            <input
+              id="nombre"
+              name="nombre"
+              type="text"
+              required
+              autocomplete="name"
+              class="mt-2 w-full rounded-lg border border-line bg-ink-2 px-3.5 py-2.5 text-sm text-fg placeholder:text-fg-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              placeholder="Su nombre"
+            />
+          </div>
+          <div>
+            <label for="correo" class="block text-sm font-medium text-fg">Correo</label>
+            <input
+              id="correo"
+              name="correo"
+              type="email"
+              required
+              autocomplete="email"
+              class="mt-2 w-full rounded-lg border border-line bg-ink-2 px-3.5 py-2.5 text-sm text-fg placeholder:text-fg-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              placeholder="usted@empresa.com"
+            />
+          </div>
+          <div>
+            <label for="mensaje" class="block text-sm font-medium text-fg">Mensaje</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="5"
+              required
+              class="mt-2 w-full rounded-lg border border-line bg-ink-2 px-3.5 py-2.5 text-sm text-fg placeholder:text-fg-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              placeholder="Qué sistema necesita construir"></textarea>
+          </div>
+          <button
+            type="submit"
+            class="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-brand to-accent px-5 py-2.5 text-sm font-medium text-white shadow-glow transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          >
+            Enviar mensaje
+          </button>
+          <p class="text-[12px] leading-relaxed text-fg-3">
+            El formulario aún no está conectado a un proveedor de envío. Por ahora, escriba
+            directamente a <a href={`mailto:${email}`} class="text-fg-2 underline decoration-line-2 underline-offset-2 hover:text-fg">{email}</a>.
+          </p>
+        </form>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>

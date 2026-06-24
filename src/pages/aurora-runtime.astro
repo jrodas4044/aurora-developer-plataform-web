@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CapabilityPage from '../components/CapabilityPage.astro';
+import { runtime } from '../data/pages';
+---
+
+<BaseLayout title={runtime.metaTitle} description={runtime.metaDescription}>
+  <CapabilityPage data={runtime} />
+</BaseLayout>

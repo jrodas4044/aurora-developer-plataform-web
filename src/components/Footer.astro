@@ -6,21 +6,33 @@ const columns = [
   {
     title: 'Plataforma',
     links: [
-      { label: 'Capacidades', href: '/#capacidades' },
-      { label: 'El loop', href: '/#loop' },
-      { label: 'Verificación', href: '/#verificacion' },
+      { label: 'Aurora Make', href: '/aurora-make' },
+      { label: 'Aurora Platform SDK', href: '/aurora-platform-sdk' },
+      { label: 'Aurora Runtime', href: '/aurora-runtime' },
+      { label: 'Aurora Architecture', href: '/aurora-architecture' },
     ],
   },
   {
     title: 'Recursos',
-    links: [{ label: 'GitHub', href: 'https://github.com/' }],
+    links: [
+      { label: 'Cómo funciona', href: '/como-funciona' },
+      { label: 'Casos de uso', href: '/casos-de-uso' },
+      { label: 'Blog', href: '/blog/' },
+    ],
+  },
+  {
+    title: 'Empresa',
+    links: [
+      { label: 'Contacto', href: '/contacto' },
+      { label: 'GitHub', href: 'https://github.com/' },
+    ],
   },
 ];
 ---
 
 <footer class="border-t border-line bg-ink-2">
   <Container class="py-14">
-    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div class="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
       <div>
         <Logo />
         <p class="mt-3 max-w-xs text-sm leading-relaxed text-fg-3">
@@ -48,6 +60,7 @@ const columns = [
 
     <div class="mt-12 flex flex-col items-start justify-between gap-4 border-t border-line pt-6 sm:flex-row sm:items-center">
       <p class="text-[13px] text-fg-3">© {new Date().getFullYear()} Aurora. Todos los derechos reservados.</p>
+      <p class="text-[13px] text-fg-3">Enterprise Development Platform</p>
     </div>
   </Container>
 </footer>
