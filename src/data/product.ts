@@ -44,7 +44,7 @@ export const aura = {
       { left: 'F1 · Sugeridor de cuenta', right: 'Propone la cuenta de cada línea aprendiendo del histórico de la empresa.' },
       { left: 'F2 · Confianza + feedback', right: 'Cada sugerencia lleva un nivel de confianza; aceptar o corregir reentrena el modelo.' },
       { left: 'F3 · Detección de anomalías', right: 'El mismo modelo, leído al revés: marca el asiento improbable antes del cierre.' },
-      { left: 'F4 · Aprendizaje cross-empresa', right: 'Para despachos: patrones que se generalizan entre empresas, con aislamiento estricto.' },
+      { left: 'F4 · Aprendizaje entre empresas del grupo', right: 'Para holdings: patrones que se generalizan entre las empresas del grupo, con aislamiento estricto.' },
       { left: 'F5 · Asesor de cierre continuo', right: 'Orquesta los proposers y el checklist de readiness hacia un cierre sin sorpresas.' },
     ],
   },
@@ -188,9 +188,9 @@ export const datos = {
 export const erp = {
   metaTitle: 'Aurora — El sistema operativo financiero AI-native para Latinoamérica',
   metaDescription:
-    'Aurora convierte facturas, movimientos bancarios y documentos financieros en acciones propuestas, libros siempre al día y decisiones con datos reales. El sistema operativo financiero AI-native para las empresas de Latinoamérica y los contadores que las operan.',
+    'Aurora convierte facturas, movimientos bancarios y documentos financieros en acciones propuestas, libros siempre al día y decisiones con datos reales. El sistema operativo financiero AI-native para las empresas de Latinoamérica y los grupos que las controlan: multiempresa nativo, con consolidación y vista por empresa.',
   hero: {
-    eyebrow: 'AURORA · PARA EMPRESAS Y CONTADORES',
+    eyebrow: 'AURORA · PARA EMPRESAS Y GRUPOS',
     h1: 'El sistema operativo financiero AI-native para las empresas de Latinoamérica.',
     sub: 'Tus libros se llevan solos. Vos solo aprobás.',
     lede: 'Aurora convierte facturas, movimientos bancarios y documentos financieros en acciones propuestas, libros siempre al día y decisiones tomadas con datos reales.',
@@ -244,8 +244,8 @@ export const erp = {
     },
     {
       eyebrow: 'EL FOSO',
-      heading: 'IA + Fiscal LATAM + multiempresa nativo.',
-      body: 'Los ERPs tradicionales no se vuelven AI-native sin reescribir su núcleo. Los productos de Estados Unidos no entienden el ecosistema fiscal de la región. Los procesos manuales no escalan. Reconstruir ese contexto toma años.',
+      heading: 'IA + Fiscal LATAM + grupo multiempresa nativo.',
+      body: 'Los ERPs tradicionales no se vuelven AI-native sin reescribir su núcleo. Los productos de Estados Unidos no entienden el ecosistema fiscal de la región, ni la realidad de un grupo con varias empresas. Aurora es multiempresa nativo: cada empresa con sus libros aislados bajo un mismo techo, con vista por empresa, y la consolidación de grupo como capacidad de primera clase —el mismo modelo sirve al despacho que administra varias empresas. Reconstruir ese contexto toma años.',
     },
     {
       kind: 'comparison',
@@ -269,9 +269,9 @@ export const erp = {
           aurora: 'Nativo: del DTE al asiento',
         },
         {
-          dim: 'Multiempresa / despacho',
-          cells: ['Potente, pero caro', 'Sí', 'Limitado', 'No'],
-          aurora: 'Nativo, pensado para despachos',
+          dim: 'Grupo / multiempresa',
+          cells: ['Potente, pero caro', 'Sí, consolidación básica', 'Limitado', 'No'],
+          aurora: 'Multiempresa nativo y accesible',
         },
         {
           dim: 'Costo para la PyME',
