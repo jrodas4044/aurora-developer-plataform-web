@@ -53,6 +53,56 @@ const { hero, sections, cta, crossLinks } = erp;
               ))}
             </div>
           )}
+          {s.kind === 'comparison' && s.rows && (
+            <div class="mt-10">
+              {/* Desktop: matriz */}
+              <div class="hidden overflow-hidden rounded-xl border border-line md:block">
+                <table class="w-full text-left text-sm">
+                  <thead>
+                    <tr class="border-b border-line bg-panel">
+                      <th class="px-4 py-3 font-medium text-fg-3"></th>
+                      {s.competitors.map((c) => (
+                        <th class="px-4 py-3 font-medium text-fg-2">{c}</th>
+                      ))}
+                      <th class="bg-panel-2 px-4 py-3 font-semibold text-fg">Aurora</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {s.rows.map((r) => (
+                      <tr class="border-b border-line last:border-0">
+                        <td class="px-4 py-3 font-medium text-fg">{r.dim}</td>
+                        {r.cells.map((c) => (
+                          <td class="px-4 py-3 text-fg-3">{c}</td>
+                        ))}
+                        <td class="bg-panel-2 px-4 py-3 font-medium text-fg">{r.aurora}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {/* Móvil: una card por dimensión (sin scroll horizontal) */}
+              <div class="space-y-4 md:hidden">
+                {s.rows.map((r) => (
+                  <div class="rounded-xl border border-line bg-panel p-4">
+                    <p class="font-medium text-fg">{r.dim}</p>
+                    <div class="mt-3 rounded-lg border border-brand/40 bg-ink-2 px-3 py-2">
+                      <span class="font-mono text-[11px] uppercase tracking-widest text-fg-3">Aurora</span>
+                      <p class="mt-0.5 text-sm text-fg">{r.aurora}</p>
+                    </div>
+                    <dl class="mt-3 space-y-1.5 text-sm">
+                      {s.competitors.map((c, i) => (
+                        <div class="flex justify-between gap-3">
+                          <dt class="text-fg-3">{c}</dt>
+                          <dd class="text-right text-fg-2">{r.cells[i]}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                ))}
+              </div>
+              {s.note && <p class="mt-4 max-w-2xl text-[13px] leading-relaxed text-fg-3">{s.note}</p>}
+            </div>
+          )}
           {s.body && <p class="mt-6 max-w-2xl text-pretty leading-relaxed text-fg-2">{s.body}</p>}
         </Container>
       </section>

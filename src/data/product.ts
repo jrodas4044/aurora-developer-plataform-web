@@ -248,6 +248,40 @@ export const erp = {
       body: 'Los ERPs tradicionales no se vuelven AI-native sin reescribir su núcleo. Los productos de Estados Unidos no entienden el ecosistema fiscal de la región. Los procesos manuales no escalan. Reconstruir ese contexto toma años.',
     },
     {
+      kind: 'comparison',
+      eyebrow: 'COMPARATIVA',
+      heading: 'Por qué no es otro ERP de la lista.',
+      competitors: ['NetSuite', 'Odoo', 'SAP Business One', 'QuickBooks'],
+      rows: [
+        {
+          dim: 'Implementación',
+          cells: ['Meses, con consultores', 'Semanas, con partner', 'Meses, con consultor', 'Rápida, contabilidad básica'],
+          aurora: 'Días, sin consultor',
+        },
+        {
+          dim: 'IA',
+          cells: ['Add-on sobre un core batch', 'Mínima', 'Add-on sobre un core batch', 'Asistentes básicos'],
+          aurora: 'Nativa: propone, vos aprobás',
+        },
+        {
+          dim: 'Fiscal LATAM (FEL/SAT)',
+          cells: ['Vía partner, costoso', 'Localización de comunidad, variable', 'Vía partner', 'No nativo'],
+          aurora: 'Nativo: del DTE al asiento',
+        },
+        {
+          dim: 'Multiempresa / despacho',
+          cells: ['Potente, pero caro', 'Sí', 'Limitado', 'No'],
+          aurora: 'Nativo, pensado para despachos',
+        },
+        {
+          dim: 'Costo para la PyME',
+          cells: ['Alto', 'Medio', 'Alto', 'Bajo'],
+          aurora: 'Accesible',
+        },
+      ],
+      note: 'Comparativa simplificada para orientar. Cada producto tiene matices por versión, país y partner; la usamos para situar a Aurora, no para descalificar.',
+    },
+    {
       eyebrow: 'LA VISIÓN',
       heading: 'Donde la contabilidad se hace sola.',
       body: 'Que el cierre mensual deje de ser un evento de pánico. Que los libros estén siempre al día. Que el contador deje de capturar datos y se convierta en un operador financiero asistido por IA. Aurora no está construyendo otro ERP para Latinoamérica: está construyendo la capa de automatización financiera que la infraestructura fiscal digital de la región hizo posible por primera vez.',
