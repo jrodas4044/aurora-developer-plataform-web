@@ -3,6 +3,13 @@ import Button from './Button.astro';
 import Container from './Container.astro';
 import Logo from './Logo.astro';
 
+const productLinks = [
+  { label: 'Aurora ERP', href: '/aurora-erp', desc: 'El sistema operativo financiero' },
+  { label: 'Aura · IA', href: '/aurora-ia', desc: 'Agentes que proponen, vos aprobás' },
+  { label: 'Módulos', href: '/modulos', desc: 'Del registro a la decisión' },
+  { label: 'Datos Financieros', href: '/fiscal-latam', desc: 'La factura electrónica como ingesta' },
+];
+
 const platformLinks = [
   { label: 'Aurora Make', href: '/aurora-make', desc: 'Fábrica de módulos por manifiesto' },
   { label: 'Aurora Platform SDK', href: '/aurora-platform-sdk', desc: 'Contratos estables del núcleo' },
@@ -18,6 +25,7 @@ const navLinks = [
 
 const current = Astro.url.pathname;
 const onPlatform = platformLinks.some(({ href }) => current.startsWith(href));
+const onProduct = productLinks.some(({ href }) => current.startsWith(href));
 const isActive = (href: string) => current === href || (href !== '/' && current.startsWith(href));
 ---
 
@@ -27,6 +35,46 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
       <div class="flex items-center gap-8">
         <Logo />
         <ul class="hidden items-center gap-7 md:flex">
+          <!-- Producto dropdown -->
+          <li class="relative" data-dropdown>
+            <button
+              type="button"
+              data-dropdown-button
+              aria-expanded="false"
+              aria-haspopup="true"
+              class:list={[
+                'flex items-center gap-1 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand',
+                onProduct ? 'text-fg' : 'text-fg-2 hover:text-fg',
+              ]}
+            >
+              Producto
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="mt-px transition-transform group-aria-expanded:rotate-180 data-[open]:rotate-180">
+                <path d="m3.5 5.25 3.5 3.5 3.5-3.5"></path>
+              </svg>
+            </button>
+            <div
+              data-dropdown-panel
+              class="invisible absolute left-0 top-full z-50 mt-3 w-72 -translate-y-1 rounded-xl border border-line bg-ink/95 p-2 opacity-0 shadow-2xl shadow-black/50 backdrop-blur-xl transition-[opacity,transform,visibility] duration-150 ease-out data-open:visible data-open:translate-y-0 data-open:opacity-100 motion-reduce:transition-none"
+            >
+              <ul>
+                {
+                  productLinks.map(({ label, href, desc }) => (
+                    <li>
+                      <a
+                        href={href}
+                        aria-current={isActive(href) ? 'page' : undefined}
+                        class="block rounded-lg px-3 py-2.5 transition-colors hover:bg-panel focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand"
+                      >
+                        <span class="block text-sm font-medium text-fg">{label}</span>
+                        <span class="mt-0.5 block text-[13px] leading-snug text-fg-3">{desc}</span>
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </li>
+
           <!-- Plataforma dropdown -->
           <li class="relative" data-dropdown>
             <button
@@ -126,7 +174,26 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     class="invisible absolute inset-x-0 top-full -translate-y-1 border-b border-line bg-ink/95 opacity-0 backdrop-blur-xl transition-[opacity,transform,visibility] duration-200 ease-out data-open:visible data-open:translate-y-0 data-open:opacity-100 motion-reduce:transition-none md:hidden"
   >
     <Container class="py-3">
-      <p class="px-2 pb-1 pt-2 font-mono text-[11px] uppercase tracking-widest text-fg-3">Plataforma</p>
+      <p class="px-2 pb-1 pt-2 font-mono text-[11px] uppercase tracking-widest text-fg-3">Producto</p>
+      <ul>
+        {
+          productLinks.map(({ label, href }) => (
+            <li>
+              <a
+                href={href}
+                aria-current={isActive(href) ? 'page' : undefined}
+                class:list={[
+                  'flex min-h-11 items-center rounded-lg px-2 text-sm transition-colors focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand',
+                  isActive(href) ? 'text-fg' : 'text-fg-2 hover:text-fg',
+                ]}
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-2 border-t border-line px-2 pb-1 pt-3 font-mono text-[11px] uppercase tracking-widest text-fg-3">Plataforma</p>
       <ul>
         {
           platformLinks.map(({ label, href }) => (
@@ -209,11 +276,11 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
       });
     }
 
-    // Platform dropdown (desktop)
-    const dd = nav.querySelector<HTMLElement>('[data-dropdown]');
-    const ddButton = dd?.querySelector<HTMLButtonElement>('[data-dropdown-button]');
-    const ddPanel = dd?.querySelector<HTMLElement>('[data-dropdown-panel]');
-    if (dd && ddButton && ddPanel) {
+    // Dropdowns (desktop) — soporta múltiples (Producto + Plataforma)
+    for (const dd of nav.querySelectorAll<HTMLElement>('[data-dropdown]')) {
+      const ddButton = dd.querySelector<HTMLButtonElement>('[data-dropdown-button]');
+      const ddPanel = dd.querySelector<HTMLElement>('[data-dropdown-panel]');
+      if (!ddButton || !ddPanel) continue;
       const isOpen = () => ddButton.getAttribute('aria-expanded') === 'true';
       const setOpen = (open: boolean) => {
         ddButton.setAttribute('aria-expanded', String(open));

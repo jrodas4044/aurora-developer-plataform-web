@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/Container.astro';
+import Button from '../components/Button.astro';
+import Glow from '../components/Glow.astro';
+import CrossLinks from '../components/CrossLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { erp } from '../data/product';
+
+const { hero, sections, cta, crossLinks } = erp;
+---
+
+<BaseLayout title={erp.metaTitle} description={erp.metaDescription}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <Glow class="left-1/2 top-[-6rem] h-[28rem] w-[44rem] -translate-x-1/2" />
+    <Container class="relative py-24 sm:py-32">
+      <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{hero.eyebrow}</p>
+      <h1 class="mt-5 max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+        {hero.h1}
+      </h1>
+      <p class="mt-6 text-xl font-medium text-gradient sm:text-2xl">{hero.sub}</p>
+      <p class="mt-4 max-w-xl text-pretty leading-relaxed text-fg-2">{hero.lede}</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <Button href={hero.primary.href} variant="primary" size="lg">{hero.primary.label}</Button>
+        <Button href={hero.secondary.href} variant="secondary" size="lg">{hero.secondary.label}</Button>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Movimientos narrativos (la escalera vive en su posición dentro de sections) -->
+  {
+    sections.map((s) => (
+      <section class="border-t border-line py-20 sm:py-28">
+        <Container>
+          <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{s.eyebrow}</p>
+          <h2 class="mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">{s.heading}</h2>
+          {s.quote && (
+            <ul class="mt-8 max-w-md space-y-2">
+              {s.quote.map((q) => (
+                <li class="rounded-lg border border-line bg-panel px-4 py-3 text-fg-2">{q}</li>
+              ))}
+            </ul>
+          )}
+          {s.kind === 'ladder' && s.rungs && (
+            <div class="mt-8 max-w-2xl divide-y divide-line rounded-xl border border-line">
+              {s.rungs.map((rung, i) => (
+                <div class="flex items-baseline gap-4 px-5 py-4">
+                  <span class="font-mono text-xs text-fg-3">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="font-medium text-fg">{rung.capability}</span>
+                  <span class="ml-auto text-right font-mono text-[13px] text-fg-3">{rung.detail}</span>
+                </div>
+              ))}
+            </div>
+          )}
+          {s.body && <p class="mt-6 max-w-2xl text-pretty leading-relaxed text-fg-2">{s.body}</p>}
+        </Container>
+      </section>
+    ))
+  }
+
+  <CrossLinks links={crossLinks} />
+  <CtaBand heading={cta.heading} body={cta.body} primary={cta.primary} secondary={cta.secondary} />
+</BaseLayout>

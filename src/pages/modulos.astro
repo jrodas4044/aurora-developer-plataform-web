@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CapabilityPage from '../components/CapabilityPage.astro';
+import { modulos } from '../data/product';
+---
+
+<BaseLayout title={modulos.metaTitle} description={modulos.metaDescription}>
+  <CapabilityPage data={modulos} />
+</BaseLayout>

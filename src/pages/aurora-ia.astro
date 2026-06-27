@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CapabilityPage from '../components/CapabilityPage.astro';
+import { aura } from '../data/product';
+---
+
+<BaseLayout title={aura.metaTitle} description={aura.metaDescription}>
+  <CapabilityPage data={aura} />
+</BaseLayout>
