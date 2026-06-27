@@ -1,7 +1,7 @@
 # Aurora ERP — Sección Producto de aurora-labs
 
 **Fecha:** 2026-06-27
-**Estado:** Diseño aprobado, pendiente de plan de implementación
+**Estado:** Diseño aprobado (rev. 2, review de posicionamiento integrado), pendiente de plan de implementación
 **Repositorio:** `aurora-labs` (sitio de marketing, Astro 6 + Tailwind v4)
 
 ## Contexto
@@ -12,10 +12,13 @@ Architecture) agrupadas bajo el dropdown "Plataforma" del nav. La voz es
 developer-to-developer.
 
 Falta el eje de **producto**: Aurora como el ERP / sistema operativo financiero
-que compra y opera una PyME o un despacho. Este documento define una sección
-"Producto" paralela a "Plataforma", con cuatro páginas nuevas y su propia voz
-(comprador / operador / inversionista), construida con los mismos tokens y
-componentes para que un solo diseñador parezca haber hecho todo el sitio.
+que compra y opera una empresa, y que un despacho usa para administrar a sus
+clientes. Este documento define una sección "Producto" paralela a "Plataforma",
+con cuatro páginas nuevas y su propia voz (comprador / operador / inversionista),
+construida con los mismos tokens y componentes para que un solo diseñador parezca
+haber hecho todo el sitio. La separación Producto / Plataforma existe porque el
+sitio sirve a dos audiencias distintas —compradores y desarrolladores— y ninguna
+quiere leer el discurso de la otra.
 
 ## La tesis (la espina dorsal de toda la sección)
 
@@ -24,21 +27,30 @@ software tributario inteligente. El posicionamiento es **Financial Operating
 System**. Lo fiscal es el punto de entrada, el foso de datos y la punta de lanza
 de adopción; no es la identidad.
 
-> **Aurora es el sistema operativo financiero AI-native para PyMEs y despachos de
-> Latinoamérica. Comenzamos con la contabilidad y la fiscalidad porque ahí nacen
-> los datos; terminamos automatizando toda la operación financiera de la empresa.**
+El "para quién" es el wedge: no solo las empresas, también los contadores y
+despachos que las operan. El despacho no es otro segmento — es un multiplicador
+de distribución.
 
-La escalera que ordena la narrativa y la sección:
+> **Aurora es el sistema operativo financiero AI-native para las empresas de
+> Latinoamérica y los contadores que las operan. Comenzamos con la contabilidad y
+> la fiscalidad porque ahí nacen los datos; terminamos automatizando toda la
+> operación financiera de la empresa.**
+
+La escalera que ordena la narrativa y la sección — cada escalón es una
+**capacidad de negocio**, no un módulo, para que "Operating System" se entienda:
 
 ```
-FEL + Fiscal          → punto de entrada / foso de datos
-Contabilidad          → sistema de registro
-Tesorería · CxC/CxP   → operación financiera
-Cash Management       → liquidez
-Planeación financiera → decisión
-Agentes financieros   → automatización
-──────────────────────────────────────
-Financial Operating System → la visión
+Datos financieros        FEL · Bancos · Documentos
+        ↓
+Sistema de registro      Contabilidad
+        ↓
+Sistema de operación     Tesorería · CxC · CxP
+        ↓
+Sistema de decisión      Cash · Planeación
+        ↓
+Sistema de acción        Agentes
+────────────────────────────────────────
+Financial Operating System
 ```
 
 El patrón es el de Rippling (nómina → sistema operativo empresarial), Rillet
@@ -85,39 +97,53 @@ es fiscal; la visión es mucho más grande que los impuestos.
 
 La única página bespoke. La narrativa de ocho movimientos es demasiado rica para
 el template de capacidad. Reusa `Container`, `Button`, `Glow` y los tokens, pero
-maquetada a mano sección por sección. Voz: la del pitch aprobado, con el lead
-reformulado a Financial Operating System.
+maquetada a mano sección por sección. El H1 habla del resultado, no de la
+tecnología: "AI-native" vive en el eyebrow y en la tesis, no en el titular.
 
 Secuencia de secciones (cada una `py-20 sm:py-28`, patrón eyebrow → heading →
-lede → contenido):
+lede → contenido). El orden eleva "¿Por qué ahora?" por encima del problema,
+porque es el argumento de inversión:
 
-1. **Hero.** Eyebrow `AURORA · SISTEMA OPERATIVO FINANCIERO`. H1: "El sistema
-   operativo financiero AI-native para Latinoamérica." Lede con el one-liner
-   ampliado (empezamos en contabilidad y fiscalidad; terminamos administrando la
-   operación financiera completa). Un `Glow`. Botones: primario "Solicitar una
-   demo" → `/contacto`; secundario "Ver los módulos" → `/modulos`.
+1. **Hero.**
+   - Eyebrow: `AURORA · SISTEMA OPERATIVO FINANCIERO AI-NATIVE`
+   - H1: "La infraestructura financiera inteligente para las empresas de
+     Latinoamérica."
+   - Sub-línea (debajo del H1, peso visual fuerte): "Tus libros se llevan solos.
+     Vos solo aprobás."
+   - Lede: "Aurora convierte facturas, movimientos bancarios y documentos
+     financieros en acciones propuestas, libros siempre al día y decisiones
+     tomadas con datos reales."
+   - Un `Glow`. Botones: primario "Solicitar una demo" → `/contacto`; secundario
+     "Ver los módulos" → `/modulos`.
 2. **La tesis.** "La factura electrónica convirtió la contabilidad de
    Latinoamérica en un problema de datos. La IA convirtió esos datos en acciones.
    Aurora une ambas cosas." Encuadre: lo fiscal es el dato que hace posible
    automatizar toda la operación financiera, no el techo del producto.
-3. **El problema.** Las PyMEs viven entre Excel/procesos manuales y ERPs
-   tradicionales (meses de implementación, consultores, parametrización). El
-   cierre llega tarde; las decisiones se toman con información vieja; la
-   contabilidad es reconstrucción del pasado. Reencuadre operativo: el dueño /
-   gerente / CFO no se pregunta "¿ya importé mis FEL?", se pregunta cuánto dinero
-   tiene, si cumple el flujo de caja, quién le debe, por qué cayó el margen, qué
-   empresa del grupo destruye valor, cuánto puede invertir, qué impuestos pagará.
-   Eso ya es Financial Operations.
-4. **¿Por qué ahora?** Durante años faltó lo fundamental: datos estructurados.
-   La factura electrónica, los libros fiscales digitales y la bancarización
-   generan hoy información financiera estructurada a una escala inédita. Por
-   primera vez un sistema puede entender automáticamente los hechos económicos de
-   una empresa. La materia prima de una contabilidad autónoma ya existe.
-5. **La escalera** (sección visual). Render del diagrama FEL+Fiscal → Contabilidad
-   → Tesorería/CxC/CxP → Cash Management → Planeación → Agentes → Financial
-   Operating System. Lista vertical estilizada con hairlines (reusar el patrón
-   `showcase.kind === 'list'`, o maquetar a mano con `divide-y divide-line`).
-   Mensaje: punto de entrada angosto → sistema operativo.
+3. **¿Por qué ahora?** (elevada por encima del problema — es casi un argumento de
+   inversión). Durante años faltó lo fundamental: datos estructurados. La factura
+   electrónica, los libros fiscales digitales y la bancarización generan hoy
+   información financiera estructurada a una escala inédita. Por primera vez un
+   sistema puede entender automáticamente los hechos económicos de una empresa. La
+   materia prima de una contabilidad autónoma ya existe. La tesis condensada: "la
+   infraestructura fiscal digital de LATAM hizo posible un ERP AI-native".
+4. **El problema.** Abre con el golpe narrativo, literal:
+   > Ningún dueño se despierta preguntando:
+   > "¿Ya importé mis facturas?"
+   > Se despierta preguntando:
+   > ¿Cuánto dinero tengo? ¿Quién me debe? ¿Voy a llegar a fin de mes? ¿Por qué
+   > cayó mi margen?
+
+   Las PyMEs viven entre Excel/procesos manuales y ERPs tradicionales (meses de
+   implementación, consultores, parametrización). El cierre llega tarde; las
+   decisiones se toman con información vieja; la contabilidad es reconstrucción del
+   pasado. Eso ya es Financial Operations, no solo fiscalidad.
+5. **La escalera** (sección visual). Render del diagrama por capacidad de negocio:
+   Datos financieros (FEL · Bancos · Documentos) → Sistema de registro
+   (Contabilidad) → Sistema de operación (Tesorería · CxC · CxP) → Sistema de
+   decisión (Cash · Planeación) → Sistema de acción (Agentes) → Financial
+   Operating System. Lista vertical estilizada con hairlines (`divide-y
+   divide-line`, o el patrón `showcase.kind === 'list'`). Mensaje: punto de
+   entrada angosto → sistema operativo.
 6. **La solución.** Cada factura, cada venta, cada movimiento bancario, cada
    documento fiscal: Aurora propone la contabilización automáticamente. El usuario
    ya no construye la contabilidad; la supervisa. "Tus libros se llevan solos; vos
@@ -144,14 +170,17 @@ lede → contenido):
     hizo posible por primera vez."
 11. **CTA** (`CtaBand`). "Del primer FEL a la decisión financiera." Primario →
     `/contacto`; secundario "Ver cómo funciona" → `/como-funciona`.
-12. **CrossLinks** a Aura · IA, Módulos, Fiscal LATAM.
+12. **CrossLinks** a Aura · IA, Módulos, Datos Financieros.
 
 ### 2. Aura · IA (`/aurora-ia`) — template `CapabilityPage`
 
 La capa de agentes. Honestidad explícita: la arquitectura (propose-and-approve,
 GL como event log, draft-antes-de-post, trazabilidad) es real hoy; los agentes
-son la dirección, presentados como roadmap.
+son la dirección, presentados como roadmap. Este encuadre honesto es una ventaja:
+la mayoría de productos prometen "AI agents everywhere" sin tenerlos; "agentes que
+proponen, vos aprobás" es creíble y está alineado con la arquitectura.
 
+- **navLabel:** `Aura · IA`
 - **heroEyebrow:** `AURORA · IA`
 - **heroH1:** "Agentes que proponen. Vos aprobás."
 - **heroLede:** Aura es la capa de IA que opera sobre el libro mayor vivo. No es
@@ -176,11 +205,13 @@ son la dirección, presentados como roadmap.
 
 ### 3. Módulos (`/modulos`) — template `CapabilityPage`
 
-Encuadrado como **la operación financiera completa** (la escalera), no como lista
-de features. Marca lo construido vs. lo que viene con honestidad.
+Encuadrado como **el ciclo financiero completo** (la escalera), no como lista
+de features ni como "ERP clásico". Marca lo construido vs. lo que viene con
+honestidad.
 
+- **navLabel:** `Módulos`
 - **heroEyebrow:** `AURORA · MÓDULOS`
-- **heroH1:** "La operación financiera completa, en un solo sistema."
+- **heroH1:** "Desde el registro hasta la decisión financiera."
 - **heroLede:** De la factura al cierre y de la cobranza a la decisión: cada
   módulo postea al mismo libro mayor, así la empresa siempre sabe dónde está.
 - **intro (2 párrafos):** (a) Todo módulo orbita el GL y postea por las mismas
@@ -195,15 +226,18 @@ de features. Marca lo construido vs. lo que viene con honestidad.
 - **showcase (kind: pills):** módulos como pills con meta de estado
   (`label` = módulo, `meta` = "en producción" / "en camino"), honesto sobre el
   roadmap (p. ej. Cash Management / Planeación = en camino).
-- **crossLinks:** Aurora ERP, Aura · IA, Fiscal LATAM.
+- **crossLinks:** Aurora ERP, Aura · IA, Datos Financieros.
 - **cta:** demo → `/contacto`.
 
-### 4. Fiscal LATAM (`/fiscal-latam`) — template `CapabilityPage`
+### 4. Datos Financieros (`/fiscal-latam`) — template `CapabilityPage`
 
-Encuadrado como **ingesta + foso**, NO como identidad. Es la pata que alimenta de
-datos al sistema operativo.
+Encuadrado como **ingesta + foso de datos**, NO como identidad ni como categoría
+tributaria. El navLabel evita "Fiscal LATAM" (suena a software tributario); la URL
+permanece `/fiscal-latam` por SEO/claridad. Es la pata que alimenta de datos al
+sistema operativo.
 
-- **heroEyebrow:** `AURORA · FISCAL LATAM`
+- **navLabel:** `Datos Financieros`
+- **heroEyebrow:** `AURORA · DATOS FINANCIEROS`
 - **heroH1:** "La factura electrónica es la materia prima."
 - **heroLede:** La infraestructura fiscal digital de la región —factura
   electrónica obligatoria, libros digitales— es el dato estructurado que vuelve
@@ -216,9 +250,9 @@ datos al sistema operativo.
 - **features (4):** FEL / SAT — del DTE al asiento propuesto · ISR / IVA — cálculo
   y Libros fiscales · Multi-país — estrategia por país, sin reglas quemadas ·
   Conciliación de extractos — auto-match banco↔libros. `mono`: conceptos.
-- **showcase (kind: code o list):** el flujo factura electrónica →
-  dato estructurado → asiento propuesto → aprobación → libro mayor. Preferible
-  `kind: list` con las etapas; sin inventar nombres de API.
+- **showcase (kind: list):** el flujo factura electrónica → dato estructurado →
+  asiento propuesto → aprobación → libro mayor. Etapas como filas; sin inventar
+  nombres de API.
 - **crossLinks:** Aurora ERP, Módulos, Aura · IA.
 - **cta:** demo → `/contacto`.
 
