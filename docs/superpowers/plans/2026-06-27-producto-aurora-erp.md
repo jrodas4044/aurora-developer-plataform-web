@@ -354,8 +354,8 @@ export const erp = {
   metaDescription:
     'Aurora convierte facturas, movimientos bancarios y documentos financieros en acciones propuestas, libros siempre al día y decisiones con datos reales. El sistema operativo financiero AI-native para las empresas de Latinoamérica y los contadores que las operan.',
   hero: {
-    eyebrow: 'AURORA · SISTEMA OPERATIVO FINANCIERO AI-NATIVE',
-    h1: 'La infraestructura financiera inteligente para las empresas de Latinoamérica.',
+    eyebrow: 'AURORA · PARA EMPRESAS Y CONTADORES',
+    h1: 'El sistema operativo financiero AI-native para las empresas de Latinoamérica.',
     sub: 'Tus libros se llevan solos. Vos solo aprobás.',
     lede: 'Aurora convierte facturas, movimientos bancarios y documentos financieros en acciones propuestas, libros siempre al día y decisiones tomadas con datos reales.',
     primary: { label: 'Solicitar una demo', href: '/contacto' },
@@ -418,7 +418,7 @@ export const erp = {
     },
   ],
   cta: {
-    heading: 'Del primer FEL a la decisión financiera.',
+    heading: 'De los datos financieros a la decisión.',
     body: 'Empezamos por la contabilidad y la fiscalidad porque ahí nacen los datos; terminamos automatizando toda la operación financiera. Pedí una demo.',
     primary: { label: 'Solicitar una demo', href: '/contacto' },
     secondary: { label: 'Ver cómo funciona', href: '/como-funciona' },
@@ -502,7 +502,7 @@ const { hero, sections, cta, crossLinks } = erp;
 
 - [ ] **Step 3: Build y verificar la ruta**
 
-Run: `pnpm build && test -f dist/aurora-erp/index.html && grep -q "infraestructura financiera inteligente" dist/aurora-erp/index.html && grep -q "Financial Operating System" dist/aurora-erp/index.html && echo VERIFY_OK`
+Run: `pnpm build && test -f dist/aurora-erp/index.html && grep -q "El sistema operativo financiero AI-native" dist/aurora-erp/index.html && grep -q "Financial Operating System" dist/aurora-erp/index.html && echo VERIFY_OK`
 Expected: build limpio + `VERIFY_OK`.
 
 - [ ] **Step 4: Commit**

@@ -105,9 +105,10 @@ lede → contenido). El orden eleva "¿Por qué ahora?" por encima del problema,
 porque es el argumento de inversión:
 
 1. **Hero.**
-   - Eyebrow: `AURORA · SISTEMA OPERATIVO FINANCIERO AI-NATIVE`
-   - H1: "La infraestructura financiera inteligente para las empresas de
-     Latinoamérica."
+   - Eyebrow: `AURORA · PARA EMPRESAS Y CONTADORES`
+   - H1: "El sistema operativo financiero AI-native para las empresas de
+     Latinoamérica." (decisión revertida: "infraestructura financiera" leía como
+     fintech/API tipo Stripe/Plaid, no como ERP; el H1 nombra la categoría.)
    - Sub-línea (debajo del H1, peso visual fuerte): "Tus libros se llevan solos.
      Vos solo aprobás."
    - Lede: "Aurora convierte facturas, movimientos bancarios y documentos
@@ -168,8 +169,9 @@ porque es el argumento de inversión:
     construyendo otro ERP para Latinoamérica. Está construyendo la capa de
     automatización financiera que la infraestructura fiscal digital de la región
     hizo posible por primera vez."
-11. **CTA** (`CtaBand`). "Del primer FEL a la decisión financiera." Primario →
-    `/contacto`; secundario "Ver cómo funciona" → `/como-funciona`.
+11. **CTA** (`CtaBand`). "De los datos financieros a la decisión." (no se ancla la
+    narrativa al FEL: mañana la entrada puede ser bancos, POS o e-commerce).
+    Primario → `/contacto`; secundario "Ver cómo funciona" → `/como-funciona`.
 12. **CrossLinks** a Aura · IA, Módulos, Datos Financieros.
 
 ### 2. Aura · IA (`/aurora-ia`) — template `CapabilityPage`
