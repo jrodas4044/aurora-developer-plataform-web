@@ -5,9 +5,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
 
+import llms from 'astro-llms-md';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://aurora.example/',
+  site: 'https://auroralabs.cloud/',
 
   // Bilingual routing: Spanish at the root (/), English under /en/.
   // Mirrors the convention used across the other Aurora/Turingh sites.
@@ -31,5 +33,5 @@ export default defineConfig({
     },
   },
 
-  integrations: [sitemap()],
+  integrations: [sitemap(), llms()],
 });

@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@shikijs/themes": "^4.2.0",
-    "@types/three": "^0.185.0"
+    "@types/three": "^0.185.0",
+    "astro-llms-md": "^2.2.2"
   }
 }

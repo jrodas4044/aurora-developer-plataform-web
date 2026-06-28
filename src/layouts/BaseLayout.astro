@@ -20,6 +20,14 @@ const {
 
 const is404 = Astro.url.pathname.replace(/\/$/, '') === '/404';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Aurora Labs',
+  url: Astro.site?.href,
+  logo: new URL('/favicon.svg', Astro.site).href,
+};
 ---
 
 <!doctype html>
@@ -32,12 +40,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     {!is404 && <link rel="canonical" href={canonicalURL} />}
+    <meta property="og:site_name" content="Aurora Labs" />
+    <meta property="og:locale" content="es_ES" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     {!is404 && <meta property="og:url" content={canonicalURL} />}
     <meta property="og:image" content={new URL('/og.png', Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <ClientRouter />
   </head>
   <body>
