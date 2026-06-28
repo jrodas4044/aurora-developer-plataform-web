@@ -15,10 +15,10 @@ const { items } = Astro.props;
 const colClass = items.length === 4 ? 'lg:grid-cols-2' : 'lg:grid-cols-3';
 ---
 
-<div class:list={['grid gap-4 sm:grid-cols-2', colClass]}>
+<div data-reveal class:list={['grid gap-4 sm:grid-cols-2', colClass]}>
   {
     items.map((it) => (
-      <article class="rounded-xl border border-line bg-panel p-6 transition-colors hover:border-line-2 hover:bg-panel-2">
+      <article class="rounded-xl border border-line bg-panel p-6 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-line-2 hover:bg-panel-2 hover:shadow-card-lg">
         <h3 class="text-[15px] font-semibold text-fg">{it.title}</h3>
         <p class="mt-2 text-sm leading-relaxed text-fg-2">{it.body}</p>
         {it.mono && <p class="mt-4 font-mono text-[12px] text-accent">{it.mono}</p>}

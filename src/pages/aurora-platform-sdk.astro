@@ -1,9 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CapabilityPage from '../components/CapabilityPage.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
 import { platformSdk } from '../data/pages';
+
+const lines = [
+  { mark: '🔒', label: 'CreatesJournalEntries', value: 'estable' },
+  { mark: '🔒', label: 'ResolvesTaxEffects', value: 'estable' },
+  { mark: '🔒', label: 'ChecksStockAvailability', value: 'estable' },
+  { mark: '🔒', label: 'ProvidesOnboarding', value: 'estable' },
+  { mark: '✓', label: 'PlatformContractsFreezeTest', value: 'verde' },
+] as const;
 ---
 
 <BaseLayout title={platformSdk.metaTitle} description={platformSdk.metaDescription}>
-  <CapabilityPage data={platformSdk} />
+  <CapabilityPage data={platformSdk}>
+    <HeroTerminal
+      slot="hero"
+      data={platformSdk}
+      title="platform-contracts"
+      status="congelado"
+      lines={lines}
+      footer="el satélite habla por contratos, nunca importa el kernel"
+    />
+  </CapabilityPage>
 </BaseLayout>

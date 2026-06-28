@@ -1,9 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CapabilityPage from '../components/CapabilityPage.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
 import { runtime } from '../data/pages';
+
+const lines = [
+  { mark: '✓', label: 'ModuleRegistry', value: '← Inventory' },
+  { mark: '✓', label: 'OnboardingRegistry', value: '← checks' },
+  { mark: '✓', label: 'schema-per-tenant', value: 'aislado' },
+  { mark: '✓', label: 'CompanyContext', value: 'fuera de HTTP' },
+  { mark: '✓', label: 'CompanyCreated', value: '→ siembra' },
+] as const;
 ---
 
 <BaseLayout title={runtime.metaTitle} description={runtime.metaDescription}>
-  <CapabilityPage data={runtime} />
+  <CapabilityPage data={runtime}>
+    <HeroTerminal
+      slot="hero"
+      data={runtime}
+      title="runtime · boot"
+      status="integrado"
+      lines={lines}
+      footer="el módulo hereda la infraestructura, no la escribe"
+    />
+  </CapabilityPage>
 </BaseLayout>

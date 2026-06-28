@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CapabilityPage from '../components/CapabilityPage.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
+import { partnersDesarrollo } from '../data/partners';
+
+const lines = [
+  { mark: '$', label: 'aurora partner:onboard --dev' },
+  { mark: '✓', label: 'acceso Platform SDK', value: 'otorgado' },
+  { mark: '✓', label: 'aurora:make-module', value: 'tu vertical' },
+  { mark: '✓', label: 'PackageBoundaryTest', value: 'verde' },
+  { mark: '🔒', label: 'tu paquete Laravel', value: 'es tuyo' },
+  { mark: '→', label: 'go-to-market', value: 'co-venta' },
+] as const;
+---
+
+<BaseLayout title={partnersDesarrollo.metaTitle} description={partnersDesarrollo.metaDescription}>
+  <CapabilityPage data={partnersDesarrollo}>
+    <HeroTerminal
+      slot="hero"
+      data={partnersDesarrollo}
+      title="partner · dev"
+      status="construyendo"
+      lines={lines}
+      footer="construyes tu vertical; la capa de abajo ya existe"
+    />
+  </CapabilityPage>
+</BaseLayout>

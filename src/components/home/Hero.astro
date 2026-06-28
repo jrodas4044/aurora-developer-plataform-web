@@ -1,30 +1,8 @@
 ---
-import { Code } from 'astro:components';
-import codeTheme from '@shikijs/themes/catppuccin-mocha';
 import Button from '../Button.astro';
-import WindowDots from '../WindowDots.astro';
 import Container from '../Container.astro';
 import Glow from '../Glow.astro';
-
-const heroCode = `module: invoicing
-namespace: Aurora\\Invoicing
-target: package
-
-models:
-  Invoice:
-    fields:
-      number: { type: string }
-      total: { type: money }       # numeric(15,2)
-      issued_at: { type: date }
-      customer: { type: party_reference }
-
-posting:
-  source: auto_invoice
-  determinations: [revenue, receivable, tax_payable]
-
-permissions:
-  invoices.create: [Autorizador, Capturador]
-  invoices.view:   [Autorizador, Capturador, Revisor]`;
+import WindowDots from '../WindowDots.astro';
 ---
 
 <section class="relative overflow-hidden">
@@ -33,70 +11,75 @@ permissions:
   <!-- Faint grid backdrop -->
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgb(255_255_255/0.025)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.025)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]"
+    class="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgb(26_31_39/0.05)_1px,transparent_1px),linear-gradient(90deg,rgb(26_31_39/0.05)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]"
   >
   </div>
 
   <Container class="relative pb-24 pt-20 sm:pt-28">
-    <div class="mx-auto max-w-3xl text-center">
-      <a
-        href="/como-funciona"
-        class="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[13px] text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-      >
-        <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_rgb(34_211_238/0.8)]"></span>
-        Del manifiesto al módulo verificado
-        <span aria-hidden="true" class="text-fg-3">→</span>
-      </a>
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-10">
+      <!-- Copy column -->
+      <div class="max-w-xl text-center lg:text-left">
+        <a
+          href="/como-funciona"
+          data-reveal
+          class="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[13px] text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+        >
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_rgb(47_77_102/0.8)]"></span>
+          Del manifiesto al módulo verificado
+          <span aria-hidden="true" class="text-fg-3">→</span>
+        </a>
 
-      <h1 class="mt-6 text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-        Aurora no es un ERP. Es la plataforma sobre la que se construyen.
-      </h1>
+        <h1 data-reveal style="--rd:.08s" class="mt-6 text-balance text-display font-semibold">
+          Aurora no es un ERP. Es la base sobre la que se construyen.
+        </h1>
 
-      <p class="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-fg-2">
-        Una base común para crear sistemas empresariales modulares, verificables y
-        financieramente consistentes. Los módulos se describen con un manifiesto, se generan
-        automáticamente y dependen de contratos estables — nunca de implementaciones.
-      </p>
+        <p data-reveal style="--rd:.16s" class="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-fg-2 lg:mx-0">
+          Construye software financiero sobre un kernel contable verificable, contratos
+          estables y generación determinista de módulos.
+        </p>
 
-      <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-        <Button href="/#capacidades" size="lg">Ver las cuatro capacidades</Button>
-        <Button href="/como-funciona" variant="secondary" size="lg">Cómo funciona el loop</Button>
+        <div data-reveal style="--rd:.24s" class="mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+          <Button href="/#capacidades" size="lg">Explorar la plataforma</Button>
+          <Button href="/como-funciona" variant="secondary" size="lg">Cómo funciona el loop</Button>
+        </div>
       </div>
-    </div>
 
-    <!-- Code panel -->
-    <div class="relative mx-auto mt-16 max-w-4xl">
-      <div class="glass relative grid overflow-hidden rounded-xl shadow-2xl shadow-black/50 md:grid-cols-[1.5fr_1fr]">
-        <!-- Editor pane -->
-        <div class="min-w-0 border-b border-line md:border-b-0 md:border-r">
-          <div class="flex items-center gap-2 border-b border-line px-4 py-3">
+      <!-- Build demo -->
+      <div class="relative w-full">
+        <!-- Stage 1 · manifest -->
+        <div data-reveal style="--rd:.36s" class="glass overflow-hidden rounded-xl shadow-card-lg">
+          <div class="flex items-center gap-2 border-b border-line px-4 py-2.5">
             <WindowDots />
-            <span class="ml-3 font-mono text-xs text-fg-3">module.yaml</span>
+            <span class="ml-2 font-mono text-xs text-fg-3">module.yaml</span>
           </div>
-          <div class="overflow-x-auto p-4 text-left">
-            <Code code={heroCode} lang="yaml" theme={codeTheme} />
+          <pre class="overflow-x-auto p-4 text-left font-mono text-[13px] leading-relaxed"><code><span class="text-brand">module</span>: <span class="text-accent">inventory</span>
+<span class="text-brand">posting</span>: <span class="text-accent">true</span>
+<span class="text-brand">multitenant</span>: <span class="text-accent">true</span></code></pre>
+        </div>
+
+        <div data-reveal style="--rd:.5s" class="flex justify-center py-2 text-fg-3" aria-hidden="true">↓</div>
+
+        <!-- Stage 2 · generation -->
+        <div data-reveal style="--rd:.6s" class="glass overflow-hidden rounded-xl bg-ink-2/60 shadow-card-lg">
+          <div class="flex items-center border-b border-line px-4 py-2.5">
+            <span class="font-mono text-xs text-fg-3">terminal</span>
+          </div>
+          <div class="space-y-1.5 p-4 text-left font-mono text-[13px] leading-relaxed">
+            <p class="text-fg-2"><span class="select-none text-fg-3">$</span> aurora:make-module inventory</p>
+            <p><span class="text-accent">✓</span> <span class="text-fg-2">Models</span></p>
+            <p><span class="text-accent">✓</span> <span class="text-fg-2">Posting contracts</span></p>
+            <p><span class="text-accent">✓</span> <span class="text-fg-2">Permissions</span></p>
+            <p><span class="text-accent">✓</span> <span class="text-fg-2">Runtime registration</span></p>
+            <p><span class="text-accent">✓</span> <span class="text-fg-2">Tests</span></p>
           </div>
         </div>
 
-        <!-- Terminal pane -->
-        <div class="min-w-0 bg-ink-2/60">
-          <div class="flex items-center border-b border-line px-4 py-3">
-            <span class="font-mono text-xs text-fg-3">terminal</span>
-          </div>
-          <div class="space-y-2 p-4 text-left font-mono text-[13px] leading-relaxed">
-            <p class="text-fg-2"><span class="select-none text-fg-3">$</span> aurora:make-module invoicing</p>
-            <p class="text-fg-3">Leyendo manifiesto module.yaml…</p>
-            <p><span class="text-accent">✓</span> <span class="text-fg-2">Contratos SDK resueltos (Posting, Tenancy, Onboarding)</span></p>
-            <p><span class="text-accent">✓</span> <span class="text-fg-2">Módulo generado en packages/aurora/invoicing</span></p>
-            <p><span class="text-accent">✓</span> <span class="text-fg-2">Registrado en el runtime · multiempresa listo</span></p>
-            <p class="pt-1 text-fg-2">
-              <span class="text-brand-bright">→</span> El kernel postea el asiento. El módulo nunca toca el GL.
-            </p>
-            <p class="flex items-center gap-2 pt-2 text-fg-3">
-              <span class="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-accent motion-reduce:animate-none"></span>
-              esqueleto verde — listo para su lógica de dominio
-            </p>
-          </div>
+        <div data-reveal style="--rd:.74s" class="flex justify-center py-2 text-fg-3" aria-hidden="true">↓</div>
+
+        <!-- Stage 3 · verified -->
+        <div data-reveal style="--rd:.84s" class="glass flex items-center justify-center gap-2.5 rounded-xl px-4 py-3.5 shadow-card-lg">
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-sm text-accent">✓</span>
+          <span class="font-mono text-sm font-medium text-fg">Module verified.</span>
         </div>
       </div>
     </div>

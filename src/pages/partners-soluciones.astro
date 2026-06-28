@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CapabilityPage from '../components/CapabilityPage.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
+import { partnersSoluciones } from '../data/partners';
+
+const lines = [
+  { mark: '$', label: 'aurora partner:onboard --solutions' },
+  { mark: '✓', label: 'Implementa', value: 'por proyecto' },
+  { mark: '✓', label: 'Opera', value: 'cartera multiempresa' },
+  { mark: '✓', label: 'Refiere', value: 'comisión' },
+  { mark: '✓', label: 'time-to-prod', value: 'días, no meses' },
+  { mark: '→', label: 'Aurora ERP', value: 'a tu mercado' },
+] as const;
+---
+
+<BaseLayout title={partnersSoluciones.metaTitle} description={partnersSoluciones.metaDescription}>
+  <CapabilityPage data={partnersSoluciones}>
+    <HeroTerminal
+      slot="hero"
+      data={partnersSoluciones}
+      title="partner · soluciones"
+      status="en mercado"
+      lines={lines}
+      footer="el producto ya está construido; tú lo llevas al cliente"
+    />
+  </CapabilityPage>
+</BaseLayout>

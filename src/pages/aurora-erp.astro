@@ -3,27 +3,135 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/Container.astro';
 import Button from '../components/Button.astro';
 import Glow from '../components/Glow.astro';
+import WindowDots from '../components/WindowDots.astro';
 import CrossLinks from '../components/CrossLinks.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { erp } from '../data/product';
 
 const { hero, sections, cta, crossLinks } = erp;
+
+// Propuestas de ejemplo para la bandeja de aprobación del hero.
+// conf = nivel de confianza del agente; anomaly marca el ítem que Aura vigila.
+const inbox = [
+  {
+    doc: 'FEL · Factura B2-4471',
+    account: 'Gastos · Servicios',
+    amount: 'Q 4,250.00',
+    conf: 98,
+    reason: 'coincide con histórico de Proveedor X',
+  },
+  {
+    doc: 'Banco · Transferencia',
+    account: 'Bancos · Cuenta MN',
+    amount: 'Q 12,000.00',
+    conf: 95,
+    reason: 'conciliado con el extracto del día',
+  },
+  {
+    doc: 'FEL · Factura A1-0098',
+    account: 'Inventario · Mercadería',
+    amount: 'Q 8,730.00',
+    conf: 72,
+    anomaly: true,
+    reason: 'posible duplicado de B2-4471',
+  },
+];
 ---
 
 <BaseLayout title={erp.metaTitle} description={erp.metaDescription}>
   <!-- Hero -->
   <section class="relative overflow-hidden">
     <Glow class="left-1/2 top-[-6rem] h-[28rem] w-[44rem] -translate-x-1/2" />
-    <Container class="relative py-24 sm:py-32">
-      <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{hero.eyebrow}</p>
-      <h1 class="mt-5 max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-        {hero.h1}
-      </h1>
-      <p class="mt-6 text-xl font-medium text-gradient sm:text-2xl">{hero.sub}</p>
-      <p class="mt-4 max-w-xl text-pretty leading-relaxed text-fg-2">{hero.lede}</p>
-      <div class="mt-9 flex flex-wrap gap-3">
-        <Button href={hero.primary.href} variant="primary" size="lg">{hero.primary.label}</Button>
-        <Button href={hero.secondary.href} variant="secondary" size="lg">{hero.secondary.label}</Button>
+    <Container wide class="relative py-24 sm:py-32">
+      <div class="grid items-center gap-x-12 gap-y-12 lg:grid-cols-12">
+        <div class="lg:col-span-6">
+          <p data-reveal class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{hero.eyebrow}</p>
+          <h1 data-reveal style="--rd:.08s" class="mt-5 text-balance text-display-sm font-semibold">
+            {hero.h1}
+          </h1>
+          <p data-reveal style="--rd:.16s" class="mt-6 text-xl font-medium text-gradient sm:text-2xl">{hero.sub}</p>
+          <p data-reveal style="--rd:.24s" class="mt-4 max-w-xl text-pretty leading-relaxed text-fg-2">{hero.lede}</p>
+          <div data-reveal style="--rd:.32s" class="mt-9 flex flex-wrap gap-3">
+            <Button href={hero.primary.href} variant="primary" size="lg">{hero.primary.label}</Button>
+            <Button href={hero.secondary.href} variant="secondary" size="lg">{hero.secondary.label}</Button>
+          </div>
+        </div>
+
+        <!-- Bandeja de aprobación: secuencia orquestada propone→explica→vigila→apruebas -->
+        <div class="lg:col-span-6">
+          <div class="aura-panel glass relative mx-auto max-w-md overflow-hidden rounded-xl shadow-card-lg">
+            <div class="flex items-center gap-2 border-b border-line px-4 py-3">
+              <WindowDots />
+              <span class="ml-3 font-mono text-xs text-fg-3">bandeja de aprobación</span>
+              <span class="relative ml-auto inline-flex items-center justify-end font-mono text-[11px]">
+                <span class="aura-final text-accent">3 propuestas</span>
+                <span class="aura-loading absolute right-0 flex items-center gap-1.5 whitespace-nowrap text-fg-3">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_rgb(47_77_102/0.8)]"></span>
+                  analizando 14 documentos…
+                </span>
+              </span>
+            </div>
+            <div class="divide-y divide-line">
+              {
+                inbox.map((it, i) => (
+                  <div class="aura-row px-4 py-3.5" style={`--d:${0.2 + i * 0.3}s`}>
+                    <div class="flex items-center gap-3">
+                      <span
+                        class:list={[
+                          'flex h-7 w-7 shrink-0 items-center justify-center rounded-md border font-mono text-[11px]',
+                          it.anomaly
+                            ? 'border-amber-400/40 bg-amber-400/10 text-amber-300'
+                            : 'border-line bg-panel-2 text-brand-bright',
+                        ]}
+                      >
+                        {it.anomaly ? '⚠' : '✦'}
+                      </span>
+                      <div class="min-w-0">
+                        <p class="truncate font-mono text-[12px] text-fg">{it.doc}</p>
+                        <p class="truncate text-[12px] text-fg-3">
+                          → {it.account} · <span class="text-fg-2">{it.amount}</span>
+                        </p>
+                      </div>
+                      <span
+                        class:list={[
+                          'ml-auto shrink-0 font-mono text-[11px]',
+                          it.anomaly ? 'text-amber-300' : 'text-fg-3',
+                        ]}
+                      >
+                        {it.conf}%
+                      </span>
+                    </div>
+                    <div class="mt-2.5 flex items-center gap-2">
+                      <span class="h-1 flex-1 overflow-hidden rounded-full bg-line">
+                        <span
+                          class:list={[
+                            'aura-fill block h-full rounded-full',
+                            it.anomaly ? 'bg-amber-400' : 'bg-gradient-to-r from-brand to-accent',
+                          ]}
+                          style={`width:${it.conf}%`}
+                        />
+                      </span>
+                    </div>
+                    <p
+                      class:list={[
+                        'aura-chip mt-2 truncate text-[11px]',
+                        it.anomaly ? 'text-amber-300/90' : 'text-fg-3',
+                      ]}
+                    >
+                      ↳ {it.reason}
+                    </p>
+                  </div>
+                ))
+              }
+            </div>
+            <div class="flex items-center gap-3 border-t border-line bg-ink-2/60 px-4 py-3">
+              <span class="aura-cta flex items-center gap-2 rounded-md bg-gradient-to-r from-brand to-accent px-3 py-1.5 text-[12px] font-medium text-ink">
+                ✓ Aprobar todo
+              </span>
+              <span class="font-mono text-[11px] text-fg-3">Aura propone · tú apruebas</span>
+            </div>
+          </div>
+        </div>
       </div>
     </Container>
   </section>
@@ -32,18 +140,22 @@ const { hero, sections, cta, crossLinks } = erp;
   {
     sections.map((s) => (
       <section class="border-t border-line py-20 sm:py-28">
-        <Container>
-          <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{s.eyebrow}</p>
-          <h2 class="mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">{s.heading}</h2>
+        <Container wide>
+          <div class="space-y-8">
+          <div data-reveal class="max-w-2xl">
+            <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{s.eyebrow}</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{s.heading}</h2>
+          </div>
+          <div data-reveal style="--rd:.1s" class="min-w-0 space-y-6">
           {s.quote && (
-            <ul class="mt-8 max-w-md space-y-2">
+            <ul class="grid gap-2 sm:grid-cols-2">
               {s.quote.map((q) => (
                 <li class="rounded-lg border border-line bg-panel px-4 py-3 text-fg-2">{q}</li>
               ))}
             </ul>
           )}
           {s.kind === 'ladder' && s.rungs && (
-            <div class="mt-8 max-w-2xl divide-y divide-line rounded-xl border border-line">
+            <div class="divide-y divide-line rounded-xl border border-line">
               {s.rungs.map((rung, i) => (
                 <div class="flex items-baseline gap-4 px-5 py-4">
                   <span class="font-mono text-xs text-fg-3">{String(i + 1).padStart(2, '0')}</span>
@@ -54,7 +166,7 @@ const { hero, sections, cta, crossLinks } = erp;
             </div>
           )}
           {s.kind === 'comparison' && s.rows && (
-            <div class="mt-10">
+            <div>
               {/* Desktop: matriz */}
               <div class="hidden overflow-hidden rounded-xl border border-line md:block">
                 <table class="w-full text-left text-sm">
@@ -103,7 +215,9 @@ const { hero, sections, cta, crossLinks } = erp;
               {s.note && <p class="mt-4 max-w-2xl text-[13px] leading-relaxed text-fg-3">{s.note}</p>}
             </div>
           )}
-          {s.body && <p class="mt-6 max-w-2xl text-pretty leading-relaxed text-fg-2">{s.body}</p>}
+          {s.body && <p class="max-w-3xl text-pretty leading-relaxed text-fg-2">{s.body}</p>}
+          </div>
+          </div>
         </Container>
       </section>
     ))
@@ -112,3 +226,90 @@ const { hero, sections, cta, crossLinks } = erp;
   <CrossLinks links={crossLinks} />
   <CtaBand heading={cta.heading} body={cta.body} primary={cta.primary} secondary={cta.secondary} />
 </BaseLayout>
+
+<style>
+  /* Estado final estático: vale para reduced-motion y si las animaciones no corren. */
+  .aura-loading {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .aura-fill {
+    transform-origin: left;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* Cabecera: "analizando…" → "N propuestas" */
+    .aura-loading {
+      opacity: 1;
+      visibility: visible;
+      animation: aura-fade-out 0.4s ease forwards;
+      animation-delay: 1.3s;
+    }
+    .aura-final {
+      opacity: 0;
+      animation: aura-fade 0.4s ease forwards;
+      animation-delay: 1.4s;
+    }
+    /* Cada propuesta entra escalonada (--d por ítem) */
+    .aura-row {
+      opacity: 0;
+      animation: aura-rise 0.55s var(--ease-out-soft) both;
+      animation-delay: var(--d);
+    }
+    /* Barra de confianza se llena tras entrar la fila */
+    .aura-fill {
+      transform: scaleX(0);
+      animation: aura-bar 0.8s var(--ease-out-soft) both;
+      animation-delay: calc(var(--d) + 0.2s);
+    }
+    /* Chip de razón aparece al final */
+    .aura-chip {
+      opacity: 0;
+      animation: aura-fade 0.5s ease both;
+      animation-delay: calc(var(--d) + 0.4s);
+    }
+    /* Pulso del CTA cuando todo está propuesto */
+    .aura-cta {
+      animation: aura-pulse 1.8s var(--ease-out-soft) 1.7s 2;
+    }
+  }
+
+  @keyframes aura-rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes aura-bar {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes aura-fade {
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes aura-fade-out {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  @keyframes aura-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgb(152 54 74 / 0);
+    }
+    50% {
+      box-shadow: 0 0 0 4px rgb(152 54 74 / 0.25);
+    }
+  }
+</style>

@@ -3,8 +3,8 @@ import Container from '../Container.astro';
 ---
 
 <section id="capacidades" class="scroll-mt-20">
-  <Container class="py-20 sm:py-28">
-    <div class="max-w-2xl">
+  <Container wide class="py-20 sm:py-28">
+    <div data-reveal class="max-w-2xl">
       <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">Capacidades</p>
       <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
         Cuatro capacidades, una sola plataforma
@@ -16,10 +16,10 @@ import Container from '../Container.astro';
       </p>
     </div>
 
-    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+    <div data-reveal style="--rd:.08s" class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
       <!-- Aurora Make (wide) -->
       <article
-        class="group flex flex-col rounded-xl border border-line bg-panel p-6 transition-colors hover:border-line-2 hover:bg-panel-2 sm:col-span-2 lg:col-span-4"
+        class="group flex flex-col rounded-xl border border-line bg-panel p-6 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-line-2 hover:bg-panel-2 hover:shadow-card-lg sm:col-span-2 lg:col-span-4"
       >
         <div
           class="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-panel-2 text-brand-bright"
@@ -31,7 +31,7 @@ import Container from '../Container.astro';
         </div>
         <h3 class="mt-4 text-[15px] font-semibold text-fg">Aurora Make — fábrica de módulos</h3>
         <p class="mt-2 max-w-md text-sm leading-relaxed text-fg-2">
-          Describa un módulo con un contrato estructurado — un <code class="font-mono text-[13px] text-fg">module.yaml</code> —
+          Describe un módulo con un contrato estructurado — un <code class="font-mono text-[13px] text-fg">module.yaml</code> —
           y <code class="font-mono text-[13px] text-fg">aurora:make-module</code> genera los artefactos para
           integrarlo a la plataforma: modelos, migraciones, permisos y costuras de posteo, ya cableados.
           El manifiesto es la fuente de verdad; la lógica de dominio se escribe sobre el esqueleto.
@@ -64,7 +64,7 @@ import Container from '../Container.astro';
 
       <!-- Aurora Platform SDK (narrow) -->
       <article
-        class="group flex flex-col rounded-xl border border-line bg-panel p-6 transition-colors hover:border-line-2 hover:bg-panel-2 lg:col-span-2"
+        class="group flex flex-col rounded-xl border border-line bg-panel p-6 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-line-2 hover:bg-panel-2 hover:shadow-card-lg lg:col-span-2"
       >
         <div
           class="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-panel-2 text-brand-bright"
@@ -104,7 +104,7 @@ import Container from '../Container.astro';
 
       <!-- Aurora Runtime (wide) -->
       <article
-        class="group flex flex-col rounded-xl border border-line bg-panel p-6 transition-colors hover:border-line-2 hover:bg-panel-2 sm:col-span-2 lg:col-span-4"
+        class="group flex flex-col rounded-xl border border-line bg-panel p-6 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-line-2 hover:bg-panel-2 hover:shadow-card-lg sm:col-span-2 lg:col-span-4"
       >
         <div
           class="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-panel-2 text-brand-bright"
@@ -148,7 +148,7 @@ import Container from '../Container.astro';
 
       <!-- Aurora Architecture (narrow) -->
       <article
-        class="group flex flex-col rounded-xl border border-line bg-panel p-6 transition-colors hover:border-line-2 hover:bg-panel-2 lg:col-span-2"
+        class="group flex flex-col rounded-xl border border-line bg-panel p-6 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-line-2 hover:bg-panel-2 hover:shadow-card-lg lg:col-span-2"
       >
         <div
           class="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-panel-2 text-brand-bright"

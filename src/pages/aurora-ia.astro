@@ -1,9 +1,195 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CapabilityPage from '../components/CapabilityPage.astro';
+import Container from '../components/Container.astro';
+import Button from '../components/Button.astro';
+import Glow from '../components/Glow.astro';
+import WindowDots from '../components/WindowDots.astro';
 import { aura } from '../data/product';
+
+// Fuentes que Aura cita al responder (trazabilidad).
+const sources = ['Libro Mayor', 'Gastos · Publicidad', '3 períodos'];
 ---
 
 <BaseLayout title={aura.metaTitle} description={aura.metaDescription}>
-  <CapabilityPage data={aura} />
+  <CapabilityPage data={aura}>
+    <section slot="hero" class="relative overflow-hidden border-b border-line">
+      <Glow class="left-1/2 top-[-8rem] h-[30rem] w-[46rem] -translate-x-1/2" />
+      <Container wide class="relative py-20 sm:py-28">
+        <div class="grid items-center gap-x-12 gap-y-12 lg:grid-cols-12">
+          <div class="lg:col-span-6">
+            <p data-reveal class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{aura.heroEyebrow}</p>
+            <h1 data-reveal style="--rd:.08s" class="mt-5 text-balance text-display-sm font-semibold">
+              {aura.heroH1}
+            </h1>
+            <p data-reveal style="--rd:.16s" class="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-fg-2">{aura.heroLede}</p>
+            <div data-reveal style="--rd:.24s" class="mt-9 flex flex-wrap gap-3">
+              <Button href={aura.cta.primary.href} variant="primary" size="lg">{aura.cta.primary.label}</Button>
+              <Button href={aura.cta.secondary.href} variant="secondary" size="lg">{aura.cta.secondary.label}</Button>
+            </div>
+          </div>
+
+          <!-- Copiloto: pregunta en lenguaje natural → responde y propone -->
+          <div class="lg:col-span-6">
+            <div class="aura-chat glass relative mx-auto max-w-md overflow-hidden rounded-xl shadow-card-lg">
+              <div class="flex items-center gap-2 border-b border-line px-4 py-3">
+                <WindowDots />
+                <span class="ml-3 font-mono text-xs text-fg-3">aura · copiloto financiero</span>
+                <span class="ml-auto flex items-center gap-1.5 font-mono text-[11px] text-accent">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_rgb(47_77_102/0.8)]"></span>
+                  en línea
+                </span>
+              </div>
+
+              <div class="space-y-3 p-4">
+                <!-- Pregunta del usuario -->
+                <div class="ac-q flex justify-end">
+                  <p class="max-w-[78%] rounded-2xl rounded-br-sm bg-panel-2 px-3.5 py-2 text-[13px] text-fg">
+                    ¿Cuánto gasté en marketing este trimestre?
+                  </p>
+                </div>
+
+                <!-- Aura pensando -->
+                <div class="ac-think flex items-center gap-2 font-mono text-[12px] text-fg-3">
+                  <span class="flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-brand to-accent text-[11px] text-ink">✦</span>
+                  Aura consulta los libros
+                  <span class="ac-dots inline-flex gap-0.5">
+                    <span class="h-1 w-1 rounded-full bg-fg-3"></span>
+                    <span class="h-1 w-1 rounded-full bg-fg-3"></span>
+                    <span class="h-1 w-1 rounded-full bg-fg-3"></span>
+                  </span>
+                </div>
+
+                <!-- Respuesta de Aura -->
+                <div class="ac-a flex items-start gap-2">
+                  <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-brand to-accent text-[11px] text-ink">✦</span>
+                  <div class="min-w-0 space-y-2">
+                    <div class="rounded-2xl rounded-bl-sm border border-line bg-panel px-3.5 py-2.5 text-[13px] leading-relaxed text-fg-2">
+                      Gastaste <span class="font-semibold text-fg">Q 38,400</span> en marketing este trimestre —
+                      <span class="text-accent">+12%</span> vs. el anterior.
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      {
+                        sources.map((s) => (
+                          <span class="rounded-full border border-line bg-panel px-2.5 py-1 font-mono text-[10px] text-fg-3">
+                            {s}
+                          </span>
+                        ))
+                      }
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Propuesta accionable -->
+                <div class="ac-p rounded-lg border border-brand/30 bg-ink-2/70 p-3">
+                  <p class="text-[12px] text-fg-2">
+                    <span class="font-mono text-[11px] uppercase tracking-widest text-brand-bright">Propone</span>
+                    · reclasificar Q 4,250 a <span class="text-fg">Publicidad pagada por adelantado</span>
+                  </p>
+                  <p class="mt-1 text-[11px] text-fg-3">↳ coincide con el histórico del proveedor</p>
+                  <div class="mt-2.5 flex gap-2">
+                    <span class="ac-cta rounded-md bg-gradient-to-r from-brand to-accent px-3 py-1 text-[12px] font-medium text-ink">✓ Aprobar</span>
+                    <span class="rounded-md border border-line px-3 py-1 text-[12px] text-fg-2">Editar</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 border-t border-line bg-ink-2/60 px-4 py-3">
+                <span class="flex-1 truncate rounded-lg border border-line bg-panel px-3 py-2 text-[12px] text-fg-3">
+                  Pregunta a Aura…
+                </span>
+                <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-brand to-accent text-ink">→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </CapabilityPage>
 </BaseLayout>
+
+<style>
+  /* Estado final estático (reduced-motion / sin animación). */
+  .ac-think {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ac-q {
+      opacity: 0;
+      animation: ac-rise 0.5s var(--ease-out-soft) both;
+      animation-delay: 0.3s;
+    }
+    .ac-think {
+      display: flex;
+      opacity: 0;
+      animation:
+        ac-fade 0.3s ease 0.9s forwards,
+        ac-fade-out 0.3s ease 1.9s forwards;
+    }
+    .ac-dots span {
+      animation: ac-blink 1s infinite;
+    }
+    .ac-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .ac-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    .ac-a {
+      opacity: 0;
+      animation: ac-rise 0.5s var(--ease-out-soft) both;
+      animation-delay: 2.2s;
+    }
+    .ac-p {
+      opacity: 0;
+      animation: ac-rise 0.5s var(--ease-out-soft) both;
+      animation-delay: 2.8s;
+    }
+    .ac-cta {
+      animation: ac-pulse 1.8s var(--ease-out-soft) 3.2s 2;
+    }
+  }
+
+  @keyframes ac-rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes ac-fade {
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes ac-fade-out {
+    to {
+      opacity: 0;
+      height: 0;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  @keyframes ac-blink {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes ac-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgb(152 54 74 / 0);
+    }
+    50% {
+      box-shadow: 0 0 0 4px rgb(152 54 74 / 0.25);
+    }
+  }
+</style>

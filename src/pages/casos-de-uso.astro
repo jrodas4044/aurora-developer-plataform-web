@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/Container.astro';
-import PageHeader from '../components/PageHeader.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
 import CrossLinks from '../components/CrossLinks.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { casos } from '../data/pages';
@@ -12,10 +12,25 @@ const capLinks = [
   { label: 'Aurora Runtime', href: '/aurora-runtime', blurb: 'La multiempresa e infraestructura que reusan.' },
   { label: 'Aurora Architecture', href: '/aurora-architecture', blurb: 'Las reglas que mantienen la integridad.' },
 ];
+
+const heroLines = [
+  { mark: '✓', label: 'Quorum · contabilidad', value: 'en producción' },
+  { mark: '✓', label: 'Ventas · facturación', value: 'en producción' },
+  { mark: '✓', label: 'Inventario · costeo', value: 'en producción' },
+  { mark: '✓', label: 'CRM · front-office', value: 'en producción' },
+  { mark: '✓', label: 'Diferidos · periodificación', value: 'en producción' },
+  { mark: '→', label: 'nómina · analítica', value: 'construible' },
+] as const;
 ---
 
 <BaseLayout title={casos.metaTitle} description={casos.metaDescription}>
-  <PageHeader eyebrow={casos.heroEyebrow} title={casos.heroH1} lede={casos.heroLede} />
+  <HeroTerminal
+    data={casos}
+    title="sistemas sobre el GL"
+    status="orbitando"
+    lines={heroLines}
+    footer="todo módulo orbita el libro mayor, ninguno escribe directo"
+  />
 
   <Container class="py-16 sm:py-20">
     <p class="max-w-3xl text-pretty leading-relaxed text-fg-2">{casos.intro}</p>
@@ -23,7 +38,7 @@ const capLinks = [
     <div class="mt-12 grid gap-4 sm:mt-16 sm:grid-cols-2">
       {
         casos.cases.map((c) => (
-          <article class="flex flex-col rounded-xl border border-line bg-panel p-6 transition-colors hover:border-line-2 hover:bg-panel-2">
+          <article class="flex flex-col rounded-xl border border-line bg-panel p-6 shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:border-line-2 hover:bg-panel-2 hover:shadow-card-lg">
             <div class="flex items-start justify-between gap-3">
               <h2 class="text-[17px] font-semibold text-fg">{c.title}</h2>
               {c.mono && <span class="shrink-0 font-mono text-[11px] text-accent">{c.mono}</span>}

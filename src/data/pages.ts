@@ -4,7 +4,7 @@ export const make = {
   "name": "Aurora Make",
   "route": "/aurora-make",
   "navLabel": "Aurora Make",
-  "metaTitle": "Aurora Make — La fábrica de módulos por manifiesto | Aurora Engine",
+  "metaTitle": "Aurora Make — La fábrica de módulos por manifiesto | Aurora Platform",
   "metaDescription": "Aurora Make genera módulos empresariales a partir de un manifiesto declarativo. Un module.yaml describe modelos tipados, permisos, posteo al GL y siembra por empresa; aurora:make-module emite un paquete Aurora ya cableado, con frontera limpia y determinismo verificado.",
   "heroEyebrow": "AURORA MAKE",
   "heroH1": "Un manifiesto describe el módulo. La fábrica lo construye.",
@@ -70,7 +70,7 @@ export const make = {
     }
   ],
   "cta": {
-    "heading": "Vea el loop completo",
+    "heading": "Mira el loop completo",
     "body": "Aurora Make es el primer paso de un ciclo: del manifiesto a un módulo que orbita el libro mayor. La página Cómo funciona recorre el camino de extremo a extremo con un módulo real.",
     "primary": {
       "label": "Ver cómo funciona",
@@ -153,8 +153,8 @@ export const platformSdk = {
     }
   ],
   "cta": {
-    "heading": "Vea el loop de extremo a extremo",
-    "body": "Los contratos cobran sentido cuando se ve cómo un manifiesto se convierte en un módulo cableado que postea al libro mayor sin tocar el kernel. Recorra el ciclo completo o escríbanos para discutir su caso.",
+    "heading": "Mira el loop de extremo a extremo",
+    "body": "Los contratos cobran sentido cuando se ve cómo un manifiesto se convierte en un módulo cableado que postea al libro mayor sin tocar el kernel. Recorre el ciclo completo o escríbenos para discutir tu caso.",
     "primary": {
       "label": "Ver cómo funciona",
       "href": "/como-funciona"
@@ -170,7 +170,7 @@ export const runtime = {
   "name": "Aurora Runtime",
   "route": "/aurora-runtime",
   "navLabel": "Aurora Runtime",
-  "metaTitle": "Aurora Runtime — Infraestructura compartida multiempresa | Aurora Engine",
+  "metaTitle": "Aurora Runtime — Infraestructura compartida multiempresa | Aurora Platform",
   "metaDescription": "Aurora Runtime es la infraestructura compartida sobre la que corren los módulos: descubrimiento por registro (ModuleRegistry), readiness por empresa (OnboardingRegistry), aislamiento schema-per-tenant con CompanyContext, aprovisionamiento por empresa y componentes reutilizables.",
   "heroEyebrow": "AURORA RUNTIME",
   "heroH1": "La infraestructura que todos los módulos comparten",
@@ -236,8 +236,8 @@ export const runtime = {
     }
   ],
   "cta": {
-    "heading": "Vea el módulo integrarse al Runtime",
-    "body": "El descubrimiento, la readiness por empresa y el aprovisionamiento no se escriben: un módulo los hereda al integrarse. Recorra el loop que va del manifiesto al módulo operando dentro de la infraestructura compartida.",
+    "heading": "Mira el módulo integrarse al Runtime",
+    "body": "El descubrimiento, la readiness por empresa y el aprovisionamiento no se escriben: un módulo los hereda al integrarse. Recorre el loop que va del manifiesto al módulo operando dentro de la infraestructura compartida.",
     "primary": {
       "label": "Ver cómo funciona",
       "href": "/como-funciona"
@@ -341,7 +341,7 @@ export const architecture = {
   ],
   "cta": {
     "heading": "Reglas que se ejecutan, no que se recuerdan",
-    "body": "Aurora Architecture convierte las decisiones de diseño en tests que corren en cada build. Conozca cómo el manifiesto, los contratos y las invariantes se encadenan en un solo flujo de trabajo.",
+    "body": "Aurora Architecture convierte las decisiones de diseño en tests que corren en cada build. Conoce cómo el manifiesto, los contratos y las invariantes se encadenan en un solo flujo de trabajo.",
     "primary": {
       "label": "Ver cómo funciona",
       "href": "/como-funciona"
@@ -433,8 +433,8 @@ export const loop = {
     ]
   },
   "cta": {
-    "heading": "Vea el loop sobre módulos reales",
-    "body": "El módulo contable Quorum, Ventas, Inventario, CRM, Academia y Diferidos corren hoy sobre Aurora con este mismo ciclo. Revise los casos de uso o hable con el equipo sobre el software empresarial que necesita construir.",
+    "heading": "Mira el loop sobre módulos reales",
+    "body": "El módulo contable Quorum, Ventas, Inventario, CRM, Academia y Diferidos corren hoy sobre Aurora con este mismo ciclo. Revisa los casos de uso o habla con el equipo sobre el software empresarial que necesitas construir.",
     "primary": {
       "label": "Ver casos de uso",
       "href": "/casos-de-uso"
@@ -447,7 +447,7 @@ export const loop = {
 } as const;
 
 export const casos = {
-  "metaTitle": "Casos de uso — Aurora Enterprise Development Platform",
+  "metaTitle": "Casos de uso — Aurora Platform",
   "metaDescription": "Qué se construye sobre Aurora: ERP y contabilidad, ventas, inventario, CRM, nómina, analítica. Cada sistema orbita el GL, postea por las costuras del SDK y evoluciona sin romper dependencias. Distingue lo que ya corre hoy de lo construible.",
   "heroEyebrow": "CASOS DE USO",
   "heroH1": "Software empresarial sobre una base contable",
@@ -503,8 +503,8 @@ export const casos = {
     ]
   },
   "cta": {
-    "heading": "Evalúe qué sistema construir sobre Aurora",
-    "body": "Si necesita un sistema empresarial con consistencia operacional, integridad financiera y capacidad de evolucionar sin acumular deuda, conversemos sobre cómo se modela sobre Aurora —lo que ya corre hoy y lo que es construible.",
+    "heading": "Evalúa qué sistema construir sobre Aurora",
+    "body": "Si necesitas un sistema empresarial con consistencia operacional, integridad financiera y capacidad de evolucionar sin acumular deuda, conversemos sobre cómo se modela sobre Aurora —lo que ya corre hoy y lo que es construible.",
     "primary": {
       "label": "Contacto",
       "href": "/contacto"

@@ -5,11 +5,11 @@ export const aura = {
   name: 'Aura · IA',
   route: '/aurora-ia',
   navLabel: 'Aura · IA',
-  metaTitle: 'Aura · IA — Agentes que proponen, vos aprobás | Aurora',
+  metaTitle: 'Aura · IA — Agentes que proponen, tú apruebas | Aurora',
   metaDescription:
     'Aura es la capa de IA de Aurora: agentes que proponen contabilizaciones, detectan anomalías y responden en lenguaje natural sobre el libro mayor vivo. Cada acción pasa por borrador y aprobación humana, con trazabilidad completa.',
   heroEyebrow: 'AURORA · IA',
-  heroH1: 'Agentes que proponen. Vos aprobás.',
+  heroH1: 'Agentes que proponen. Tú apruebas.',
   heroLede:
     'Aura es la capa de IA que opera sobre el libro mayor vivo. No es un chatbot pegado al ERP: cada acción pasa por borrador y aprobación humana, con la misma trazabilidad que un asiento hecho a mano.',
   intro:
@@ -27,7 +27,7 @@ export const aura = {
     },
     {
       title: 'Preguntas en lenguaje natural',
-      body: 'Preguntás "¿cuánto gasté en marketing este trimestre?" y Aura responde desde los libros reales de la empresa, con la cifra trazable a su origen. Consulta de solo lectura, acotada a la empresa activa.',
+      body: 'Preguntas "¿cuánto gasté en marketing este trimestre?" y Aura responde desde los libros reales de la empresa, con la cifra trazable a su origen. Consulta de solo lectura, acotada a la empresa activa.',
       mono: 'responde',
     },
     {
@@ -55,7 +55,7 @@ export const aura = {
   ],
   cta: {
     heading: 'Agentes que se ganan tu confianza',
-    body: 'Aura propone, explica y deja borradores; vos aprobás. Pedí una demo y vemos el flujo de propose-and-approve sobre libros reales.',
+    body: 'Aura propone, explica y deja borradores; tú apruebas. Pide una demo y vemos el flujo de propose-and-approve sobre libros reales.',
     primary: { label: 'Solicitar una demo', href: '/contacto' },
     secondary: { label: 'Ver los módulos', href: '/modulos' },
   },
@@ -119,7 +119,7 @@ export const modulos = {
   ],
   cta: {
     heading: 'Un solo sistema, todo el ciclo',
-    body: 'Del registro a la decisión, sin silos ni reconciliación entre herramientas. Pedí una demo y recorremos los módulos sobre una empresa real.',
+    body: 'Del registro a la decisión, sin silos ni reconciliación entre herramientas. Pide una demo y recorremos los módulos sobre una empresa real.',
     primary: { label: 'Solicitar una demo', href: '/contacto' },
     secondary: { label: 'Ver la tesis completa', href: '/aurora-erp' },
   },
@@ -146,7 +146,7 @@ export const datos = {
     },
     {
       title: 'ISR / IVA',
-      body: 'Cálculo de ISR en sus tres frecuencias (mensual, trimestral, anual) e IVA con sus Libros. La obligación tributaria, derivada de los mismos libros que ya llevás.',
+      body: 'Cálculo de ISR en sus tres frecuencias (mensual, trimestral, anual) e IVA con sus Libros. La obligación tributaria, derivada de los mismos libros que ya llevas.',
       mono: 'tributos',
     },
     {
@@ -179,7 +179,7 @@ export const datos = {
   ],
   cta: {
     heading: 'El dato ya existe. Aurora lo pone a trabajar.',
-    body: 'La factura electrónica obligatoria es tu ventaja. Pedí una demo y vemos cómo un DTE se vuelve contabilidad sin captura manual.',
+    body: 'La factura electrónica obligatoria es tu ventaja. Pide una demo y vemos cómo un DTE se vuelve contabilidad sin captura manual.',
     primary: { label: 'Solicitar una demo', href: '/contacto' },
     secondary: { label: 'Ver los módulos', href: '/modulos' },
   },
@@ -192,7 +192,7 @@ export const erp = {
   hero: {
     eyebrow: 'AURORA · PARA EMPRESAS Y GRUPOS',
     h1: 'El sistema operativo financiero AI-native para las empresas de Latinoamérica.',
-    sub: 'Tus libros se llevan solos. Vos solo aprobás.',
+    sub: 'Tus libros se llevan solos. Tú solo apruebas.',
     lede: 'Aurora convierte facturas, movimientos bancarios y documentos financieros en acciones propuestas, libros siempre al día y decisiones tomadas con datos reales.',
     primary: { label: 'Solicitar una demo', href: '/contacto' },
     secondary: { label: 'Ver los módulos', href: '/modulos' },
@@ -229,8 +229,8 @@ export const erp = {
     },
     {
       eyebrow: 'LA SOLUCIÓN',
-      heading: 'Vos ya no construís la contabilidad. La supervisás.',
-      body: 'Cada factura, cada venta, cada movimiento bancario, cada documento fiscal: Aurora propone la contabilización automáticamente. El usuario aprueba. Tus libros se llevan solos; vos solo aprobás.',
+      heading: 'Tú ya no construyes la contabilidad. La supervisas.',
+      body: 'Cada factura, cada venta, cada movimiento bancario, cada documento fiscal: Aurora propone la contabilización automáticamente. El usuario aprueba. Tus libros se llevan solos; tú solo apruebas.',
     },
     {
       eyebrow: 'QUÉ LO HACE DIFERENTE',
@@ -261,7 +261,7 @@ export const erp = {
         {
           dim: 'IA',
           cells: ['Add-on sobre un core batch', 'Mínima', 'Add-on sobre un core batch', 'Asistentes básicos'],
-          aurora: 'Nativa: propone, vos aprobás',
+          aurora: 'Nativa: propone, tú apruebas',
         },
         {
           dim: 'Fiscal LATAM (FEL/SAT)',
@@ -289,13 +289,134 @@ export const erp = {
   ],
   cta: {
     heading: 'De los datos financieros a la decisión.',
-    body: 'Empezamos por la contabilidad y la fiscalidad porque ahí nacen los datos; terminamos automatizando toda la operación financiera. Pedí una demo.',
+    body: 'Empezamos por la contabilidad y la fiscalidad porque ahí nacen los datos; terminamos automatizando toda la operación financiera. Pide una demo.',
     primary: { label: 'Solicitar una demo', href: '/contacto' },
     secondary: { label: 'Ver cómo funciona', href: '/como-funciona' },
   },
   crossLinks: [
-    { label: 'Aura · IA', href: '/aurora-ia', blurb: 'Los agentes que proponen, explican y dejan borradores; vos aprobás.' },
+    { label: 'Aura · IA', href: '/aurora-ia', blurb: 'Los agentes que proponen, explican y dejan borradores; tú apruebas.' },
     { label: 'Módulos', href: '/modulos', blurb: 'El ciclo financiero completo, del registro a la decisión, en un solo sistema.' },
     { label: 'Datos Financieros', href: '/fiscal-latam', blurb: 'La ingesta: la factura electrónica como materia prima de la automatización.' },
   ],
+};
+
+export const platform = {
+  metaTitle: 'Aurora Platform — La capa de abajo del software financiero | Aurora',
+  metaDescription:
+    'Aurora es una plataforma de desarrollo vertical sobre Laravel, con el libro mayor como kernel. Frente a Filament, Nova, Backpack, raw Laravel, Odoo Studio y Django: no es un constructor de pantallas, es el kernel de integridad financiera, la fábrica de módulos y los contratos verificados sobre los que esas herramientas se montan.',
+  hero: {
+    eyebrow: 'AURORA · PLATAFORMA',
+    h1: 'El framework financiero sobre Laravel.',
+    sub: 'Si Laravel te da el framework web, Aurora te da el financiero.',
+    lede:
+      'Construye ERP y software empresarial sin reinventar el libro mayor, la integridad contable ni la arquitectura modular. Filament, Nova o Backpack te dan pantallas sobre tus tablas; Aurora te da la capa de abajo: el kernel financiero sobre el que esas UIs se montan.',
+    primary: { label: 'Ver cómo funciona', href: '/como-funciona' },
+    secondary: { label: 'Hablar con el equipo', href: '/contacto' },
+    // Stack visual del hero: la UI se monta sobre Aurora, y Aurora sobre el GL.
+    stack: [
+      { label: 'Tu UI', meta: 'Filament · Nova · Backpack', tone: 'muted' },
+      { label: 'Aurora', meta: 'Make · Platform SDK · Runtime · Architecture', tone: 'brand' },
+      { label: 'Kernel', meta: 'Libro mayor (GL) · partida doble · BCMath', tone: 'base' },
+    ],
+  },
+  sections: [
+    {
+      eyebrow: 'EL PATRÓN',
+      heading: 'Todo ERP interno empieza igual.',
+      body: 'Unos modelos Eloquent, un panel en Filament y unas cuantas reglas de negocio. Funciona. Hasta que crece, y dos años después tienes:',
+      bullets: [
+        'Asientos que dejan de cuadrar y nadie sabe por qué.',
+        'Módulos acoplados: tocar uno rompe otro.',
+        'Cambios que rompen cosas en silencio, sin que CI avise.',
+        '¿Dónde vive, exactamente, la verdad financiera?',
+      ],
+      close: 'Aurora existe para no llegar ahí.',
+    },
+    {
+      eyebrow: 'LA ALTURA',
+      heading: 'Operan en capas distintas.',
+      body: 'Un admin builder —Filament, Nova, Backpack— genera pantallas CRUD sobre tus modelos de Eloquent: resuelve la interfaz, no la lógica de un sistema financiero. Django ofrece un framework web y un admin genérico. Y Odoo es un ERP extensible; Aurora es algo distinto: una plataforma para construir ERPs. Es la capa de abajo —un kernel contable, una fábrica de módulos y una frontera verificada— sobre la que esas UIs, incluida Filament que Aurora consume, se montan.',
+    },
+    {
+      eyebrow: 'EL COSTO DE EVOLUCIÓN',
+      heading: 'El día 1 es barato; el año 2 es la factura.',
+      body: 'Generar pantallas es rápido al principio. El costo aparece cuando el sistema crece: cada módulo nuevo se acopla a los anteriores, cambiar una firma rompe otros en silencio y la consistencia depende de que alguien recuerde la regla. Aurora cambia la pendiente. Un módulo nace de un manifiesto determinístico, depende de contratos congelados del Platform SDK —no de implementaciones— y un cambio que rompe la frontera falla ruidoso en CI antes del merge. La plataforma se diseñó para el año 2, no solo para la demo.',
+    },
+    {
+      eyebrow: 'EL FOSO',
+      heading: 'El foso no es la UI. Es el libro mayor.',
+      body: 'Ningún constructor de paneles te da integridad financiera por construcción. En Aurora el kernel es el GL: un libro mayor que funciona como event log inmutable. El dinero se opera con BCMath sobre columnas numeric(15,2), nunca con float. Las cuentas se resuelven por determinación —nombre canónico, no por código que diverge entre plantillas—. Todo módulo orbita el GL y ninguno escribe en journal_lines directo. En la práctica, significa que inventario, ventas, tesorería o nómina hablan el mismo lenguaje financiero y producen estados consistentes por diseño, no por reconciliación nocturna. Y esas invariantes no son convenciones: son fitness functions que corren en cada build. Reconstruir ese sustrato sobre un admin builder es, precisamente, el trabajo que Aurora ya hizo.',
+    },
+    {
+      kind: 'comparison',
+      eyebrow: 'COMPARATIVA',
+      heading: 'Por qué no es Filament con más pasos.',
+      competitors: ['Admin builders¹', 'Raw Laravel', 'Odoo Studio', 'Django'],
+      rows: [
+        {
+          dim: 'Tiempo al primer módulo',
+          cells: ['Muy rápido', 'Lento', 'Rápido', 'Medio'],
+          aurora: 'Rápido: nace de un manifiesto',
+        },
+        {
+          dim: 'Tiempo al décimo módulo',
+          cells: ['Doloroso', 'Muy doloroso', 'Limitado por el ERP', 'Doloroso'],
+          aurora: 'Diseñado para escalar',
+        },
+        {
+          dim: 'Qué te da',
+          cells: ['CRUD y panel sobre tus modelos', 'Nada: lo construyes todo', 'Low-code sobre un ERP cerrado', 'Framework web + admin genérico'],
+          aurora: 'Plataforma vertical con kernel contable',
+        },
+        {
+          dim: 'Integridad financiera',
+          cells: ['No nativa', 'La construyes a mano', 'Del ERP, no es tuya', 'No nativa'],
+          aurora: 'GL inmutable, BCMath, partida doble',
+        },
+        {
+          dim: 'Generación de módulos',
+          cells: ['Recursos CRUD a mano', 'Scaffolding manual', 'Studio visual, atado a Odoo', 'Apps a mano'],
+          aurora: 'Manifiesto determinístico (aurora:make-module)',
+        },
+        {
+          dim: 'Frontera / acoplamiento',
+          cells: ['A disciplina del equipo', 'A disciplina del equipo', 'Monolito acoplado', 'A disciplina del equipo'],
+          aurora: 'Verificada por fitness functions en CI',
+        },
+        {
+          dim: 'Multiempresa',
+          cells: ['A mano', 'A mano', 'Sí, del ERP', 'A mano'],
+          aurora: 'Schema-per-tenant nativo',
+        },
+        {
+          dim: 'Propiedad del código',
+          cells: ['Tuyo', 'Tuyo', 'Lock-in del ecosistema Odoo', 'Tuyo'],
+          aurora: 'Paquetes Laravel tuyos',
+        },
+        {
+          dim: 'Capa de UI',
+          cells: ['Es la UI', 'La eliges', 'La del ERP', 'Templates / admin'],
+          aurora: 'Consume Filament; no la reemplaza',
+        },
+      ],
+      note: 'Comparativa simplificada para situar a Aurora, no para descalificar. ¹ «Admin builders» agrupa Laravel Filament, Nova y Backpack: excelentes para paneles CRUD, operan en la capa de UI sobre tus modelos. Cada herramienta tiene matices por versión y caso de uso.',
+    },
+    {
+      eyebrow: 'NO ES ACADÉMICO',
+      heading: 'Las mismas invariantes ya corren en producción.',
+      body: 'Las reglas que gobiernan Aurora —GL inmutable, dinero en BCMath, cuentas por determinación, frontera verificada en CI— ya operan procesos reales de contabilidad, impuestos, tesorería y analítica. Está construido sobre más de una década desarrollando sistemas financieros y analítica empresarial para compañías de manufactura y retail en Latinoamérica, no sobre una pizarra.',
+    },
+  ],
+  crossLinks: [
+    { label: 'Aurora Make', href: '/aurora-make', blurb: 'La fábrica: un manifiesto module.yaml se vuelve un módulo cableado.' },
+    { label: 'Aurora Platform SDK', href: '/aurora-platform-sdk', blurb: 'Los contratos estables que los módulos consumen en vez del kernel.' },
+    { label: 'Aurora Runtime', href: '/aurora-runtime', blurb: 'Descubrimiento, multiempresa y aprovisionamiento por empresa.' },
+    { label: 'Aurora Architecture', href: '/aurora-architecture', blurb: 'Las invariantes verificadas por fitness functions en cada build.' },
+  ],
+  cta: {
+    heading: 'Construye sobre la capa correcta.',
+    body: 'Si necesitas software financiero que evolucione sin acumular deuda, hablemos de cómo se modela sobre Aurora —lo que ya corre hoy y lo que es construible.',
+    primary: { label: 'Ver cómo funciona', href: '/como-funciona' },
+    secondary: { label: 'Hablar con el equipo', href: '/contacto' },
+  },
 };

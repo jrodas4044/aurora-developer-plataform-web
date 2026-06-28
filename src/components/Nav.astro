@@ -5,16 +5,19 @@ import Logo from './Logo.astro';
 
 const productLinks = [
   { label: 'Aurora ERP', href: '/aurora-erp', desc: 'El sistema operativo financiero' },
-  { label: 'Aura · IA', href: '/aurora-ia', desc: 'Agentes que proponen, vos aprobás' },
+  { label: 'Aura · IA', href: '/aurora-ia', desc: 'Agentes que proponen, tú apruebas' },
   { label: 'Módulos', href: '/modulos', desc: 'Del registro a la decisión' },
   { label: 'Datos Financieros', href: '/fiscal-latam', desc: 'La factura electrónica como ingesta' },
+  { label: 'Partners de Soluciones', href: '/partners-soluciones', desc: 'Vende, implementa o refiere Aurora ERP' },
 ];
 
 const platformLinks = [
+  { label: 'Aurora Platform', href: '/aurora-platform', desc: 'La capa de abajo vs Filament/Nova/Odoo' },
   { label: 'Aurora Make', href: '/aurora-make', desc: 'Fábrica de módulos por manifiesto' },
   { label: 'Aurora Platform SDK', href: '/aurora-platform-sdk', desc: 'Contratos estables del núcleo' },
   { label: 'Aurora Runtime', href: '/aurora-runtime', desc: 'Descubrimiento, registro y multiempresa' },
   { label: 'Aurora Architecture', href: '/aurora-architecture', desc: 'Reglas verificadas por fitness functions' },
+  { label: 'Partners de Desarrollo', href: '/partners-desarrollo', desc: 'Construye tu producto sobre la plataforma' },
 ];
 
 const navLinks = [
@@ -54,7 +57,7 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
             </button>
             <div
               data-dropdown-panel
-              class="invisible absolute left-0 top-full z-50 mt-3 w-72 -translate-y-1 rounded-xl border border-line bg-ink/95 p-2 opacity-0 shadow-2xl shadow-black/50 backdrop-blur-xl transition-[opacity,transform,visibility] duration-150 ease-out data-open:visible data-open:translate-y-0 data-open:opacity-100 motion-reduce:transition-none"
+              class="invisible absolute left-0 top-full z-50 mt-3 w-72 -translate-y-1 rounded-xl border border-line bg-ink/95 p-2 opacity-0 shadow-card-lg backdrop-blur-xl transition-[opacity,transform,visibility] duration-150 ease-out data-open:visible data-open:translate-y-0 data-open:opacity-100 motion-reduce:transition-none"
             >
               <ul>
                 {
@@ -94,7 +97,7 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
             </button>
             <div
               data-dropdown-panel
-              class="invisible absolute left-0 top-full z-50 mt-3 w-72 -translate-y-1 rounded-xl border border-line bg-ink/95 p-2 opacity-0 shadow-2xl shadow-black/50 backdrop-blur-xl transition-[opacity,transform,visibility] duration-150 ease-out data-open:visible data-open:translate-y-0 data-open:opacity-100 motion-reduce:transition-none"
+              class="invisible absolute left-0 top-full z-50 mt-3 w-72 -translate-y-1 rounded-xl border border-line bg-ink/95 p-2 opacity-0 shadow-card-lg backdrop-blur-xl transition-[opacity,transform,visibility] duration-150 ease-out data-open:visible data-open:translate-y-0 data-open:opacity-100 motion-reduce:transition-none"
             >
               <ul>
                 {
@@ -122,7 +125,7 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
                   href={href}
                   aria-current={isActive(href) ? 'page' : undefined}
                   class:list={[
-                    'text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand',
+                    'link-anim text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand',
                     isActive(href) ? 'text-fg' : 'text-fg-2 hover:text-fg',
                   ]}
                 >

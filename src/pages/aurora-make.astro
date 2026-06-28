@@ -1,9 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CapabilityPage from '../components/CapabilityPage.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
 import { make } from '../data/pages';
+
+const lines = [
+  { mark: '$', label: 'php artisan aurora:make-module sales' },
+  { mark: '✓', label: 'SalesServiceProvider', value: 'registrado' },
+  { mark: '✓', label: 'migración Invoice', value: 'numeric(15,2)' },
+  { mark: '✓', label: 'permisos × roles', value: 'seeder' },
+  { mark: '✓', label: 'costura de posteo', value: 'posting.source' },
+  { mark: '✓', label: 'siembra por empresa', value: 'CompanyCreated' },
+  { mark: '→', label: 'packages/aurora/sales', value: 'cableado' },
+] as const;
 ---
 
 <BaseLayout title={make.metaTitle} description={make.metaDescription}>
-  <CapabilityPage data={make} />
+  <CapabilityPage data={make}>
+    <HeroTerminal
+      slot="hero"
+      data={make}
+      title="aurora:make-module"
+      status="cableado"
+      lines={lines}
+      footer="el esqueleto deja de ser trabajo"
+    />
+  </CapabilityPage>
 </BaseLayout>

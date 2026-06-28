@@ -1,9 +1,155 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CapabilityPage from '../components/CapabilityPage.astro';
+import Container from '../components/Container.astro';
+import Button from '../components/Button.astro';
+import Glow from '../components/Glow.astro';
+import WindowDots from '../components/WindowDots.astro';
 import { modulos } from '../data/product';
+
+// Módulos cuyo posteo alimenta un mismo asiento (trazabilidad del origen).
+const origenes = ['Ventas', 'Inventario', 'Fiscal'];
 ---
 
 <BaseLayout title={modulos.metaTitle} description={modulos.metaDescription}>
-  <CapabilityPage data={modulos} />
+  <CapabilityPage data={modulos}>
+    <section slot="hero" class="relative overflow-hidden border-b border-line">
+      <Glow class="left-1/2 top-[-8rem] h-[30rem] w-[46rem] -translate-x-1/2" />
+      <Container wide class="relative py-20 sm:py-28">
+        <div class="grid items-center gap-x-12 gap-y-12 lg:grid-cols-12">
+          <div class="lg:col-span-6">
+            <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{modulos.heroEyebrow}</p>
+            <h1 class="mt-5 text-balance text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
+              {modulos.heroH1}
+            </h1>
+            <p class="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-fg-2">{modulos.heroLede}</p>
+            <div class="mt-9 flex flex-wrap gap-3">
+              <Button href={modulos.cta.primary.href} variant="primary" size="lg">{modulos.cta.primary.label}</Button>
+              <Button href={modulos.cta.secondary.href} variant="secondary" size="lg">{modulos.cta.secondary.label}</Button>
+            </div>
+          </div>
+
+          <!-- Varios módulos postean → un mismo libro mayor, en partida doble -->
+          <div class="lg:col-span-6">
+            <div class="lg-card glass relative mx-auto max-w-md overflow-hidden rounded-xl shadow-card-lg">
+              <div class="flex items-center gap-2 border-b border-line px-4 py-3">
+                <WindowDots />
+                <span class="ml-3 font-mono text-xs text-fg-3">libro mayor · quorum</span>
+                <span class="ml-auto flex items-center gap-1.5 font-mono text-[11px] text-accent">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_rgb(47_77_102/0.8)]"></span>
+                  cuadrado
+                </span>
+              </div>
+
+              <div class="space-y-3 p-4">
+                <!-- Actividad: cada módulo postea al mismo registro -->
+                <div class="space-y-1.5">
+                  <div class="lg-src lg-src-1 flex items-center gap-2 font-mono text-[12px]">
+                    <span class="w-20 rounded bg-panel-2 px-1.5 py-0.5 text-center text-[10px] text-fg-3">Ventas</span>
+                    <span class="text-fg-2">FAC-0912</span>
+                    <span class="ml-auto text-fg">Q 12,400</span>
+                  </div>
+                  <div class="lg-src lg-src-2 flex items-center gap-2 font-mono text-[12px]">
+                    <span class="w-20 rounded bg-panel-2 px-1.5 py-0.5 text-center text-[10px] text-fg-3">Inventario</span>
+                    <span class="text-fg-2">COGS</span>
+                    <span class="ml-auto text-fg">Q 7,150</span>
+                  </div>
+                  <div class="lg-src lg-src-3 flex items-center gap-2 font-mono text-[12px]">
+                    <span class="w-20 rounded bg-panel-2 px-1.5 py-0.5 text-center text-[10px] text-fg-3">Fiscal</span>
+                    <span class="text-fg-2">IVA débito</span>
+                    <span class="ml-auto text-fg">Q 1,329</span>
+                  </div>
+                </div>
+
+                <!-- El asiento de la venta, balanceado -->
+                <div class="lg-entry rounded-lg border border-line bg-panel">
+                  <div class="flex items-center justify-between border-b border-line px-3 py-2 font-mono text-[11px] text-fg-3">
+                    <span>Asiento #4471 · Ventas</span>
+                    <span>27 jun</span>
+                  </div>
+                  <div class="divide-y divide-line font-mono text-[12px]">
+                    <div class="grid grid-cols-[1fr_auto_auto] gap-3 px-3 py-1.5">
+                      <span class="text-fg-2">Caja y bancos</span>
+                      <span class="w-16 text-right text-fg">12,400</span>
+                      <span class="w-16 text-right text-fg-3">—</span>
+                    </div>
+                    <div class="grid grid-cols-[1fr_auto_auto] gap-3 px-3 py-1.5">
+                      <span class="pl-3 text-fg-2">Ingresos por ventas</span>
+                      <span class="w-16 text-right text-fg-3">—</span>
+                      <span class="w-16 text-right text-fg">11,071</span>
+                    </div>
+                    <div class="grid grid-cols-[1fr_auto_auto] gap-3 px-3 py-1.5">
+                      <span class="pl-3 text-fg-2">IVA débito fiscal</span>
+                      <span class="w-16 text-right text-fg-3">—</span>
+                      <span class="w-16 text-right text-fg">1,329</span>
+                    </div>
+                    <div class="grid grid-cols-[1fr_auto_auto] gap-3 bg-ink-2/60 px-3 py-2 text-[11px]">
+                      <span class="font-semibold text-fg">Cuadra</span>
+                      <span class="w-16 text-right font-semibold text-fg">12,400</span>
+                      <span class="w-16 text-right font-semibold text-fg">12,400</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Módulos que alimentan el mismo mayor -->
+                <div class="lg-tags flex flex-wrap gap-1.5">
+                  {
+                    origenes.map((s) => (
+                      <span class="rounded-full border border-line bg-panel px-2.5 py-1 font-mono text-[10px] text-fg-3">
+                        {s}
+                      </span>
+                    ))
+                  }
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 border-t border-line bg-ink-2/60 px-4 py-3 font-mono text-[11px] text-fg-3">
+                <span class="h-1.5 w-1.5 rounded-full bg-brand"></span>
+                todo postea al mismo libro mayor
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </CapabilityPage>
 </BaseLayout>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .lg-src {
+      opacity: 0;
+      animation: lg-rise 0.5s var(--ease-out-soft) both;
+    }
+    .lg-src-1 {
+      animation-delay: 0.3s;
+    }
+    .lg-src-2 {
+      animation-delay: 0.5s;
+    }
+    .lg-src-3 {
+      animation-delay: 0.7s;
+    }
+    .lg-entry {
+      opacity: 0;
+      animation: lg-rise 0.5s var(--ease-out-soft) both;
+      animation-delay: 1s;
+    }
+    .lg-tags {
+      opacity: 0;
+      animation: lg-rise 0.5s var(--ease-out-soft) both;
+      animation-delay: 1.4s;
+    }
+  }
+
+  @keyframes lg-rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

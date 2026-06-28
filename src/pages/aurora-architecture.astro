@@ -1,9 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CapabilityPage from '../components/CapabilityPage.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
 import { architecture } from '../data/pages';
+
+const lines = [
+  { mark: '✓', label: 'PackageBoundaryTest', value: 'pass' },
+  { mark: '✓', label: 'ModuleManifestComplianceTest', value: 'pass' },
+  { mark: '✓', label: 'PlatformContractsFreezeTest', value: 'pass' },
+  { mark: '✓', label: 'Accounting depends on no module', value: 'pass' },
+  { mark: '✓', label: 'dinero BCMath, nunca float', value: 'pass' },
+] as const;
 ---
 
 <BaseLayout title={architecture.metaTitle} description={architecture.metaDescription}>
-  <CapabilityPage data={architecture} />
+  <CapabilityPage data={architecture}>
+    <HeroTerminal
+      slot="hero"
+      data={architecture}
+      title="pest arch · ci"
+      status="build verde"
+      lines={lines}
+      footer="5 passed · 0 failed — se comprueba, no se confía"
+    />
+  </CapabilityPage>
 </BaseLayout>

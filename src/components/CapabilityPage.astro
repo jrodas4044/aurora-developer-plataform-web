@@ -1,6 +1,6 @@
 ---
 import { Code } from 'astro:components';
-import codeTheme from '@shikijs/themes/catppuccin-mocha';
+import codeTheme from '@shikijs/themes/vitesse-dark';
 import Container from './Container.astro';
 import WindowDots from './WindowDots.astro';
 import PageHeader from './PageHeader.astro';
@@ -17,70 +17,82 @@ const intro = String(data.intro).split('\n\n');
 const sc = data.showcase;
 ---
 
-<PageHeader eyebrow={data.heroEyebrow} title={data.heroH1} lede={data.heroLede} />
+{
+  Astro.slots.has('hero') ? (
+    <slot name="hero" />
+  ) : (
+    <PageHeader eyebrow={data.heroEyebrow} title={data.heroH1} lede={data.heroLede} />
+  )
+}
 
-<Container class="py-16 sm:py-20">
-  <div class="max-w-3xl space-y-4 text-pretty leading-relaxed text-fg-2">
-    {intro.map((p: string) => <p>{p}</p>)}
+<Container wide class="py-16 sm:py-20">
+  <div class="space-y-6">
+    <div data-reveal>
+      <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">El planteamiento</p>
+      <div class="mt-4 h-px w-12 bg-gradient-to-r from-brand-bright to-accent"></div>
+    </div>
+    <div data-reveal style="--rd:.1s" class="max-w-3xl space-y-4 text-pretty leading-relaxed text-fg-2">
+      {intro.map((p: string) => <p>{p}</p>)}
+    </div>
   </div>
 
-  <div class="mt-12 sm:mt-16">
+  <div class="mt-14 sm:mt-20">
     <FeatureGrid items={data.features} />
   </div>
 </Container>
 
 {
   sc && (
-    <Container class="pb-16 sm:pb-20">
-      <div class="max-w-2xl">
-        <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">{sc.heading}</h2>
-        {sc.lede && <p class="mt-3 max-w-xl text-fg-2">{sc.lede}</p>}
-      </div>
+    <Container wide class="pb-16 sm:pb-20">
+      <div class="space-y-8">
+        <div data-reveal class="max-w-2xl">
+          <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">{sc.heading}</h2>
+          {sc.lede && <p class="mt-3 text-fg-2">{sc.lede}</p>}
+        </div>
 
-      {
-        sc.kind === 'code' && sc.code && (
-          <div class="mt-8 max-w-3xl">
-            <div class="glass overflow-hidden rounded-xl shadow-2xl shadow-black/40">
-              <div class="flex items-center gap-2 border-b border-line px-4 py-3">
-                <WindowDots />
-                {sc.code.label && <span class="ml-3 font-mono text-xs text-fg-3">{sc.code.label}</span>}
-              </div>
-              <div class="overflow-x-auto p-4 text-left">
-                <Code code={sc.code.content} lang={sc.code.lang} theme={codeTheme} />
-              </div>
-            </div>
-          </div>
-        )
-      }
-
-      {
-        sc.kind === 'list' && sc.rows && (
-          <div class="mt-8 max-w-2xl">
-            <div class="divide-y divide-line rounded-xl border border-line font-mono text-[13px]">
-              {sc.rows.map((r: { left: string; right: string }) => (
-                <div class="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:items-center sm:gap-3">
-                  <span class="shrink-0 text-fg">{r.left}</span>
-                  <span class="text-fg-3 sm:ml-auto sm:text-right">{r.right}</span>
+        <div data-reveal style="--rd:.1s" class="min-w-0">
+          {
+            sc.kind === 'code' && sc.code && (
+              <div class="panel-dark overflow-hidden rounded-xl shadow-card-lg">
+                <div class="flex items-center gap-2 border-b border-line px-4 py-3">
+                  <WindowDots />
+                  {sc.code.label && <span class="ml-3 font-mono text-xs text-fg-3">{sc.code.label}</span>}
                 </div>
-              ))}
-            </div>
-          </div>
-        )
-      }
+                <div class="overflow-x-auto p-4 text-left">
+                  <Code code={sc.code.content} lang={sc.code.lang} theme={codeTheme} />
+                </div>
+              </div>
+            )
+          }
 
-      {
-        sc.kind === 'pills' && sc.pills && (
-          <div class="mt-8 flex flex-wrap gap-3 font-mono text-[12px]">
-            {sc.pills.map((p: { label: string; meta: string }) => (
-              <span class="flex items-center gap-2 rounded-full border border-line bg-panel px-4 py-2">
-                <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-                <span class="text-fg-2">{p.label}</span>
-                <span class="text-fg-3">{p.meta}</span>
-              </span>
-            ))}
-          </div>
-        )
-      }
+          {
+            sc.kind === 'list' && sc.rows && (
+              <div class="divide-y divide-line rounded-xl border border-line font-mono text-[13px]">
+                {sc.rows.map((r: { left: string; right: string }) => (
+                  <div class="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:items-center sm:gap-3">
+                    <span class="shrink-0 text-fg">{r.left}</span>
+                    <span class="text-fg-3 sm:ml-auto sm:text-right">{r.right}</span>
+                  </div>
+                ))}
+              </div>
+            )
+          }
+
+          {
+            sc.kind === 'pills' && sc.pills && (
+              <div class="flex flex-wrap gap-3 font-mono text-[12px]">
+                {sc.pills.map((p: { label: string; meta: string }) => (
+                  <span class="flex items-center gap-2 rounded-full border border-line bg-panel px-4 py-2">
+                    <span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                    <span class="text-fg-2">{p.label}</span>
+                    <span class="text-fg-3">{p.meta}</span>
+                  </span>
+                ))}
+              </div>
+            )
+          }
+        </div>
+      </div>
     </Container>
   )
 }

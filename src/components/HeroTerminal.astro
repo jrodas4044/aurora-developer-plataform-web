@@ -1,0 +1,102 @@
+---
+import Container from './Container.astro';
+import Button from './Button.astro';
+import Glow from './Glow.astro';
+import WindowDots from './WindowDots.astro';
+
+interface Line {
+  mark?: '✓' | '🔒' | '$' | '→';
+  label: string;
+  value?: string;
+}
+
+interface Props {
+  data: any;
+  title: string;
+  status: string;
+  lines: readonly Line[];
+  footer: string;
+}
+
+const { data, title, status, lines, footer } = Astro.props;
+
+const markClass: Record<string, string> = {
+  '✓': 'text-accent',
+  '🔒': 'text-fg-3',
+  $: 'text-brand-bright',
+  '→': 'text-brand-bright',
+};
+---
+
+<section class="relative overflow-hidden border-b border-line">
+  <Glow class="left-1/2 top-[-8rem] h-[30rem] w-[46rem] -translate-x-1/2" />
+  <Container wide class="relative py-20 sm:py-28">
+    <div class="grid items-center gap-x-12 gap-y-12 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{data.heroEyebrow}</p>
+        <h1 class="mt-5 text-balance text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
+          {data.heroH1}
+        </h1>
+        <p class="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-fg-2">{data.heroLede}</p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <Button href={data.cta.primary.href} variant="primary" size="lg">{data.cta.primary.label}</Button>
+          <Button href={data.cta.secondary.href} variant="secondary" size="lg">{data.cta.secondary.label}</Button>
+        </div>
+      </div>
+
+      <!-- Terminal: el motor declarándose / verificándose, línea por línea -->
+      <div class="lg:col-span-6">
+        <div class="glass relative mx-auto max-w-md overflow-hidden rounded-xl shadow-card-lg">
+          <div class="flex items-center gap-2 border-b border-line px-4 py-3">
+            <WindowDots />
+            <span class="ml-3 font-mono text-xs text-fg-3">{title}</span>
+            <span class="ml-auto flex items-center gap-1.5 font-mono text-[11px] text-accent">
+              <span class="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_rgb(47_77_102/0.8)]"></span>
+              {status}
+            </span>
+          </div>
+
+          <div class="space-y-1.5 p-4">
+            {
+              lines.map((l, i) => (
+                <div
+                  class="ht-line flex items-center gap-2 font-mono text-[12px]"
+                  style={`animation-delay:${0.3 + i * 0.15}s`}
+                >
+                  {l.mark && <span class={`w-4 shrink-0 text-center ${markClass[l.mark]}`}>{l.mark}</span>}
+                  <span class={l.mark === '$' ? 'text-fg' : 'text-fg-2'}>{l.label}</span>
+                  {l.value && <span class="ml-auto text-fg-3">{l.value}</span>}
+                </div>
+              ))
+            }
+          </div>
+
+          <div class="flex items-center gap-2 border-t border-line bg-ink-2/60 px-4 py-3 font-mono text-[11px] text-fg-3">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand"></span>
+            {footer}
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .ht-line {
+      opacity: 0;
+      animation: ht-rise 0.5s var(--ease-out-soft) both;
+    }
+  }
+
+  @keyframes ht-rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

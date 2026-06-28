@@ -1,10 +1,10 @@
 ---
 import { Code } from 'astro:components';
-import codeTheme from '@shikijs/themes/catppuccin-mocha';
+import codeTheme from '@shikijs/themes/vitesse-dark';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Container from '../components/Container.astro';
 import WindowDots from '../components/WindowDots.astro';
-import PageHeader from '../components/PageHeader.astro';
+import HeroTerminal from '../components/HeroTerminal.astro';
 import CrossLinks from '../components/CrossLinks.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { loop } from '../data/pages';
@@ -15,10 +15,25 @@ const capLinks = [
   { label: 'Aurora Runtime', href: '/aurora-runtime', blurb: 'El descubrimiento y la multiempresa del paso 3.' },
   { label: 'Aurora Architecture', href: '/aurora-architecture', blurb: 'Las fitness functions del paso 4, a fondo.' },
 ];
+
+const heroLines = [
+  { mark: '$', label: 'aurora:make-module inventory' },
+  { mark: '✓', label: '01 · manifiesto', value: 'module.yaml' },
+  { mark: '✓', label: '02 · contrato SDK', value: 'no toca kernel' },
+  { mark: '✓', label: '03 · runtime', value: 'auto-registro' },
+  { mark: '✓', label: '04 · fitness functions', value: 'ci verde' },
+  { mark: '→', label: 'módulo en producción', value: 'orbitando el GL' },
+] as const;
 ---
 
 <BaseLayout title={loop.metaTitle} description={loop.metaDescription}>
-  <PageHeader eyebrow={loop.heroEyebrow} title={loop.heroH1} lede={loop.heroLede} />
+  <HeroTerminal
+    data={loop}
+    title="el loop · aurora"
+    status="verde"
+    lines={heroLines}
+    footer="del manifiesto a producción, verificado en cada build"
+  />
 
   <Container class="py-16 sm:py-20">
     <p class="max-w-3xl text-pretty leading-relaxed text-fg-2">{loop.intro}</p>
@@ -33,7 +48,7 @@ const capLinks = [
               <p class="mt-4 max-w-xl text-pretty leading-relaxed text-fg-2">{step.body}</p>
             </div>
             <div class="min-w-0">
-              <div class="glass overflow-hidden rounded-xl shadow-2xl shadow-black/40">
+              <div class="panel-dark overflow-hidden rounded-xl shadow-card-lg">
                 <div class="flex items-center gap-2 border-b border-line px-4 py-3">
                   <WindowDots />
                   <span class="ml-3 truncate font-mono text-xs text-fg-3">{step.code.label}</span>

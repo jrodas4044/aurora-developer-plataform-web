@@ -13,15 +13,19 @@ const { eyebrow, title, lede } = Astro.props;
 
 <section class="relative overflow-hidden border-b border-line">
   <Glow class="left-1/2 top-[-200px] h-[420px] w-[760px] -translate-x-1/2" />
-  <Container class="relative pb-14 pt-16 sm:pb-20 sm:pt-24">
-    <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{eyebrow}</p>
-    <h1 class="mt-3 max-w-3xl text-balance text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
-      {title}
-    </h1>
-    {
-      lede && (
-        <p class="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-fg-2">{lede}</p>
-      )
-    }
+  <Container wide class="relative pb-14 pt-16 sm:pb-20 sm:pt-24">
+    <p data-reveal class="font-mono text-[13px] uppercase tracking-widest text-fg-3">{eyebrow}</p>
+    <div class="mt-3 grid items-end gap-x-10 gap-y-6 lg:grid-cols-12">
+      <h1 data-reveal style="--rd:.08s" class="text-balance text-display-sm font-semibold lg:col-span-7">
+        {title}
+      </h1>
+      {
+        lede && (
+          <p data-reveal style="--rd:.16s" class="text-pretty text-lg leading-relaxed text-fg-2 lg:col-span-5 lg:border-l lg:border-line lg:pl-8">
+            {lede}
+          </p>
+        )
+      }
+    </div>
   </Container>
 </section>
