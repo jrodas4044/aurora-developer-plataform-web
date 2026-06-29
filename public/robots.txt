@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://auroralabs.cloud/sitemap-index.xml
+Sitemap: https://www.auroralabs.cloud/sitemap-index.xml

@@ -4,12 +4,12 @@ export const make = {
   "name": "Aurora Make",
   "route": "/aurora-make",
   "navLabel": "Aurora Make",
-  "metaTitle": "Aurora Make — La fábrica de módulos por manifiesto | Aurora Platform",
+  "metaTitle": "Aurora Make — La fábrica de módulos por manifiesto | Aurora Labs",
   "metaDescription": "Aurora Make genera módulos empresariales a partir de un manifiesto declarativo. Un module.yaml describe modelos tipados, permisos, posteo al GL y siembra por empresa; aurora:make-module emite un paquete Aurora ya cableado, con frontera limpia y determinismo verificado.",
   "heroEyebrow": "AURORA MAKE",
   "heroH1": "Un manifiesto describe el módulo. La fábrica lo construye.",
   "heroLede": "Aurora Make convierte un archivo declarativo en un módulo empresarial completo y cableado. Se describe qué es el módulo —modelos, dinero, permisos, cómo postea al libro mayor, qué siembra por empresa— y aurora:make-module emite el paquete listo para recibir lógica de dominio. El esqueleto deja de ser trabajo.",
-  "intro": "La mayor parte del costo de un módulo nuevo no está en su lógica de negocio, sino en el cableado que la rodea: registrar el proveedor, crear las migraciones con los tipos correctos, declarar permisos por rol, conectar las costuras de posteo al kernel contable, sembrar filas por defecto cuando se crea una empresa. Ese trabajo es repetitivo, fácil de equivocar y rara vez interesante. Aurora Make lo extrae a un manifiesto declarativo, module.yaml, y deja que un generador determinístico lo materialice.\n\nEl manifiesto no es plantilla descartable: es scaffold inicial más contrato. Una vez generado el módulo, la lógica de dominio se escribe a mano sobre un esqueleto verde, ya conforme a las invariantes de la plataforma. El propio manifiesto sigue siendo la fuente de verdad del wiring, y las fitness functions verifican en cada build que el código y lo declarado no han divergido.",
+  "intro": "La mayor parte del costo de un módulo nuevo no está en su lógica de negocio, sino en el cableado que la rodea: registrar el proveedor, crear las migraciones con los tipos correctos, declarar permisos por rol, conectar las costuras de posteo al kernel financiero, sembrar filas por defecto cuando se crea una empresa. Ese trabajo es repetitivo, fácil de equivocar y rara vez interesante. Aurora Make lo extrae a un manifiesto declarativo, module.yaml, y deja que un generador determinístico lo materialice.\n\nEl manifiesto no es plantilla descartable: es scaffold inicial más contrato. Una vez generado el módulo, la lógica de dominio se escribe a mano sobre un esqueleto verde, ya conforme a las invariantes de la plataforma. El propio manifiesto sigue siendo la fuente de verdad del wiring, y las fitness functions verifican en cada build que el código y lo declarado no han divergido.",
   "features": [
     {
       "title": "Modelos tipados con dinero correcto por construcción",
@@ -23,7 +23,7 @@ export const make = {
     },
     {
       "title": "Posteo al GL por las costuras del SDK",
-      "body": "Si el módulo postea, el manifiesto declara source y determinations. El generador conecta las costuras CreatesJournalEntries y PostsJournalEntries del Aurora Platform SDK: el kernel ejecuta el asiento, el módulo nunca importa el módulo contable ni toca journal_lines.",
+      "body": "Si el módulo postea, el manifiesto declara source y determinations. El generador conecta las costuras CreatesJournalEntries y PostsJournalEntries del Aurora Platform SDK: el kernel ejecuta el asiento, el módulo nunca importa el módulo del libro mayor ni toca journal_lines.",
       "mono": "posting.source"
     },
     {
@@ -66,7 +66,7 @@ export const make = {
     {
       "label": "Casos de uso",
       "href": "/casos-de-uso",
-      "blurb": "Qué se construye sobre Aurora: ERP y contabilidad, CRM, nómina, inventario y analítica."
+      "blurb": "Qué se construye sobre Aurora: ERP y gestión financiera, CRM, nómina, inventario y analítica."
     }
   ],
   "cta": {
@@ -91,12 +91,12 @@ export const platformSdk = {
   "metaDescription": "El Aurora Platform SDK expone contratos runtime estables. Los módulos dependen de interfaces (CreatesJournalEntries, ResolvesTaxEffects, ChecksStockAvailability, ProvidesOnboarding), nunca de implementaciones del kernel. PlatformContractsFreezeTest congela la superficie en cada build.",
   "heroEyebrow": "Aurora Platform SDK",
   "heroH1": "Los módulos dependen de contratos, no de implementaciones",
-  "heroLede": "El Aurora Platform SDK es el conjunto de contratos runtime estables sobre los que se construye cada módulo. Un satélite habla con el kernel a través de interfaces congeladas —postear al libro mayor, resolver impuestos, consultar inventario, aportar onboarding— y nunca importa el módulo contable. La implementación del kernel evoluciona por debajo sin romper a nadie.",
-  "intro": "En Aurora el kernel es el GL: el libro mayor donde toda operación se asienta. La regla de gravedad establece que todo módulo orbita ese kernel y ninguno escribe en journal_lines de forma directa. El problema clásico de esa arquitectura es el acoplamiento: si cada módulo dependiera de las clases concretas del módulo contable, cambiar una firma del kernel rompería N módulos en silencio y la plataforma dejaría de poder evolucionar.\n\nEl Aurora Platform SDK resuelve eso con una frontera explícita. Vive en los paquetes packages/aurora/platform-contracts y platform-support, y publica un puñado de interfaces y eventos que describen lo que un módulo puede pedirle a la plataforma, no cómo la plataforma lo cumple. Un módulo de Ventas no sabe que existe un módulo llamado Quorum; sabe que existe un contrato CreatesJournalEntries y lo usa. Esa indirección es lo que permite que Ventas, Inventario, CRM, Diferidos y el resto convivan, posteen al mismo libro mayor y sigan compilando cuando el kernel cambia por dentro.",
+  "heroLede": "El Aurora Platform SDK es el conjunto de contratos runtime estables sobre los que se construye cada módulo. Un satélite habla con el kernel a través de interfaces congeladas —postear al libro mayor, resolver impuestos, consultar inventario, aportar onboarding— y nunca importa el módulo del libro mayor. La implementación del kernel evoluciona por debajo sin romper a nadie.",
+  "intro": "En Aurora el kernel es el GL: el libro mayor donde toda operación se asienta. La regla de gravedad establece que todo módulo orbita ese kernel y ninguno escribe en journal_lines de forma directa. El problema clásico de esa arquitectura es el acoplamiento: si cada módulo dependiera de las clases concretas del módulo del libro mayor, cambiar una firma del kernel rompería N módulos en silencio y la plataforma dejaría de poder evolucionar.\n\nEl Aurora Platform SDK resuelve eso con una frontera explícita. Vive en los paquetes packages/aurora/platform-contracts y platform-support, y publica un puñado de interfaces y eventos que describen lo que un módulo puede pedirle a la plataforma, no cómo la plataforma lo cumple. Un módulo de Ventas no sabe que existe un módulo llamado Quorum; sabe que existe un contrato CreatesJournalEntries y lo usa. Esa indirección es lo que permite que Ventas, Inventario, CRM, Diferidos y el resto convivan, posteen al mismo libro mayor y sigan compilando cuando el kernel cambia por dentro.",
   "features": [
     {
       "title": "Postear sin tocar el kernel",
-      "body": "Un módulo asienta al libro mayor por las costuras del SDK: arma los datos del asiento contra una interfaz y el adaptador del host ejecuta el posteo canónico. El satélite nunca importa el módulo contable ni escribe journal_lines.",
+      "body": "Un módulo asienta al libro mayor por las costuras del SDK: arma los datos del asiento contra una interfaz y el adaptador del host ejecuta el posteo canónico. El satélite nunca importa el módulo del libro mayor ni escribe journal_lines.",
       "mono": "CreatesJournalEntries"
     },
     {
@@ -118,11 +118,11 @@ export const platformSdk = {
   "showcase": {
     "kind": "code",
     "heading": "Un contrato, no una implementación",
-    "lede": "El módulo arma el asiento contra esta interfaz del SDK. El host la implementa y ejecuta el posteo canónico al GL; el satélite jamás importa el módulo contable.",
+    "lede": "El módulo arma el asiento contra esta interfaz del SDK. El host la implementa y ejecuta el posteo canónico al GL; el satélite jamás importa el módulo del libro mayor.",
     "code": {
       "label": "packages/aurora/platform-contracts/src/Posting/CreatesJournalEntries.php",
       "lang": "php",
-      "content": "<?php\n\ndeclare(strict_types=1);\n\nnamespace Aurora\\Platform\\Contracts\\Posting;\n\n/**\n * Costura de posteo del SDK. Un módulo satélite arma los datos\n * del asiento y los entrega aquí; el adaptador del host hace el\n * forceFill canónico (source, source_module, source_id) y postea\n * al GL. El satélite nunca importa el módulo contable ni escribe\n * en journal_lines de forma directa.\n */\ninterface CreatesJournalEntries\n{\n    public function create(JournalEntryData $data): JournalEntryResult;\n}\n\ninterface PostsJournalEntries\n{\n    public function post(JournalEntryResult $entry): void;\n}\n\n// PlatformContractsFreezeTest congela esta superficie: un cambio\n// de firma falla ruidoso en CI, en vez de romper N módulos en silencio."
+      "content": "<?php\n\ndeclare(strict_types=1);\n\nnamespace Aurora\\Platform\\Contracts\\Posting;\n\n/**\n * Costura de posteo del SDK. Un módulo satélite arma los datos\n * del asiento y los entrega aquí; el adaptador del host hace el\n * forceFill canónico (source, source_module, source_id) y postea\n * al GL. El satélite nunca importa el módulo del libro mayor ni escribe\n * en journal_lines de forma directa.\n */\ninterface CreatesJournalEntries\n{\n    public function create(JournalEntryData $data): JournalEntryResult;\n}\n\ninterface PostsJournalEntries\n{\n    public function post(JournalEntryResult $entry): void;\n}\n\n// PlatformContractsFreezeTest congela esta superficie: un cambio\n// de firma falla ruidoso en CI, en vez de romper N módulos en silencio."
     }
   },
   "crossLinks": [
@@ -149,7 +149,7 @@ export const platformSdk = {
     {
       "label": "Casos de uso",
       "href": "/casos-de-uso",
-      "blurb": "Qué se construye sobre Aurora: ERP y contabilidad, CRM, nómina, inventario y analítica."
+      "blurb": "Qué se construye sobre Aurora: ERP y gestión financiera, CRM, nómina, inventario y analítica."
     }
   ],
   "cta": {
@@ -170,7 +170,7 @@ export const runtime = {
   "name": "Aurora Runtime",
   "route": "/aurora-runtime",
   "navLabel": "Aurora Runtime",
-  "metaTitle": "Aurora Runtime — Infraestructura compartida multiempresa | Aurora Platform",
+  "metaTitle": "Aurora Runtime — Infraestructura compartida multiempresa | Aurora Labs",
   "metaDescription": "Aurora Runtime es la infraestructura compartida sobre la que corren los módulos: descubrimiento por registro (ModuleRegistry), readiness por empresa (OnboardingRegistry), aislamiento schema-per-tenant con CompanyContext, aprovisionamiento por empresa y componentes reutilizables.",
   "heroEyebrow": "AURORA RUNTIME",
   "heroH1": "La infraestructura que todos los módulos comparten",
@@ -232,7 +232,7 @@ export const runtime = {
     {
       "label": "Casos de uso",
       "href": "/casos-de-uso",
-      "blurb": "Qué se construye sobre Aurora: ERP y contabilidad, CRM, nómina, inventario y analítica."
+      "blurb": "Qué se construye sobre Aurora: ERP y gestión financiera, CRM, nómina, inventario y analítica."
     }
   ],
   "cta": {
@@ -277,7 +277,7 @@ export const architecture = {
     },
     {
       "title": "Dinero en BCMath, cuentas por determinación",
-      "body": "El dinero se opera con BCMath sobre columnas numeric(15,2), nunca con float. Las cuentas contables se resuelven por su nombre canónico mediante determinación, nunca por código, porque los códigos divergen entre plantillas de cuentas.",
+      "body": "El dinero se opera con BCMath sobre columnas numeric(15,2), nunca con float. Las cuentas del libro mayor se resuelven por su nombre canónico mediante determinación, nunca por código, porque los códigos divergen entre plantillas de cuentas.",
       "mono": "numeric(15,2)"
     }
   ],
@@ -300,7 +300,7 @@ export const architecture = {
       },
       {
         "left": "Accounting depends on no module",
-        "right": "El kernel contable no depende de ningún otro módulo — la regla de gravedad se sostiene desde el centro hacia afuera."
+        "right": "El kernel financiero no depende de ningún otro módulo — la regla de gravedad se sostiene desde el centro hacia afuera."
       },
       {
         "left": "Dinero en BCMath, nunca float",
@@ -336,7 +336,7 @@ export const architecture = {
     {
       "label": "Casos de uso",
       "href": "/casos-de-uso",
-      "blurb": "Qué se construye sobre Aurora: ERP y contabilidad, CRM, nómina, inventario y analítica."
+      "blurb": "Qué se construye sobre Aurora: ERP y gestión financiera, CRM, nómina, inventario y analítica."
     }
   ],
   "cta": {
@@ -358,7 +358,7 @@ export const loop = {
   "metaDescription": "El ciclo completo de Aurora en código real: un manifiesto module.yaml genera un módulo cableado, depende de contratos SDK estables, se registra en runtime por auto-discovery y queda verificado por fitness functions en cada build.",
   "heroEyebrow": "COMO FUNCIONA",
   "heroH1": "El loop de Aurora",
-  "heroLede": "Un módulo nace de un manifiesto, depende de contratos —no de implementaciones—, se registra solo en runtime y queda verificado en cada build. El mismo ciclo para el módulo contable, Ventas, Inventario o cualquier software empresarial que se construya sobre la plataforma. Aquí está en código real, sin diagramas de relleno.",
+  "heroLede": "Un módulo nace de un manifiesto, depende de contratos —no de implementaciones—, se registra solo en runtime y queda verificado en cada build. El mismo ciclo para el núcleo financiero, Ventas, Inventario o cualquier software empresarial que se construya sobre la plataforma. Aquí está en código real, sin diagramas de relleno.",
   "intro": "Aurora es una plataforma de desarrollo vertical cuyo kernel es el libro mayor (GL). Cada módulo orbita el GL y nunca escribe en journal_lines de forma directa: esa es la regla de gravedad. Lo que sigue es el recorrido de un módulo desde su declaración hasta su ejecución verificada, en cuatro tramos. El manifiesto declara qué es el módulo. Aurora Make emite el esqueleto ya cableado como paquete Aurora. El módulo depende de contratos del Platform SDK, no de las clases del kernel. El Runtime lo descubre y lo registra sin que nadie lo conecte a mano. Y en cada build, un conjunto de fitness functions verifica que el resultado respeta las invariantes de la arquitectura. El bucle no es una metáfora: es el proceso que sigue cada módulo que hoy corre en producción.",
   "steps": [
     {
@@ -374,7 +374,7 @@ export const loop = {
     {
       "n": "02",
       "title": "El módulo depende de un contrato, no del kernel",
-      "body": "El paquete generado nunca importa App\\Modules: su frontera es limpia. Para postear al GL no conoce al módulo contable; depende de un contrato runtime estable del Aurora Platform SDK. Hay dos formas válidas: el módulo emite \\Events y un módulo-kernel postea (como Academia), o postea por las costuras del SDK CreatesJournalEntries / PostsJournalEntries (como Diferidos). En ambas el kernel ejecuta el asiento y el satélite jamás importa la contabilidad. Los contratos viven en packages/aurora/platform-contracts y son la única superficie que el módulo ve del kernel. El módulo evoluciona contra firmas estables, no contra clases que pueden cambiar.",
+      "body": "El paquete generado nunca importa App\\Modules: su frontera es limpia. Para postear al GL no conoce al módulo del libro mayor; depende de un contrato runtime estable del Aurora Platform SDK. Hay dos formas válidas: el módulo emite \\Events y un módulo-kernel postea (como Academia), o postea por las costuras del SDK CreatesJournalEntries / PostsJournalEntries (como Diferidos). En ambas el kernel ejecuta el asiento y el satélite jamás importa el libro mayor. Los contratos viven en packages/aurora/platform-contracts y son la única superficie que el módulo ve del kernel. El módulo evoluciona contra firmas estables, no contra clases que pueden cambiar.",
       "code": {
         "lang": "php",
         "label": "packages/aurora/platform-contracts/src/Posting/PostsJournalEntries.php",
@@ -394,11 +394,11 @@ export const loop = {
     {
       "n": "04",
       "title": "CI verifica que respeta la arquitectura",
-      "body": "El loop se cierra en cada build. La evolución se gobierna con ADRs e invariantes transversales (ADR 0017), y las invariantes que se pueden verificar son fitness functions de Pest Arch que corren en cada build. PackageBoundaryTest comprueba que ningún paquete importe App\\Modules. ModuleManifestComplianceTest verifica que el wiring real coincida con lo declarado en el manifiesto. PlatformContractsFreezeTest congela la superficie del SDK: un cambio de firma falla ruidoso en CI en vez de romper N módulos en silencio. Y una regla durable mantiene a la contabilidad sin depender de ningún módulo. Lo que el manifiesto declaró queda demostrado, no asumido.",
+      "body": "El loop se cierra en cada build. La evolución se gobierna con ADRs e invariantes transversales (ADR 0017), y las invariantes que se pueden verificar son fitness functions de Pest Arch que corren en cada build. PackageBoundaryTest comprueba que ningún paquete importe App\\Modules. ModuleManifestComplianceTest verifica que el wiring real coincida con lo declarado en el manifiesto. PlatformContractsFreezeTest congela la superficie del SDK: un cambio de firma falla ruidoso en CI en vez de romper N módulos en silencio. Y una regla durable mantiene al libro mayor sin depender de ningún módulo. Lo que el manifiesto declaró queda demostrado, no asumido.",
       "code": {
         "lang": "php",
         "label": "tests/Arch/PackageBoundaryTest.php",
-        "content": "<?php\n\n// Un paquete Aurora NUNCA importa App\\Modules: la frontera se verifica, no se confía.\narch('los paquetes aurora no importan el host')\n    ->expect('Aurora')\n    ->not->toUse('App\\\\Modules');\n\n// El kernel contable no depende de ningún otro módulo (regla de gravedad).\narch('la contabilidad no depende de ningún módulo')\n    ->expect('App\\\\Modules\\\\Accounting')\n    ->not->toUse([\n        'App\\\\Modules\\\\Receivables',\n        'App\\\\Modules\\\\Payables',\n        'Aurora\\\\Inventory',\n        'Aurora\\\\Sales',\n    ]);"
+        "content": "<?php\n\n// Un paquete Aurora NUNCA importa App\\Modules: la frontera se verifica, no se confía.\narch('los paquetes aurora no importan el host')\n    ->expect('Aurora')\n    ->not->toUse('App\\\\Modules');\n\n// El kernel financiero no depende de ningún otro módulo (regla de gravedad).\narch('la contabilidad no depende de ningún módulo')\n    ->expect('App\\\\Modules\\\\Accounting')\n    ->not->toUse([\n        'App\\\\Modules\\\\Receivables',\n        'App\\\\Modules\\\\Payables',\n        'Aurora\\\\Inventory',\n        'Aurora\\\\Sales',\n    ]);"
       }
     }
   ],
@@ -420,7 +420,7 @@ export const loop = {
       },
       {
         "label": "Accounting depends on no module",
-        "detail": "La regla de gravedad como prueba: el kernel contable no importa ningún otro módulo. Todo orbita el GL; el GL no orbita a nadie."
+        "detail": "La regla de gravedad como prueba: el kernel financiero no importa ningún otro módulo. Todo orbita el GL; el GL no orbita a nadie."
       },
       {
         "label": "Invariantes de dinero",
@@ -434,7 +434,7 @@ export const loop = {
   },
   "cta": {
     "heading": "Mira el loop sobre módulos reales",
-    "body": "El módulo contable Quorum, Ventas, Inventario, CRM, Academia y Diferidos corren hoy sobre Aurora con este mismo ciclo. Revisa los casos de uso o habla con el equipo sobre el software empresarial que necesitas construir.",
+    "body": "El núcleo financiero Quorum, Ventas, Inventario, CRM, Academia y Diferidos corren hoy sobre Aurora con este mismo ciclo. Revisa los casos de uso o habla con el equipo sobre el software empresarial que necesitas construir.",
     "primary": {
       "label": "Ver casos de uso",
       "href": "/casos-de-uso"
@@ -448,27 +448,27 @@ export const loop = {
 
 export const casos = {
   "metaTitle": "Casos de uso — Aurora Platform",
-  "metaDescription": "Qué se construye sobre Aurora: ERP y contabilidad, ventas, inventario, CRM, nómina, analítica. Cada sistema orbita el GL, postea por las costuras del SDK y evoluciona sin romper dependencias. Distingue lo que ya corre hoy de lo construible.",
+  "metaDescription": "Qué se construye sobre Aurora: ERP y gestión financiera, ventas, inventario, CRM, nómina, analítica. Cada sistema orbita el GL, postea por las costuras del SDK y evoluciona sin romper dependencias. Distingue lo que ya corre hoy de lo construible.",
   "heroEyebrow": "CASOS DE USO",
-  "heroH1": "Software empresarial sobre una base contable",
+  "heroH1": "Software empresarial sobre una base financiera",
   "heroLede": "Aurora no es un ERP. Es la plataforma sobre la que se construyen ERPs, CRM, nómina, inventario, ventas y analítica. Todo módulo orbita el libro mayor, postea por las costuras del SDK y evoluciona sin romper dependencias. Aquí se distingue lo que ya corre hoy de lo que es construible.",
   "intro": "El kernel de Aurora es el GL (libro mayor). Esa decisión —la regla de gravedad: todo módulo orbita el GL y ninguno escribe en journal_lines directo— define qué clase de software se construye bien sobre la plataforma. No es un app-builder horizontal para cualquier formulario; es una plataforma vertical para sistemas empresariales donde la consistencia operacional y la integridad financiera no son opcionales. Un módulo nace de un manifiesto declarativo procesado por Aurora Make, depende de los contratos del Platform SDK en lugar de las implementaciones del kernel, y reusa la infraestructura compartida de Aurora Runtime: multiempresa con aislamiento por esquema, panel, scope por empresa, numeración y entitlements. Los tipos de sistema descritos a continuación comparten esa cimentación; algunos ya corren ya construido sobre Aurora, otros son construibles con las mismas piezas.",
   "cases": [
     {
-      "title": "ERP y contabilidad",
-      "body": "El núcleo: gestión contable completa sobre el GL kernel. Plan de cuentas, pólizas con doble partida validada en BCMath, periodos contables con cierre y reapertura, cierre anual, libros (Diario, Mayor, Balance de Comprobación), estados financieros (Balance General, Estado de Resultados) y multimoneda. Las cuentas se resuelven por determinación —nombre canónico, nunca por código— de modo que el mismo concepto funciona en plantillas de cuentas distintas. Sobre esa base se encienden las áreas financieras: CxC y CxP con manejo de partidas abiertas y aging, bancos con conciliación de extractos, e import fiscal FEL/SAT.",
+      "title": "ERP y control de finanzas",
+      "body": "El núcleo: gestión financiera completa sobre el GL kernel. Plan de cuentas, pólizas con doble partida validada en BCMath, periodos fiscales con cierre y reapertura, cierre anual, libros (Diario, Mayor, Balance de Comprobación), estados financieros (Balance General, Estado de Resultados) y multimoneda. Las cuentas se resuelven por determinación —nombre canónico, nunca por código— de modo que el mismo concepto funciona en plantillas de cuentas distintas. Sobre esa base se encienden las áreas financieras: CxC y CxP con manejo de partidas abiertas y aging, bancos con conciliación de extractos, e import fiscal FEL/SAT.",
       "status": "ya construido sobre Aurora (módulo Quorum + financiero)",
       "mono": "Quorum"
     },
     {
       "title": "Ventas y facturación",
-      "body": "Motor de comprobantes dirigido por tipo: maestros de producto y servicio, listas de precios y comprobantes fiscales que postean al GL por las costuras del SDK. Al postear se encienden solas las consecuencias contables —CxC, aging y Libro de Ventas— sin que el módulo conozca al módulo contable. Es el primer módulo front-office cuyo usuario es el operador de la PyME, no el contador. El endurecimiento cambiario, de crédito y de retenciones se resuelve por contratos del SDK, no por reglas quemadas.",
+      "body": "Motor de comprobantes dirigido por tipo: maestros de producto y servicio, listas de precios y comprobantes fiscales que postean al GL por las costuras del SDK. Al postear se encienden solas las consecuencias financieras —CxC, aging y Libro de Ventas— sin que el módulo conozca al módulo del libro mayor. Es el primer módulo front-office cuyo usuario es el operador de la PyME, no el contador. El endurecimiento cambiario, de crédito y de retenciones se resuelve por contratos del SDK, no por reglas quemadas.",
       "status": "ya construido sobre Aurora",
       "mono": "Ventas"
     },
     {
       "title": "Inventario y costeo",
-      "body": "Valuación perpetua con costeo promedio ponderado: stock y kardex valuado que postea al GL por las costuras del SDK. El COGS al vender se dispara por evento del SDK entre Ventas e Inventario —Ventas solicita consumo de stock, Inventario responde— a través de contratos como ChecksStockAvailability y ResolvesDefaultWarehouse, sin que ninguno de los dos importe al otro ni al kernel contable. La consistencia entre lo físico y lo contable es un invariante, no una rutina de conciliación nocturna.",
+      "body": "Valuación perpetua con costeo promedio ponderado: stock y kardex valuado que postea al GL por las costuras del SDK. El COGS al vender se dispara por evento del SDK entre Ventas e Inventario —Ventas solicita consumo de stock, Inventario responde— a través de contratos como ChecksStockAvailability y ResolvesDefaultWarehouse, sin que ninguno de los dos importe al otro ni al kernel financiero. La consistencia entre lo físico y lo financiero es un invariante, no una rutina de conciliación nocturna.",
       "status": "ya construido sobre Aurora",
       "mono": "Inventario"
     },
@@ -480,13 +480,13 @@ export const casos = {
     },
     {
       "title": "Periodificación, nómina y módulos de cálculo",
-      "body": "Diferidos es el motor de periodificación —diferidos y provisiones auto-reversibles— y fue el primer paquete que postea al GL directamente por los contratos CreatesJournalEntries / PostsJournalEntries: el satélite arma el asiento y el kernel lo ejecuta. Ese mismo patrón es la plantilla para cualquier módulo de cálculo recurrente con efecto contable, como nómina: devengos, retenciones y provisiones que se vuelven asientos por las costuras del SDK, con las reglas del país inyectadas por strategy en lugar de quemadas en el código.",
+      "body": "Diferidos es el motor de periodificación —diferidos y provisiones auto-reversibles— y fue el primer paquete que postea al GL directamente por los contratos CreatesJournalEntries / PostsJournalEntries: el satélite arma el asiento y el kernel lo ejecuta. Ese mismo patrón es la plantilla para cualquier módulo de cálculo recurrente con efecto financiero, como nómina: devengos, retenciones y provisiones que se vuelven asientos por las costuras del SDK, con las reglas del país inyectadas por strategy en lugar de quemadas en el código.",
       "status": "Diferidos ya construido sobre Aurora · nómina construible con el mismo patrón",
       "mono": "Deferrals"
     },
     {
       "title": "Capacitación y analítica",
-      "body": "Academia ya corre como paquete Aurora; ilustra la segunda forma válida de integrarse: emite eventos de dominio y un módulo-kernel postea, sin posteo propio. Toda actividad de los módulos termina en el GL como hechos contables sobre un esquema único por tenant, lo que vuelve a la analítica un consumidor natural: reportes y tableros que leen un libro mayor consistente en vez de reconciliar fuentes dispersas. Reportería sobre saldos materializados y exportadores son construibles con los mismos cimientos.",
+      "body": "Academia ya corre como paquete Aurora; ilustra la segunda forma válida de integrarse: emite eventos de dominio y un módulo-kernel postea, sin posteo propio. Toda actividad de los módulos termina en el GL como hechos financieros sobre un esquema único por tenant, lo que vuelve a la analítica un consumidor natural: reportes y tableros que leen un libro mayor consistente en vez de reconciliar fuentes dispersas. Reportería sobre saldos materializados y exportadores son construibles con los mismos cimientos.",
       "status": "Academia ya construido sobre Aurora · analítica construible sobre el GL",
       "mono": "Academy"
     }
@@ -495,9 +495,9 @@ export const casos = {
     "heading": "Por qué Aurora es la base adecuada",
     "points": [
       "Integridad financiera por construcción: todo módulo orbita el GL y ninguno escribe en journal_lines directo. El dinero es BCMath sobre columnas numeric(15,2), nunca float, y las cuentas se resuelven por determinación canónica, no por código. El asiento siempre lo ejecuta el kernel.",
-      "Consistencia operacional: los módulos no se acoplan entre sí. Ventas solicita consumo de stock por evento y Inventario responde; ninguno importa al otro ni al módulo contable. Las consecuencias —CxC, COGS, Libro de Ventas— se encienden solas por las costuras del SDK.",
+      "Consistencia operacional: los módulos no se acoplan entre sí. Ventas solicita consumo de stock por evento y Inventario responde; ninguno importa al otro ni al módulo del libro mayor. Las consecuencias —CxC, COGS, Libro de Ventas— se encienden solas por las costuras del SDK.",
       "Evolución sostenible: los módulos dependen de contratos estables del Platform SDK, no de implementaciones del kernel. PlatformContractsFreezeTest congela la superficie del SDK; un cambio de firma falla ruidoso en CI en vez de romper N módulos en silencio.",
-      "Gobernanza verificada: la arquitectura se gobierna con ADRs e invariantes transversales validados en cada build por fitness functions —un paquete nunca importa App\\Modules, el wiring real coincide con el manifiesto, el módulo contable no depende de ningún otro.",
+      "Gobernanza verificada: la arquitectura se gobierna con ADRs e invariantes transversales validados en cada build por fitness functions —un paquete nunca importa App\\Modules, el wiring real coincide con el manifiesto, el núcleo financiero no depende de ningún otro.",
       "Infraestructura compartida que no se reescribe: multiempresa con aislamiento por esquema por tenant, CompanyContext como fuente de verdad fuera de HTTP, panel, scope por empresa, numeración y entitlements vienen del Runtime. Un módulo nuevo nace cableado.",
       "Costo marginal interno bajo: un módulo nace de un manifiesto module.yaml procesado por un generador determinístico que emite un paquete Aurora ya cableado. El manifiesto es scaffold y contrato; la lógica de dominio se escribe a mano sobre el esqueleto verde."
     ]

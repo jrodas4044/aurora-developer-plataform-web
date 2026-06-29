@@ -7,17 +7,17 @@ export const aura = {
   navLabel: 'Aura · IA',
   metaTitle: 'Aura · IA — Agentes que proponen, tú apruebas | Aurora',
   metaDescription:
-    'Aura es la capa de IA de Aurora: agentes que proponen contabilizaciones, detectan anomalías y responden en lenguaje natural sobre el libro mayor vivo. Cada acción pasa por borrador y aprobación humana, con trazabilidad completa.',
+    'Aura es la capa de IA de Aurora: agentes que proponen asientos, detectan anomalías y responden en lenguaje natural sobre el libro mayor vivo. Cada acción pasa por borrador y aprobación humana, con trazabilidad completa.',
   heroEyebrow: 'AURORA · IA',
   heroH1: 'Agentes que proponen. Tú apruebas.',
   heroLede:
     'Aura es la capa de IA que opera sobre el libro mayor vivo. No es un chatbot pegado al ERP: cada acción pasa por borrador y aprobación humana, con la misma trazabilidad que un asiento hecho a mano.',
   intro:
-    'En finanzas, la IA no puede tener la última palabra. El libro mayor de Aurora es un registro inmutable de hechos, y toda mutación ocurre a través de acciones auditables. Los agentes nunca escriben directo en la base: proponen una contabilización, la explican y dejan un borrador. El humano aprueba. Cada decisión —de la máquina o de la persona— conserva su rastro completo.\n\nAura no es una capa nueva sobre datos crudos. Se monta sobre una arquitectura que ya existe: borradores antes de postear, trazabilidad de origen por módulo, determinación de cuentas y verificación de readiness por empresa. El foso no es la IA en sí; es la IA operando sobre ese sustrato contable, donde cada propuesta cae en un flujo que ya sabe validar, aprobar y revertir.',
+    'En finanzas, la IA no puede tener la última palabra. El libro mayor de Aurora es un registro inmutable de hechos, y toda mutación ocurre a través de acciones auditables. Los agentes nunca escriben directo en la base: proponen un asiento, lo explican y dejan un borrador. El humano aprueba. Cada decisión —de la máquina o de la persona— conserva su rastro completo.\n\nAura no es una capa nueva sobre datos crudos. Se monta sobre una arquitectura que ya existe: borradores antes de postear, trazabilidad de origen por módulo, determinación de cuentas y verificación de readiness por empresa. El foso no es la IA en sí; es la IA operando sobre ese sustrato financiero, donde cada propuesta cae en un flujo que ya sabe validar, aprobar y revertir.',
   features: [
     {
       title: 'Sugeridor de cuenta',
-      body: 'Para cada línea de una factura o un documento, Aura propone la cuenta contable aprendiendo del histórico de la propia empresa: qué cuenta usó antes para ese proveedor, ese concepto, ese patrón. Propone; no impone.',
+      body: 'Para cada línea de una factura o un documento, Aura propone la cuenta de mayor aprendiendo del histórico de la propia empresa: qué cuenta usó antes para ese proveedor, ese concepto, ese patrón. Propone; no impone.',
       mono: 'propone',
     },
     {
@@ -65,34 +65,34 @@ export const modulos = {
   name: 'Módulos',
   route: '/modulos',
   navLabel: 'Módulos',
-  metaTitle: 'Módulos — Del registro a la decisión financiera | Aurora',
+  metaTitle: 'Módulos de gestión financiera y ERP | Aurora Labs',
   metaDescription:
-    'Los módulos de Aurora cubren el ciclo financiero completo: contabilidad, ventas, inventario, cuentas por cobrar y pagar, tesorería y fiscal. Cada módulo postea al mismo libro mayor, sin silos ni reconciliación entre sistemas.',
+    'Los módulos de Aurora cubren el ciclo financiero completo: control de finanzas, ventas, inventario, cuentas por cobrar y pagar, tesorería y fiscal. Cada módulo postea al mismo libro mayor, sin silos ni reconciliación entre sistemas.',
   heroEyebrow: 'AURORA · MÓDULOS',
   heroH1: 'Desde el registro hasta la decisión financiera.',
   heroLede:
     'De la factura al cierre y de la cobranza a la decisión: cada módulo postea al mismo libro mayor, así la empresa siempre sabe dónde está.',
   intro:
-    'Todo módulo de Aurora orbita el mismo libro mayor y postea por las mismas costuras. No hay silos, ni exportaciones, ni reconciliación entre sistemas: la venta que se factura, el inventario que se mueve y el pago que entra caen en el mismo registro contable, en el momento en que ocurren.\n\nLa cobertura sigue una escalera de capacidades: el registro (Contabilidad), la operación (Ventas, Inventario, Cuentas por cobrar y pagar, Tesorería), lo fiscal (FEL/SAT, ISR/IVA, Libros) y, encima, la decisión (reportes hoy; agentes financieros en camino). Cada escalón se enciende sobre el anterior.',
+    'Todo módulo de Aurora orbita el mismo libro mayor y postea por las mismas costuras. No hay silos, ni exportaciones, ni reconciliación entre sistemas: la venta que se factura, el inventario que se mueve y el pago que entra caen en el mismo registro financiero, en el momento en que ocurren.\n\nLa cobertura sigue una escalera de capacidades: el registro (Control de finanzas), la operación (Ventas, Inventario, Cuentas por cobrar y pagar, Tesorería), lo fiscal (FEL/SAT, ISR/IVA, Libros) y, encima, la decisión (reportes hoy; agentes financieros en camino). Cada escalón se enciende sobre el anterior.',
   features: [
     {
-      title: 'Contabilidad',
-      body: 'El núcleo: libro mayor de partida doble, plantillas de cuentas por giro, reportes (Diario, Mayor, Balance, Estado de Resultados), cierres de período y de año. La fuente de verdad sobre la que postea todo lo demás.',
+      title: 'Control de finanzas',
+      body: 'El núcleo de gestión financiera: libro mayor de partida doble validado en BCMath, plantillas de cuentas por giro, reportes (Diario, Mayor, Balance de Comprobación, Balance General, Estado de Resultados), cierres de período y de año, y multimoneda. Las cuentas se resuelven por nombre canónico, así el mismo concepto sirve a empresas con planes de cuentas distintos. Es la fuente de verdad sobre la que postea todo lo demás: ninguna venta, pago o ajuste vive fuera de este registro.',
       mono: 'Quorum',
     },
     {
       title: 'Ventas e Inventario',
-      body: 'Front office que postea solo: comprobantes fiscales que generan el asiento, CxC y Libro de Ventas que se encienden con la venta, e inventario con valuación perpetua y costo promedio que lleva el COGS al GL.',
+      body: 'Front office que postea solo: facturación electrónica y comprobantes fiscales que generan el asiento al emitirse, cuentas por cobrar y Libro de Ventas que se encienden con cada venta, e inventario con valuación perpetua y costo promedio ponderado que lleva el COGS al libro mayor. El operador de la empresa trabaja en su flujo —facturar, despachar, cobrar— y las consecuencias financieras ocurren solas, sin captura doble ni reconciliación entre sistemas.',
       mono: 'front office',
     },
     {
       title: 'CxC · CxP · Tesorería',
-      body: 'La operación financiera: cuentas por cobrar y pagar con antigüedad de saldos, bancos y conciliación de extractos con auto-match. El dinero que entra y sale, partida abierta por partida abierta.',
+      body: 'La operación financiera del día a día: cuentas por cobrar y por pagar con antigüedad de saldos (aging) y manejo de partidas abiertas, bancos y tesorería con conciliación de extractos y auto-match contra los libros. El dinero que entra y sale se controla partida abierta por partida abierta, con la posición de caja siempre visible y conciliada de forma continua, no en la semana de cierre.',
       mono: 'financiero',
     },
     {
       title: 'Fiscal',
-      body: 'Importación FEL/SAT, ISR en sus tres frecuencias, IVA y Libros fiscales. La capa que convierte la obligación tributaria en datos estructurados que alimentan al resto del sistema.',
+      body: 'Importación FEL/SAT de Guatemala, ISR en sus tres frecuencias (mensual, trimestral, anual), IVA y Libros fiscales. La capa que convierte la obligación tributaria en datos estructurados que alimentan al resto del sistema: del documento tributario electrónico al asiento propuesto, sin captura manual. La arquitectura por país extiende el mismo motor al resto de Centroamérica y LATAM.',
       mono: 'fiscal',
     },
   ],
@@ -101,7 +101,7 @@ export const modulos = {
     heading: 'La escalera, hoy y en camino',
     lede: 'Lo que ya está en producción y lo que viene, sin maquillaje.',
     pills: [
-      { label: 'Contabilidad', meta: 'en producción' },
+      { label: 'Control de finanzas', meta: 'en producción' },
       { label: 'Ventas', meta: 'en producción' },
       { label: 'Inventario', meta: 'en producción' },
       { label: 'CxC / CxP', meta: 'en producción' },
@@ -114,7 +114,7 @@ export const modulos = {
   },
   crossLinks: [
     { label: 'Aurora ERP', href: '/aurora-erp', blurb: 'La tesis completa: por qué estos módulos son un sistema operativo financiero, no un ERP más.' },
-    { label: 'Aura · IA', href: '/aurora-ia', blurb: 'Los agentes que proponen contabilizaciones y detectan anomalías sobre estos módulos.' },
+    { label: 'Aura · IA', href: '/aurora-ia', blurb: 'Los agentes que proponen asientos y detectan anomalías sobre estos módulos.' },
     { label: 'Datos Financieros', href: '/fiscal-latam', blurb: 'La ingesta: cómo la factura electrónica alimenta de datos a cada módulo.' },
   ],
   cta: {
@@ -129,15 +129,15 @@ export const datos = {
   name: 'Datos Financieros',
   route: '/fiscal-latam',
   navLabel: 'Datos Financieros',
-  metaTitle: 'Datos Financieros — La factura electrónica es la materia prima | Aurora',
+  metaTitle: 'Factura electrónica y datos fiscales para LATAM | Aurora Labs',
   metaDescription:
-    'La infraestructura fiscal digital de Latinoamérica —factura electrónica obligatoria, libros digitales— es el dato estructurado que vuelve posible automatizar la contabilidad. Aurora lo cosecha: FEL/SAT, ISR/IVA, multi-país, conciliación de extractos.',
+    'La factura electrónica obligatoria de Latinoamérica —FEL/SAT en Guatemala, libros digitales— es el dato que automatiza el control de finanzas. Aurora lo cosecha: ISR/IVA, conciliación, arquitectura multi-país.',
   heroEyebrow: 'AURORA · DATOS FINANCIEROS',
   heroH1: 'La factura electrónica es la materia prima.',
   heroLede:
-    'La infraestructura fiscal digital de la región —factura electrónica obligatoria, libros digitales— es el dato estructurado que vuelve posible automatizar la contabilidad. Aurora la cosecha.',
+    'La infraestructura fiscal digital de la región —factura electrónica obligatoria, libros digitales— es el dato estructurado que vuelve posible automatizar el control de finanzas. Aurora la cosecha.',
   intro:
-    'El gobierno ya hizo el trabajo más difícil: digitalizar la evidencia financiera. En Estados Unidos, ese dato estructurado no existe a esta escala —la contabilidad arranca de PDFs sucios y extractos dispares—. En Latinoamérica, cada DTE es un hecho económico ya estructurado, listo para convertirse en asiento.\n\nAurora convierte esa infraestructura pública en automatización privada. Y lo hace extensible por país: las reglas fiscales de un solo país nunca se queman en el código, sino que viven en estrategias por país, así la misma máquina sirve a Guatemala, a Centroamérica y a quien siga.',
+    'El gobierno ya hizo el trabajo más difícil: digitalizar la evidencia financiera. En Estados Unidos, ese dato estructurado no existe a esta escala —el control de finanzas arranca de PDFs sucios y extractos dispares—. En Latinoamérica, cada DTE es un hecho económico ya estructurado, listo para convertirse en asiento.\n\nAurora convierte esa infraestructura pública en automatización privada. Y lo hace extensible por país: las reglas fiscales de un solo país nunca se queman en el código, sino que viven en estrategias por país, así la misma máquina sirve a Guatemala, a Centroamérica y a quien siga.',
   features: [
     {
       title: 'FEL / SAT',
@@ -150,8 +150,8 @@ export const datos = {
       mono: 'tributos',
     },
     {
-      title: 'Multi-país',
-      body: 'Estrategia por país para validación de identificadores, formatos y reglas. Sin reglas quemadas: el país es un parámetro, no una reescritura.',
+      title: 'Multi-país por arquitectura',
+      body: 'Hoy en producción: Guatemala con FEL/SAT. Las reglas fiscales viven en estrategias por país —validación de identificadores, formatos y cálculos—, nunca quemadas en el código. El país es un parámetro, no una reescritura: la misma máquina se extiende al resto de Centroamérica y LATAM conforme se incorpora cada régimen.',
       mono: 'LATAM',
     },
     {
@@ -163,7 +163,7 @@ export const datos = {
   showcase: {
     kind: 'list',
     heading: 'De la factura al libro mayor',
-    lede: 'El camino que recorre un dato fiscal hasta convertirse en contabilidad, sin captura manual.',
+    lede: 'El camino que recorre un dato fiscal hasta convertirse en control de finanzas, sin captura manual.',
     rows: [
       { left: 'Factura electrónica', right: 'El DTE llega ya estructurado desde la autoridad fiscal.' },
       { left: 'Dato estructurado', right: 'Aurora normaliza tercero, fecha, montos e impuestos.' },
@@ -174,21 +174,21 @@ export const datos = {
   },
   crossLinks: [
     { label: 'Aurora ERP', href: '/aurora-erp', blurb: 'Por qué esta ingesta fiscal es el punto de entrada de un sistema operativo financiero.' },
-    { label: 'Módulos', href: '/modulos', blurb: 'Los módulos que consumen estos datos: contabilidad, ventas, fiscal y más.' },
-    { label: 'Aura · IA', href: '/aurora-ia', blurb: 'Los agentes que proponen la contabilización a partir de cada documento.' },
+    { label: 'Módulos', href: '/modulos', blurb: 'Los módulos que consumen estos datos: control de finanzas, ventas, fiscal y más.' },
+    { label: 'Aura · IA', href: '/aurora-ia', blurb: 'Los agentes que proponen el asiento a partir de cada documento.' },
   ],
   cta: {
     heading: 'El dato ya existe. Aurora lo pone a trabajar.',
-    body: 'La factura electrónica obligatoria es tu ventaja. Pide una demo y vemos cómo un DTE se vuelve contabilidad sin captura manual.',
+    body: 'La factura electrónica obligatoria es tu ventaja. Pide una demo y vemos cómo un DTE se vuelve control de finanzas sin captura manual.',
     primary: { label: 'Solicitar una demo', href: '/contacto' },
     secondary: { label: 'Ver los módulos', href: '/modulos' },
   },
 };
 
 export const erp = {
-  metaTitle: 'Aurora — El sistema operativo financiero AI-native para Latinoamérica',
+  metaTitle: 'Aurora ERP — Software de gestión financiera AI-native para LATAM',
   metaDescription:
-    'Aurora convierte facturas, movimientos bancarios y documentos financieros en acciones propuestas, libros siempre al día y decisiones con datos reales. El sistema operativo financiero AI-native para las empresas de Latinoamérica y los grupos que las controlan: multiempresa nativo, con consolidación y vista por empresa.',
+    'Software de gestión financiera y ERP AI-native para empresas y grupos de Latinoamérica: factura electrónica, libros al día y decisiones con datos reales. Multiempresa nativo.',
   hero: {
     eyebrow: 'AURORA · PARA EMPRESAS Y GRUPOS',
     h1: 'El sistema operativo financiero AI-native para las empresas de Latinoamérica.',
@@ -200,7 +200,7 @@ export const erp = {
   sections: [
     {
       eyebrow: 'LA TESIS',
-      heading: 'La factura electrónica volvió la contabilidad un problema de datos.',
+      heading: 'La factura electrónica volvió el control de finanzas un problema de datos.',
       body: 'La IA convirtió esos datos en acciones. Aurora une ambas cosas. Lo fiscal es el dato que hace posible automatizar toda la operación financiera —no el techo del producto, sino su punto de partida.',
     },
     {
@@ -212,7 +212,7 @@ export const erp = {
       eyebrow: 'EL PROBLEMA',
       heading: 'Nadie se despierta preguntando si importó sus facturas.',
       quote: ['¿Cuánto dinero tengo?', '¿Quién me debe?', '¿Voy a llegar a fin de mes?', '¿Por qué cayó mi margen?'],
-      body: 'Las empresas viven entre dos extremos: Excel y procesos manuales, o ERPs tradicionales que exigen meses de implementación, consultores y parametrización. El cierre llega tarde, las decisiones se toman con información vieja y la contabilidad se vuelve un ejercicio de reconstrucción del pasado. Eso ya es operación financiera, no solo fiscalidad.',
+      body: 'Las empresas viven entre dos extremos: Excel y procesos manuales, o ERPs tradicionales que exigen meses de implementación, consultores y parametrización. El cierre llega tarde, las decisiones se toman con información vieja y el control de finanzas se vuelve un ejercicio de reconstrucción del pasado. Eso ya es operación financiera, no solo fiscalidad.',
     },
     {
       kind: 'ladder',
@@ -220,7 +220,7 @@ export const erp = {
       heading: 'Un punto de entrada angosto que se vuelve sistema operativo.',
       rungs: [
         { capability: 'Datos financieros', detail: 'FEL · Bancos · Documentos' },
-        { capability: 'Sistema de registro', detail: 'Contabilidad' },
+        { capability: 'Sistema de registro', detail: 'Control de finanzas' },
         { capability: 'Sistema de operación', detail: 'Tesorería · CxC · CxP' },
         { capability: 'Sistema de decisión', detail: 'Cash · Planeación' },
         { capability: 'Sistema de acción', detail: 'Agentes' },
@@ -229,8 +229,8 @@ export const erp = {
     },
     {
       eyebrow: 'LA SOLUCIÓN',
-      heading: 'Tú ya no construyes la contabilidad. La supervisas.',
-      body: 'Cada factura, cada venta, cada movimiento bancario, cada documento fiscal: Aurora propone la contabilización automáticamente. El usuario aprueba. Tus libros se llevan solos; tú solo apruebas.',
+      heading: 'Tú ya no construyes el control de finanzas. Lo supervisas.',
+      body: 'Cada factura, cada venta, cada movimiento bancario, cada documento fiscal: Aurora propone el registro automáticamente. El usuario aprueba. Tus libros se llevan solos; tú solo apruebas.',
     },
     {
       eyebrow: 'QUÉ LO HACE DIFERENTE',
@@ -255,7 +255,7 @@ export const erp = {
       rows: [
         {
           dim: 'Implementación',
-          cells: ['Meses, con consultores', 'Semanas, con partner', 'Meses, con consultor', 'Rápida, contabilidad básica'],
+          cells: ['Meses, con consultores', 'Semanas, con partner', 'Meses, con consultor', 'Rápida, finanzas básicas'],
           aurora: 'Días, sin consultor',
         },
         {
@@ -283,13 +283,13 @@ export const erp = {
     },
     {
       eyebrow: 'LA VISIÓN',
-      heading: 'Donde la contabilidad se hace sola.',
+      heading: 'Donde el control de finanzas se hace solo.',
       body: 'Que el cierre mensual deje de ser un evento de pánico. Que los libros estén siempre al día. Que el contador deje de capturar datos y se convierta en un operador financiero asistido por IA. Aurora no está construyendo otro ERP para Latinoamérica: está construyendo la capa de automatización financiera que la infraestructura fiscal digital de la región hizo posible por primera vez.',
     },
   ],
   cta: {
     heading: 'De los datos financieros a la decisión.',
-    body: 'Empezamos por la contabilidad y la fiscalidad porque ahí nacen los datos; terminamos automatizando toda la operación financiera. Pide una demo.',
+    body: 'Empezamos por el control de finanzas y lo fiscal porque ahí nacen los datos; terminamos automatizando toda la operación financiera. Pide una demo.',
     primary: { label: 'Solicitar una demo', href: '/contacto' },
     secondary: { label: 'Ver cómo funciona', href: '/como-funciona' },
   },
@@ -309,7 +309,7 @@ export const platform = {
     h1: 'El framework financiero sobre Laravel.',
     sub: 'Si Laravel te da el framework web, Aurora te da el financiero.',
     lede:
-      'Construye ERP y software empresarial sin reinventar el libro mayor, la integridad contable ni la arquitectura modular. Filament, Nova o Backpack te dan pantallas sobre tus tablas; Aurora te da la capa de abajo: el kernel financiero sobre el que esas UIs se montan.',
+      'Construye ERP y software empresarial sin reinventar el libro mayor, la integridad financiera ni la arquitectura modular. Filament, Nova o Backpack te dan pantallas sobre tus tablas; Aurora te da la capa de abajo: el kernel financiero sobre el que esas UIs se montan.',
     primary: { label: 'Ver cómo funciona', href: '/como-funciona' },
     secondary: { label: 'Hablar con el equipo', href: '/contacto' },
     // Stack visual del hero: la UI se monta sobre Aurora, y Aurora sobre el GL.
@@ -335,7 +335,7 @@ export const platform = {
     {
       eyebrow: 'LA ALTURA',
       heading: 'Operan en capas distintas.',
-      body: 'Un admin builder —Filament, Nova, Backpack— genera pantallas CRUD sobre tus modelos de Eloquent: resuelve la interfaz, no la lógica de un sistema financiero. Django ofrece un framework web y un admin genérico. Y Odoo es un ERP extensible; Aurora es algo distinto: una plataforma para construir ERPs. Es la capa de abajo —un kernel contable, una fábrica de módulos y una frontera verificada— sobre la que esas UIs, incluida Filament que Aurora consume, se montan.',
+      body: 'Un admin builder —Filament, Nova, Backpack— genera pantallas CRUD sobre tus modelos de Eloquent: resuelve la interfaz, no la lógica de un sistema financiero. Django ofrece un framework web y un admin genérico. Y Odoo es un ERP extensible; Aurora es algo distinto: una plataforma para construir ERPs. Es la capa de abajo —un kernel financiero, una fábrica de módulos y una frontera verificada— sobre la que esas UIs, incluida Filament que Aurora consume, se montan.',
     },
     {
       eyebrow: 'EL COSTO DE EVOLUCIÓN',
@@ -366,7 +366,7 @@ export const platform = {
         {
           dim: 'Qué te da',
           cells: ['CRUD y panel sobre tus modelos', 'Nada: lo construyes todo', 'Low-code sobre un ERP cerrado', 'Framework web + admin genérico'],
-          aurora: 'Plataforma vertical con kernel contable',
+          aurora: 'Plataforma vertical con kernel financiero',
         },
         {
           dim: 'Integridad financiera',
@@ -404,7 +404,7 @@ export const platform = {
     {
       eyebrow: 'NO ES ACADÉMICO',
       heading: 'Las mismas invariantes ya corren en producción.',
-      body: 'Las reglas que gobiernan Aurora —GL inmutable, dinero en BCMath, cuentas por determinación, frontera verificada en CI— ya operan procesos reales de contabilidad, impuestos, tesorería y analítica. Está construido sobre más de una década desarrollando sistemas financieros y analítica empresarial para compañías de manufactura y retail en Latinoamérica, no sobre una pizarra.',
+      body: 'Las reglas que gobiernan Aurora —GL inmutable, dinero en BCMath, cuentas por determinación, frontera verificada en CI— ya operan procesos reales de control de finanzas, impuestos, tesorería y analítica. Está construido sobre más de una década desarrollando sistemas financieros y analítica empresarial para compañías de manufactura y retail en Latinoamérica, no sobre una pizarra.',
     },
   ],
   crossLinks: [

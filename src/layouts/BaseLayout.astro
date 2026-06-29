@@ -12,10 +12,12 @@ import Nav from '../components/Nav.astro';
 interface Props {
   title: string;
   description?: string;
+  schema?: Record<string, unknown>;
 }
 const {
   title,
-  description = 'Aurora Platform es la plataforma de desarrollo sobre la que se construyen sistemas empresariales modulares, verificables y financieramente consistentes.',
+  description = 'Aurora Labs es la plataforma para construir software de gestión empresarial, control de finanzas y fiscal sobre un kernel financiero verificable, modular y consistente.',
+  schema,
 } = Astro.props;
 
 const is404 = Astro.url.pathname.replace(/\/$/, '') === '/404';
@@ -51,6 +53,7 @@ const jsonLd = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
     <ClientRouter />
   </head>
   <body>

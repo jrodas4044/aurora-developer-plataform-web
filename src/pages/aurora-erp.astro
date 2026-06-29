@@ -10,6 +10,20 @@ import { erp } from '../data/product';
 
 const { hero, sections, cta, crossLinks } = erp;
 
+// JSON-LD para AI Overviews / rich results: describe Aurora ERP en términos de búsqueda.
+const erpSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Aurora ERP',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  description:
+    'Software de gestión financiera y ERP AI-native para empresas y grupos de Latinoamérica: factura electrónica (FEL/SAT), control de finanzas, multiempresa y decisiones con datos reales.',
+  areaServed: 'Latin America',
+  audience: { '@type': 'BusinessAudience', name: 'Empresas y grupos de Latinoamérica' },
+  publisher: { '@type': 'Organization', name: 'Aurora Labs' },
+};
+
 // Propuestas de ejemplo para la bandeja de aprobación del hero.
 // conf = nivel de confianza del agente; anomaly marca el ítem que Aura vigila.
 const inbox = [
@@ -38,7 +52,7 @@ const inbox = [
 ];
 ---
 
-<BaseLayout title={erp.metaTitle} description={erp.metaDescription}>
+<BaseLayout title={erp.metaTitle} description={erp.metaDescription} schema={erpSchema}>
   <!-- Hero -->
   <section class="relative overflow-hidden">
     <Glow class="left-1/2 top-[-6rem] h-[28rem] w-[44rem] -translate-x-1/2" />

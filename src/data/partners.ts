@@ -13,9 +13,9 @@ export const partnersDesarrollo = {
   heroEyebrow: 'AURORA · PARTNERS DE DESARROLLO',
   heroH1: 'Construye tu producto sobre la base financiera de Aurora.',
   heroLede:
-    'Para empresas de software que quieren llevar un sistema empresarial serio al mercado sin reinventar el libro mayor, la integridad contable ni la arquitectura modular. Tú construyes tu vertical; la capa de abajo ya existe.',
+    'Para empresas de software que quieren llevar un sistema empresarial serio al mercado sin reinventar el libro mayor, la integridad financiera ni la arquitectura modular. Tú construyes tu vertical; la capa de abajo ya existe.',
   intro:
-    'Construir software financiero que aguante es caro y lento. El libro mayor de partida doble, el dinero en BCMath, la multiempresa con aislamiento por esquema, la frontera entre módulos que no se rompe en silencio: es trabajo de años que rara vez es tu diferenciador. Tu diferenciador es la vertical que conoces —el giro, el flujo, el cliente—, no la plomería contable que hay debajo.\n\nEl programa de Partners de Desarrollo abre Aurora Platform a empresas de software que quieren montar su producto sobre esa capa de abajo. Construyes con Aurora Make, dependes de los contratos congelados del Platform SDK y reusas el Runtime multiempresa: tu módulo nace cableado al kernel financiero y orbita el mismo libro mayor que el resto del ecosistema. Tu código es tuyo —paquetes Laravel propios, sin lock-in— y lo llevas a tu mercado con respaldo técnico y comercial de Aurora.',
+    'Construir software financiero que aguante es caro y lento. El libro mayor de partida doble, el dinero en BCMath, la multiempresa con aislamiento por esquema, la frontera entre módulos que no se rompe en silencio: es trabajo de años que rara vez es tu diferenciador. Tu diferenciador es la vertical que conoces —el giro, el flujo, el cliente—, no la plomería financiera que hay debajo.\n\nEl programa de Partners de Desarrollo abre Aurora Platform a empresas de software que quieren montar su producto sobre esa capa de abajo. Construyes con Aurora Make, dependes de los contratos congelados del Platform SDK y reusas el Runtime multiempresa: tu módulo nace cableado al kernel financiero y orbita el mismo libro mayor que el resto del ecosistema. Tu código es tuyo —paquetes Laravel propios, sin lock-in— y lo llevas a tu mercado con respaldo técnico y comercial de Aurora.',
   features: [
     {
       title: 'Construyes sobre Make, SDK y Runtime',
@@ -49,7 +49,7 @@ export const partnersDesarrollo = {
     ],
   },
   crossLinks: [
-    { label: 'Aurora Platform', href: '/aurora-platform', blurb: 'La capa de abajo: el kernel contable, la fábrica de módulos y la frontera verificada sobre la que construyes.' },
+    { label: 'Aurora Platform', href: '/aurora-platform', blurb: 'La capa de abajo: el kernel financiero, la fábrica de módulos y la frontera verificada sobre la que construyes.' },
     { label: 'Aurora Make', href: '/aurora-make', blurb: 'La fábrica: un manifiesto module.yaml se vuelve tu módulo ya cableado al kernel.' },
     { label: 'Aurora Platform SDK', href: '/aurora-platform-sdk', blurb: 'Los contratos estables que tu módulo consume en vez de acoplarse al kernel.' },
     { label: 'Partners de Soluciones', href: '/partners-soluciones', blurb: 'El otro camino: vender e implementar Aurora ERP en lugar de construir sobre la plataforma.' },
@@ -103,7 +103,7 @@ export const partnersSoluciones = {
     lede: 'Eliges cómo participas según tu fortaleza. Los tres se apoyan en el mismo producto ya construido.',
     rows: [
       { left: 'Implementa', right: 'Despliegas y parametrizas Aurora ERP para clientes finales; ganas por proyecto de implementación y soporte continuo.' },
-      { left: 'Opera', right: 'Despacho que lleva la contabilidad de su cartera sobre la multiempresa nativa; ganas por cliente bajo administración.' },
+      { left: 'Opera', right: 'Despacho que lleva el control de finanzas de su cartera sobre la multiempresa nativa; ganas por cliente bajo administración.' },
       { left: 'Refiere', right: 'Conectas demanda con el producto sin implementar; ganas por comisión de referido o reventa.' },
     ],
   },

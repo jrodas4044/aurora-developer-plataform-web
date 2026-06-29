@@ -9,7 +9,7 @@ import llms from 'astro-llms-md';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://auroralabs.cloud/',
+  site: 'https://www.auroralabs.cloud/',
 
   // Bilingual routing: Spanish at the root (/), English under /en/.
   // Mirrors the convention used across the other Aurora/Turingh sites.
